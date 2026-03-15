@@ -6,7 +6,7 @@ import type {
   NewsItem as ProtoNewsItem,
   ThreatLevel as ProtoThreatLevel,
 } from '../../../../src/generated/server/worldmonitor/news/v1/service_server';
-import { cachedFetchJson, getCachedJsonBatch } from '../../../_shared/redis';
+import { cachedFetchJson, getCachedJson } from '../../../_shared/redis';
 import { sha256Hex } from '../../../_shared/hash';
 import { CHROME_UA } from '../../../_shared/constants';
 import { VARIANT_FEEDS, INTEL_SOURCES, type ServerFeed } from './_feeds';
@@ -236,7 +236,16 @@ async function enrichWithAiCache(items: ParsedItem[]): Promise<void> {
   }
 
   const keys = [...keyMap.keys()];
-  const cached = await getCachedJsonBatch(keys);
+  const settled = await Promise.allSettled(
+    keys.map((k) => getCachedJson(k, true)),
+  );
+  const cached = new Map<string, unknown>();
+  for (let i = 0; i < keys.length; i++) {
+    const entry = settled[i];
+    if (entry?.status === 'fulfilled' && entry.value != null) {
+      cached.set(keys[i]!, entry.value);
+    }
+  }
 
   for (const [key, relatedItems] of keyMap) {
     const hit = cached.get(key) as { level?: string; category?: string } | undefined;
