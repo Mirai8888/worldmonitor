@@ -260,7 +260,9 @@ async function fetchAll() {
   const pi = pizzint.status === 'fulfilled' ? pizzint.value : null;
   const gd = gdelt.status === 'fulfilled' ? gdelt.value : null;
 
-  if (!ac && !pi) throw new Error('All conflict/intel fetches failed');
+  if (acled.status === 'rejected') console.warn(`  ACLED failed: ${acled.reason?.message || acled.reason}`);
+
+  if (!ac && !ha && !pi) throw new Error('All conflict/intel fetches failed');
 
   // Write secondary keys BEFORE returning (runSeed calls process.exit after primary write)
   if (ha) { for (const [cc, data] of Object.entries(ha)) await writeExtraKeyWithMeta(`${HAPI_CACHE_KEY_PREFIX}:${cc}`, data, HAPI_TTL, 1); }
@@ -271,7 +273,8 @@ async function fetchAll() {
 }
 
 function validate(data) {
-  return data?.events?.length > 0;
+  // Accept empty ACLED events if humanitarian/pizzint extra keys were written
+  return data != null && Array.isArray(data.events);
 }
 
 runSeed('conflict', 'acled-intel', ACLED_CACHE_KEY, fetchAll, {
