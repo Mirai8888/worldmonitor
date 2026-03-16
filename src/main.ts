@@ -405,21 +405,26 @@ if (!('__TAURI_INTERNALS__' in window) && !('__TAURI__' in window) && 'serviceWo
   // Auto-reload when a NEW SW replaces an existing one (fixes stale HTML after deploys).
   // Skip on first visit: skipWaiting+clientsClaim fires controllerchange when the SW
   // claims the page for the first time, causing a useless full reload on every new session.
-  const hadController = !!navigator.serviceWorker.controller;
+  let hadController = !!navigator.serviceWorker.controller;
   let refreshing = false;
   navigator.serviceWorker.addEventListener('controllerchange', () => {
-    if (!hadController) return;
+    if (!hadController) {
+      hadController = true;
+      return;
+    }
     if (refreshing) return;
     refreshing = true;
     window.location.reload();
   });
 
-  const SW_UPDATE_MIN_INTERVAL_MS = 60 * 60 * 1000;
+  const SW_UPDATE_SUCCESS_INTERVAL_MS = 60 * 60 * 1000;
+  const SW_UPDATE_FAILURE_INTERVAL_MS = 5 * 60 * 1000;
   const SW_UPDATE_LAST_CHECK_KEY = 'wm-sw-last-update-check';
+  const SW_UPDATE_LAST_RESULT_KEY = 'wm-sw-last-update-ok';
 
-  const readLastSwUpdateCheck = (): number => {
+  const readStorageNum = (key: string): number => {
     try {
-      const raw = localStorage.getItem(SW_UPDATE_LAST_CHECK_KEY);
+      const raw = localStorage.getItem(key);
       const parsed = raw ? Number(raw) : 0;
       return Number.isFinite(parsed) ? parsed : 0;
     } catch {
@@ -427,9 +432,9 @@ if (!('__TAURI_INTERNALS__' in window) && !('__TAURI__' in window) && 'serviceWo
     }
   };
 
-  const writeLastSwUpdateCheck = (timestamp: number): void => {
+  const writeStorageNum = (key: string, value: number): void => {
     try {
-      localStorage.setItem(SW_UPDATE_LAST_CHECK_KEY, String(timestamp));
+      localStorage.setItem(key, String(value));
     } catch {}
   };
 
@@ -447,13 +452,16 @@ if (!('__TAURI_INTERNALS__' in window) && !('__TAURI__' in window) && 'serviceWo
         if (reason === 'interval' && document.visibilityState !== 'visible') return;
 
         const now = Date.now();
-        const lastCheck = readLastSwUpdateCheck();
-        if (now - lastCheck < SW_UPDATE_MIN_INTERVAL_MS) return;
+        const lastCheck = readStorageNum(SW_UPDATE_LAST_CHECK_KEY);
+        const lastOk = readStorageNum(SW_UPDATE_LAST_RESULT_KEY);
+        const interval = lastOk >= lastCheck ? SW_UPDATE_SUCCESS_INTERVAL_MS : SW_UPDATE_FAILURE_INTERVAL_MS;
+        if (now - lastCheck < interval) return;
 
         swUpdateInFlight = true;
-        writeLastSwUpdateCheck(now);
+        writeStorageNum(SW_UPDATE_LAST_CHECK_KEY, now);
         try {
           await registration.update();
+          writeStorageNum(SW_UPDATE_LAST_RESULT_KEY, now);
         } catch {}
         finally {
           swUpdateInFlight = false;
@@ -474,7 +482,7 @@ if (!('__TAURI_INTERNALS__' in window) && !('__TAURI__' in window) && 'serviceWo
 
       const swUpdateInterval = window.setInterval(() => {
         void maybeCheckForSwUpdate('interval');
-      }, SW_UPDATE_MIN_INTERVAL_MS);
+      }, SW_UPDATE_FAILURE_INTERVAL_MS);
 
       (window as unknown as Record<string, unknown>).__swUpdateInterval = swUpdateInterval;
     })
