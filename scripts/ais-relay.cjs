@@ -7463,20 +7463,93 @@ const server = http.createServer(async (req, res) => {
 // ─── Widget Agent ────────────────────────────────────────────────────────────
 
 const WIDGET_ALLOWED_ENDPOINTS = new Set([
+  // Market
+  '/api/market/v1/list-market-quotes',
+  '/api/market/v1/list-commodity-quotes',
+  '/api/market/v1/list-crypto-quotes',
+  '/api/market/v1/list-gulf-quotes',
+  '/api/market/v1/list-etf-flows',
+  '/api/market/v1/list-stablecoin-markets',
+  '/api/market/v1/get-sector-summary',
+  '/api/market/v1/get-country-stock-index',
+  '/api/market/v1/analyze-stock',
+  '/api/market/v1/get-stock-analysis-history',
+  '/api/market/v1/stock-news-search',
+  // Economic
   '/api/economic/v1/list-world-bank-indicators',
   '/api/economic/v1/get-macro-signals',
+  '/api/economic/v1/get-bis-credit',
+  '/api/economic/v1/get-bis-exchange-rates',
+  '/api/economic/v1/get-bis-policy-rates',
+  '/api/economic/v1/get-energy-prices',
+  '/api/economic/v1/get-energy-capacity',
+  '/api/economic/v1/get-fred-series',
+  // Trade
   '/api/trade/v1/get-customs-revenue',
   '/api/trade/v1/get-trade-restrictions',
   '/api/trade/v1/get-tariff-trends',
   '/api/trade/v1/get-trade-flows',
   '/api/trade/v1/get-trade-barriers',
-  '/api/market/v1/list-market-quotes',
-  '/api/market/v1/get-sector-summary',
-  '/api/market/v1/list-commodity-quotes',
-  '/api/market/v1/list-crypto-quotes',
+  // Aviation
   '/api/aviation/v1/list-airport-delays',
-  '/api/intelligence/v1/get-risk-scores',
+  '/api/aviation/v1/get-airport-ops-summary',
+  '/api/aviation/v1/list-airport-flights',
+  '/api/aviation/v1/get-carrier-ops',
+  '/api/aviation/v1/list-aviation-news',
+  '/api/aviation/v1/get-flight-status',
+  '/api/aviation/v1/track-aircraft',
+  '/api/aviation/v1/search-flight-prices',
+  // Conflict
   '/api/conflict/v1/list-ucdp-events',
+  '/api/conflict/v1/list-acled-events',
+  '/api/conflict/v1/list-iran-events',
+  '/api/conflict/v1/get-humanitarian-summary',
+  // Intelligence & Geopolitics
+  '/api/intelligence/v1/get-risk-scores',
+  '/api/intelligence/v1/get-country-facts',
+  '/api/intelligence/v1/get-country-intel-brief',
+  '/api/intelligence/v1/list-security-advisories',
+  '/api/intelligence/v1/search-gdelt-documents',
+  // Military
+  '/api/military/v1/list-military-flights',
+  '/api/military/v1/list-military-bases',
+  '/api/military/v1/get-theater-posture',
+  '/api/military/v1/get-usni-fleet-report',
+  // Maritime & Supply Chain
+  '/api/maritime/v1/get-vessel-snapshot',
+  '/api/maritime/v1/list-navigational-warnings',
+  '/api/supply-chain/v1/get-chokepoint-status',
+  '/api/supply-chain/v1/get-critical-minerals',
+  '/api/supply-chain/v1/get-shipping-rates',
+  // Infrastructure & Cyber
+  '/api/infrastructure/v1/list-internet-outages',
+  '/api/infrastructure/v1/get-cable-health',
+  '/api/infrastructure/v1/list-service-statuses',
+  '/api/infrastructure/v1/list-temporal-anomalies',
+  '/api/cyber/v1/list-cyber-threats',
+  // Conflict & Unrest
+  '/api/unrest/v1/list-unrest-events',
+  '/api/sanctions/v1/list-sanctions-pressure',
+  '/api/displacement/v1/get-displacement-summary',
+  '/api/displacement/v1/get-population-exposure',
+  // Natural & Environment
+  '/api/climate/v1/list-climate-anomalies',
+  '/api/natural/v1/list-natural-events',
+  '/api/seismology/v1/list-earthquakes',
+  '/api/wildfire/v1/list-fire-detections',
+  '/api/thermal/v1/list-thermal-escalations',
+  '/api/radiation/v1/list-radiation-observations',
+  // Prediction & Forecast
+  '/api/prediction/v1/list-prediction-markets',
+  '/api/forecast/v1/get-forecasts',
+  // Research & Tech
+  '/api/research/v1/list-arxiv-papers',
+  '/api/research/v1/list-hackernews-items',
+  '/api/research/v1/list-tech-events',
+  '/api/research/v1/list-trending-repos',
+  // News & Events
+  '/api/news/v1/list-feed-digest',
+  '/api/positive-events/v1/list-positive-geo-events',
 ]);
 
 const WIDGET_FETCH_TOOL = {
@@ -7497,23 +7570,110 @@ const WIDGET_SYSTEM_PROMPT = `You are a WorldMonitor widget builder. Your job is
 ## Available data tools
 
 ### fetch_worldmonitor_data — WorldMonitor structured data (preferred for these topics)
-- /api/market/v1/list-market-quotes — market quotes (stocks, indices)
-- /api/market/v1/list-commodity-quotes — commodity prices (oil, gold, silver, etc.)
+
+**Markets & Finance**
+- /api/market/v1/list-market-quotes — stocks and index quotes
+- /api/market/v1/list-commodity-quotes — oil, gold, silver, natural gas, etc.
 - /api/market/v1/list-crypto-quotes — crypto prices
-- /api/market/v1/get-sector-summary — sector performance
-- /api/economic/v1/list-world-bank-indicators — economic indicators (GDP, inflation, unemployment, etc.)
-- /api/economic/v1/get-macro-signals — macro signals (policy rates, yields, CPI trend)
+- /api/market/v1/list-gulf-quotes — Gulf/MENA stock quotes
+- /api/market/v1/list-etf-flows — ETF flow data
+- /api/market/v1/list-stablecoin-markets — stablecoin peg status
+- /api/market/v1/get-sector-summary — sector performance breakdown
+- /api/market/v1/get-country-stock-index — national stock index for a given country
+- /api/market/v1/analyze-stock — fundamental/technical analysis for a ticker
+- /api/market/v1/get-stock-analysis-history — stored historical analyses
+- /api/market/v1/stock-news-search — latest headlines for a specific ticker
+
+**Economic & Energy**
+- /api/economic/v1/list-world-bank-indicators — GDP, inflation, unemployment, etc.
+- /api/economic/v1/get-macro-signals — policy rates, yields, CPI trend
+- /api/economic/v1/get-bis-credit — BIS credit-to-GDP and debt stats
+- /api/economic/v1/get-bis-exchange-rates — BIS bilateral exchange rate data
+- /api/economic/v1/get-bis-policy-rates — central bank policy rates (BIS)
+- /api/economic/v1/get-energy-prices — oil, gas, electricity price data
+- /api/economic/v1/get-energy-capacity — power generation capacity by country
+- /api/economic/v1/get-fred-series — any FRED series by ID (pass seriesId param)
+
+**Trade**
 - /api/trade/v1/get-customs-revenue — US customs/tariff revenue by month
 - /api/trade/v1/get-trade-restrictions — WTO trade restrictions
 - /api/trade/v1/get-tariff-trends — tariff rate history
 - /api/trade/v1/get-trade-flows — import/export flows
-- /api/trade/v1/get-trade-barriers — SPS/TBT barriers
-- /api/aviation/v1/list-airport-delays — international flight delays by airport/region
-- /api/intelligence/v1/get-risk-scores — country instability/risk scores
-- /api/conflict/v1/list-ucdp-events — conflict events (UCDP data)
+- /api/trade/v1/get-trade-barriers — SPS/TBT trade barriers
+
+**Aviation**
+- /api/aviation/v1/list-airport-delays — airport delay data by region
+- /api/aviation/v1/get-airport-ops-summary — ops summary for a specific airport (pass iata param)
+- /api/aviation/v1/list-airport-flights — live flight list for an airport
+- /api/aviation/v1/get-carrier-ops — carrier on-time performance
+- /api/aviation/v1/list-aviation-news — latest aviation industry news
+- /api/aviation/v1/get-flight-status — status for a specific flight number
+- /api/aviation/v1/track-aircraft — track aircraft by registration or hex
+- /api/aviation/v1/search-flight-prices — fare search between city pairs
+
+**Conflict & Humanitarian**
+- /api/conflict/v1/list-ucdp-events — UCDP conflict events
+- /api/conflict/v1/list-acled-events — ACLED political violence events
+- /api/conflict/v1/list-iran-events — Iran-related events
+- /api/conflict/v1/get-humanitarian-summary — humanitarian situation by country
+
+**Intelligence & Geopolitics**
+- /api/intelligence/v1/get-risk-scores — country instability scores
+- /api/intelligence/v1/get-country-facts — key facts for a country
+- /api/intelligence/v1/get-country-intel-brief — AI intelligence brief for a country
+- /api/intelligence/v1/list-security-advisories — government travel/security advisories
+- /api/intelligence/v1/search-gdelt-documents — GDELT global news event search
+
+**Military**
+- /api/military/v1/list-military-flights — tracked military/gov flights
+- /api/military/v1/list-military-bases — global military base locations
+- /api/military/v1/get-theater-posture — US/NATO theater posture summary
+- /api/military/v1/get-usni-fleet-report — USNI naval fleet deployment report
+
+**Maritime & Supply Chain**
+- /api/maritime/v1/get-vessel-snapshot — vessel position and status by MMSI
+- /api/maritime/v1/list-navigational-warnings — active NAVTEX/navigational warnings
+- /api/supply-chain/v1/get-chokepoint-status — Suez, Panama, Hormuz, etc. status
+- /api/supply-chain/v1/get-critical-minerals — critical mineral supply chain data
+- /api/supply-chain/v1/get-shipping-rates — container shipping rate indices (FBX, SCFI)
+
+**Infrastructure & Cyber**
+- /api/infrastructure/v1/list-internet-outages — internet outage events by country
+- /api/infrastructure/v1/get-cable-health — undersea cable status
+- /api/infrastructure/v1/list-service-statuses — cloud/SaaS service status
+- /api/infrastructure/v1/list-temporal-anomalies — anomalies in infrastructure metrics
+- /api/cyber/v1/list-cyber-threats — active cyber threat intelligence
+
+**Unrest, Sanctions & Displacement**
+- /api/unrest/v1/list-unrest-events — civil unrest and protest events
+- /api/sanctions/v1/list-sanctions-pressure — active sanctions data
+- /api/displacement/v1/get-displacement-summary — IDP/refugee displacement stats
+- /api/displacement/v1/get-population-exposure — population exposure to hazards
+
+**Natural & Environment**
+- /api/climate/v1/list-climate-anomalies — temperature, drought, sea-level anomalies
+- /api/natural/v1/list-natural-events — floods, storms, volcanic events
+- /api/seismology/v1/list-earthquakes — recent earthquakes by magnitude/region
+- /api/wildfire/v1/list-fire-detections — active wildfire/fire detections
+- /api/thermal/v1/list-thermal-escalations — heat anomalies and thermal events
+- /api/radiation/v1/list-radiation-observations — radiation monitoring data
+
+**Prediction & Forecast**
+- /api/prediction/v1/list-prediction-markets — Polymarket/Manifold prediction market odds
+- /api/forecast/v1/get-forecasts — WorldMonitor AI forecasts for geopolitical events
+
+**Research & Tech**
+- /api/research/v1/list-arxiv-papers — recent arXiv research papers by topic
+- /api/research/v1/list-hackernews-items — top Hacker News stories
+- /api/research/v1/list-tech-events — tech conferences and events
+- /api/research/v1/list-trending-repos — trending GitHub repositories
+
+**News & Events**
+- /api/news/v1/list-feed-digest — curated global news digest
+- /api/positive-events/v1/list-positive-geo-events — positive geopolitical developments
 
 ### search_web — Live internet search for ANY topic (use when topic not covered above)
-Use search_web for: breaking news, weather, sports, elections, specific events, company news, scientific reports, geopolitical updates, sanctions, disasters, or any real-time topic.
+Use search_web for: breaking news, weather, sports, elections, specific events, company news, scientific reports, or any topic not in the list above.
 Results include: title, url, snippet, publishedDate. Embed this data directly into the widget HTML.
 
 ## Design system CSS classes
@@ -7916,23 +8076,110 @@ const WIDGET_PRO_SYSTEM_PROMPT = `You are a WorldMonitor PRO widget builder. You
 ## Available data tools
 
 ### fetch_worldmonitor_data — WorldMonitor structured data (preferred for these topics)
-- /api/market/v1/list-market-quotes — market quotes (stocks, indices)
-- /api/market/v1/list-commodity-quotes — commodity prices (oil, gold, silver, etc.)
+
+**Markets & Finance**
+- /api/market/v1/list-market-quotes — stocks and index quotes
+- /api/market/v1/list-commodity-quotes — oil, gold, silver, natural gas, etc.
 - /api/market/v1/list-crypto-quotes — crypto prices
-- /api/market/v1/get-sector-summary — sector performance
-- /api/economic/v1/list-world-bank-indicators — economic indicators (GDP, inflation, unemployment, etc.)
-- /api/economic/v1/get-macro-signals — macro signals (policy rates, yields, CPI trend)
+- /api/market/v1/list-gulf-quotes — Gulf/MENA stock quotes
+- /api/market/v1/list-etf-flows — ETF flow data
+- /api/market/v1/list-stablecoin-markets — stablecoin peg status
+- /api/market/v1/get-sector-summary — sector performance breakdown
+- /api/market/v1/get-country-stock-index — national stock index for a given country
+- /api/market/v1/analyze-stock — fundamental/technical analysis for a ticker
+- /api/market/v1/get-stock-analysis-history — stored historical analyses
+- /api/market/v1/stock-news-search — latest headlines for a specific ticker
+
+**Economic & Energy**
+- /api/economic/v1/list-world-bank-indicators — GDP, inflation, unemployment, etc.
+- /api/economic/v1/get-macro-signals — policy rates, yields, CPI trend
+- /api/economic/v1/get-bis-credit — BIS credit-to-GDP and debt stats
+- /api/economic/v1/get-bis-exchange-rates — BIS bilateral exchange rate data
+- /api/economic/v1/get-bis-policy-rates — central bank policy rates (BIS)
+- /api/economic/v1/get-energy-prices — oil, gas, electricity price data
+- /api/economic/v1/get-energy-capacity — power generation capacity by country
+- /api/economic/v1/get-fred-series — any FRED series by ID (pass seriesId param)
+
+**Trade**
 - /api/trade/v1/get-customs-revenue — US customs/tariff revenue by month
 - /api/trade/v1/get-trade-restrictions — WTO trade restrictions
 - /api/trade/v1/get-tariff-trends — tariff rate history
 - /api/trade/v1/get-trade-flows — import/export flows
-- /api/trade/v1/get-trade-barriers — SPS/TBT barriers
-- /api/aviation/v1/list-airport-delays — international flight delays by airport/region
-- /api/intelligence/v1/get-risk-scores — country instability/risk scores
-- /api/conflict/v1/list-ucdp-events — conflict events (UCDP data)
+- /api/trade/v1/get-trade-barriers — SPS/TBT trade barriers
+
+**Aviation**
+- /api/aviation/v1/list-airport-delays — airport delay data by region
+- /api/aviation/v1/get-airport-ops-summary — ops summary for a specific airport (pass iata param)
+- /api/aviation/v1/list-airport-flights — live flight list for an airport
+- /api/aviation/v1/get-carrier-ops — carrier on-time performance
+- /api/aviation/v1/list-aviation-news — latest aviation industry news
+- /api/aviation/v1/get-flight-status — status for a specific flight number
+- /api/aviation/v1/track-aircraft — track aircraft by registration or hex
+- /api/aviation/v1/search-flight-prices — fare search between city pairs
+
+**Conflict & Humanitarian**
+- /api/conflict/v1/list-ucdp-events — UCDP conflict events
+- /api/conflict/v1/list-acled-events — ACLED political violence events
+- /api/conflict/v1/list-iran-events — Iran-related events
+- /api/conflict/v1/get-humanitarian-summary — humanitarian situation by country
+
+**Intelligence & Geopolitics**
+- /api/intelligence/v1/get-risk-scores — country instability scores
+- /api/intelligence/v1/get-country-facts — key facts for a country
+- /api/intelligence/v1/get-country-intel-brief — AI intelligence brief for a country
+- /api/intelligence/v1/list-security-advisories — government travel/security advisories
+- /api/intelligence/v1/search-gdelt-documents — GDELT global news event search
+
+**Military**
+- /api/military/v1/list-military-flights — tracked military/gov flights
+- /api/military/v1/list-military-bases — global military base locations
+- /api/military/v1/get-theater-posture — US/NATO theater posture summary
+- /api/military/v1/get-usni-fleet-report — USNI naval fleet deployment report
+
+**Maritime & Supply Chain**
+- /api/maritime/v1/get-vessel-snapshot — vessel position and status by MMSI
+- /api/maritime/v1/list-navigational-warnings — active NAVTEX/navigational warnings
+- /api/supply-chain/v1/get-chokepoint-status — Suez, Panama, Hormuz, etc. status
+- /api/supply-chain/v1/get-critical-minerals — critical mineral supply chain data
+- /api/supply-chain/v1/get-shipping-rates — container shipping rate indices (FBX, SCFI)
+
+**Infrastructure & Cyber**
+- /api/infrastructure/v1/list-internet-outages — internet outage events by country
+- /api/infrastructure/v1/get-cable-health — undersea cable status
+- /api/infrastructure/v1/list-service-statuses — cloud/SaaS service status
+- /api/infrastructure/v1/list-temporal-anomalies — anomalies in infrastructure metrics
+- /api/cyber/v1/list-cyber-threats — active cyber threat intelligence
+
+**Unrest, Sanctions & Displacement**
+- /api/unrest/v1/list-unrest-events — civil unrest and protest events
+- /api/sanctions/v1/list-sanctions-pressure — active sanctions data
+- /api/displacement/v1/get-displacement-summary — IDP/refugee displacement stats
+- /api/displacement/v1/get-population-exposure — population exposure to hazards
+
+**Natural & Environment**
+- /api/climate/v1/list-climate-anomalies — temperature, drought, sea-level anomalies
+- /api/natural/v1/list-natural-events — floods, storms, volcanic events
+- /api/seismology/v1/list-earthquakes — recent earthquakes by magnitude/region
+- /api/wildfire/v1/list-fire-detections — active wildfire/fire detections
+- /api/thermal/v1/list-thermal-escalations — heat anomalies and thermal events
+- /api/radiation/v1/list-radiation-observations — radiation monitoring data
+
+**Prediction & Forecast**
+- /api/prediction/v1/list-prediction-markets — Polymarket/Manifold prediction market odds
+- /api/forecast/v1/get-forecasts — WorldMonitor AI forecasts for geopolitical events
+
+**Research & Tech**
+- /api/research/v1/list-arxiv-papers — recent arXiv research papers by topic
+- /api/research/v1/list-hackernews-items — top Hacker News stories
+- /api/research/v1/list-tech-events — tech conferences and events
+- /api/research/v1/list-trending-repos — trending GitHub repositories
+
+**News & Events**
+- /api/news/v1/list-feed-digest — curated global news digest
+- /api/positive-events/v1/list-positive-geo-events — positive geopolitical developments
 
 ### search_web — Live internet search for ANY topic (use when topic not covered above)
-Use search_web for: breaking news, weather, sports, elections, specific events, company news, scientific reports, geopolitical updates, sanctions, disasters, or any real-time topic.
+Use search_web for: breaking news, weather, sports, elections, specific events, company news, scientific reports, or any topic not in the list above.
 Results include: title, url, snippet, publishedDate. Embed as const DATA = [...] in your inline script.
 
 ## Output: body content + inline scripts ONLY
