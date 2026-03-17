@@ -24,6 +24,8 @@ const WTO_MEMBER_CODES = {
   '484': 'Mexico', '380': 'Italy', '528': 'Netherlands', '000': 'World',
 };
 
+const BUDGET_LAB_TARIFFS_URL = 'https://budgetlab.yale.edu/research/tracking-economic-effects-tariffs';
+
 // ─── Shipping Rates (FRED) ───
 
 const SHIPPING_SERIES = [
@@ -234,6 +236,78 @@ async function wtoFetch(path, params) {
   return resp.json();
 }
 
+function htmlToPlainText(html) {
+  return String(html ?? '')
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&amp;/gi, '&')
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;/gi, '\'')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function toIsoDate(value) {
+  const text = String(value ?? '').trim();
+  if (!text) return '';
+  const parsed = /^\d{4}-\d{2}-\d{2}/.test(text) ? new Date(text) : new Date(`${text} UTC`);
+  return Number.isNaN(parsed.getTime()) ? '' : parsed.toISOString().slice(0, 10);
+}
+
+function parseBudgetLabEffectiveTariffHtml(html) {
+  const text = htmlToPlainText(html);
+  if (!text) return null;
+
+  const updatedAt = toIsoDate(text.match(/\bUpdated:\s*([A-Za-z]+\s+\d{1,2},\s+\d{4})/i)?.[1] ?? '');
+  const patterns = [
+    /effective tariff rate reaching\s+(\d+(?:\.\d+)?)%\s+in\s+([A-Za-z]+\s+\d{4})/i,
+    /average effective (?:u\.s\.\s*)?tariff rate[^.]{0,180}?\bto\s+(\d+(?:\.\d+)?)%[^.]{0,180}?\b(?:in|by)\s+([A-Za-z]+\s+\d{4})/i,
+    /average effective (?:u\.s\.\s*)?tariff rate[^.]{0,180}?\bto\s+(\d+(?:\.\d+)?)%/i,
+  ];
+
+  for (const pattern of patterns) {
+    const match = text.match(pattern);
+    if (!match) continue;
+    const tariffRate = parseFloat(match[1]);
+    if (!Number.isFinite(tariffRate)) continue;
+    return {
+      sourceName: 'Yale Budget Lab',
+      sourceUrl: BUDGET_LAB_TARIFFS_URL,
+      observationPeriod: match[2] ?? '',
+      updatedAt,
+      tariffRate: Math.round(tariffRate * 100) / 100,
+    };
+  }
+
+  return null;
+}
+
+async function fetchBudgetLabEffectiveTariffRate() {
+  try {
+    const resp = await fetch(BUDGET_LAB_TARIFFS_URL, {
+      headers: { Accept: 'text/html', 'User-Agent': CHROME_UA },
+      signal: AbortSignal.timeout(15_000),
+    });
+    if (!resp.ok) {
+      console.warn(`  Budget Lab tariffs: HTTP ${resp.status}`);
+      return null;
+    }
+    const html = await resp.text();
+    const parsed = parseBudgetLabEffectiveTariffHtml(html);
+    if (!parsed) {
+      console.warn('  Budget Lab tariffs: effective tariff rate not found in page content');
+      return null;
+    }
+    console.log(`  Budget Lab effective tariff: ${parsed.tariffRate.toFixed(1)}%${parsed.observationPeriod ? ` (${parsed.observationPeriod})` : ''}`);
+    return parsed;
+  } catch (e) {
+    console.warn(`  Budget Lab tariffs: ${e.message}`);
+    return null;
+  }
+}
+
 // ─── Trade Flows (WTO) — pre-seed major reporters vs World + key bilateral pairs ───
 
 const BILATERAL_PAIRS = [
@@ -407,7 +481,7 @@ async function fetchTradeRestrictions() {
       id: `${cc}-${year}-${row.IndicatorCode ?? ''}`,
       reportingCountry: WTO_MEMBER_CODES[cc] ?? String(row.ReportingEconomy ?? ''),
       affectedCountry: 'All trading partners', productSector: 'All products',
-      measureType: 'MFN Applied Tariff', description: `Average tariff rate: ${value.toFixed(1)}%`,
+      measureType: 'WTO MFN Baseline', description: `WTO MFN baseline: ${value.toFixed(1)}%`,
       status: value > 10 ? 'high' : value > 5 ? 'moderate' : 'low',
       notifiedAt: year, sourceUrl: 'https://stats.wto.org',
     };
@@ -426,6 +500,7 @@ async function fetchTradeRestrictions() {
 async function fetchTariffTrends() {
   const currentYear = new Date().getFullYear();
   const trends = {};
+  const usEffectiveTariffRate = await fetchBudgetLabEffectiveTariffRate();
 
   for (const reporter of MAJOR_REPORTERS) {
     const years = 10;
@@ -449,7 +524,12 @@ async function fetchTariffTrends() {
 
     if (datapoints.length > 0) {
       const cacheKey = `trade:tariffs:v1:${reporter}:all:${years}`;
-      trends[cacheKey] = { datapoints, fetchedAt: new Date().toISOString(), upstreamUnavailable: false };
+      trends[cacheKey] = {
+        datapoints,
+        ...(reporter === '840' && usEffectiveTariffRate ? { effectiveTariffRate: usEffectiveTariffRate } : {}),
+        fetchedAt: new Date().toISOString(),
+        upstreamUnavailable: false,
+      };
     }
     await sleep(500);
   }
@@ -566,7 +646,7 @@ function validate(data) {
 runSeed('supply_chain', 'shipping', KEYS.shipping, fetchAll, {
   validateFn: validate,
   ttlSeconds: SHIPPING_TTL,
-  sourceVersion: 'fred-wto-sse-bdi',
+  sourceVersion: 'fred-wto-sse-bdi-budgetlab',
 }).catch((err) => {
   const _cause = err.cause ? ` (cause: ${err.cause.message || err.cause.code || err.cause})` : ''; console.error('FATAL:', (err.message || err) + _cause);
   process.exit(1);
