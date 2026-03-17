@@ -237,6 +237,12 @@ Sentry.init({
     /^SyntaxError: Unexpected keyword/,
     /ucConfig is not defined/,
     /getShaderPrecisionFormat/,
+    /Cannot read properties of null \(reading 'touches'\)/,
+    /Failed to execute 'querySelectorAll' on '[^']*': ':[a-z]+\(/,
+    /args\.site\.enabledFeatures/,
+    /TransactionInactiveError/,
+    /can't access property "\w+", FONTS\[/,
+    /^\w{1,2} is not a function\. \(In '\w{1,2}\(/,
   ],
   beforeSend(event) {
     const msg = event.exception?.values?.[0]?.value ?? '';
