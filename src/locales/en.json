@@ -813,8 +813,23 @@
       }
     },
     "economic": {
+      "indicators": "Indicators",
+      "gov": "Gov",
+      "centralBanks": "Central Banks",
       "noIndicatorData": "No indicator data yet - FRED may be loading",
-      "fredKeyMissing": "FRED API key required — add it in Settings to enable economic indicators",
+      "fredKeyMissing": "FRED API key required. Add it in Settings to enable economic indicators.",
+      "noSpending": "No recent government awards",
+      "awards": "awards",
+      "in": "in",
+      "noBisData": "BIS data temporarily unavailable - will retry",
+      "policyRate": "Policy Rate",
+      "exchangeRate": "Exchange Rate",
+      "creditToGdp": "Credit / GDP",
+      "realEer": "Real EER",
+      "change": "Change",
+      "cut": "cut",
+      "hike": "hike",
+      "hold": "hold",
       "pressure": {
         "label": "Macro pressure",
         "stress": "Stress",
@@ -824,7 +839,7 @@
         "watchDetail": "Cross-market conditions need closer monitoring.",
         "steadyDetail": "Macro conditions are stable for now."
       },
-      "infoTooltip": "<strong>Macro Stress</strong> Core macro gauges for regime assessment:<ul><li><strong>Volatility</strong>: VIX as immediate fear gauge</li><li><strong>Rates</strong>: Fed funds and 10Y Treasury level</li><li><strong>Curve</strong>: 10Y-2Y slope for recession pressure</li><li><strong>Labor / Inflation</strong>: Unemployment and CPI context</li></ul>This panel is macro-only and excludes energy tape or general market prices."
+      "infoTooltip": "<strong>Macro Stress</strong> Macro gauges, government spending, and central bank data:<ul><li><strong>Indicators</strong>: VIX, rates, yield curve, labor, inflation</li><li><strong>Gov</strong>: Recent US government contract awards</li><li><strong>Central Banks</strong>: BIS policy rates and exchange rate data</li></ul>"
     },
     "energyComplex": {
       "noData": "Energy data temporarily unavailable - will retry",
