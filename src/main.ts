@@ -462,8 +462,9 @@ if (!('__TAURI_INTERNALS__' in window) && !('__TAURI__' in window) && 'serviceWo
         try {
           await registration.update();
           writeStorageNum(SW_UPDATE_LAST_RESULT_KEY, now);
-        } catch {}
-        finally {
+        } catch (e) {
+          console.warn('[PWA] SW update check failed:', e);
+        } finally {
           swUpdateInFlight = false;
         }
       };
@@ -482,7 +483,7 @@ if (!('__TAURI_INTERNALS__' in window) && !('__TAURI__' in window) && 'serviceWo
 
       const swUpdateInterval = window.setInterval(() => {
         void maybeCheckForSwUpdate('interval');
-      }, SW_UPDATE_FAILURE_INTERVAL_MS);
+      }, 15 * 60 * 1000);
 
       (window as unknown as Record<string, unknown>).__swUpdateInterval = swUpdateInterval;
     })
