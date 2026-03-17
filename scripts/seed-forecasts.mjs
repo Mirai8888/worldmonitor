@@ -2496,7 +2496,7 @@ function summarizeWorldStateHistory(priorWorldStates = []) {
     }));
 }
 
-function buildReportContinuity(worldState, priorWorldStates = []) {
+function buildReportContinuity(current, priorWorldStates = []) {
   const history = summarizeWorldStateHistory(priorWorldStates);
 
   const persistentPressures = [];
@@ -2505,7 +2505,7 @@ function buildReportContinuity(worldState, priorWorldStates = []) {
   const repeatedStrengthening = [];
   const matchedLatestPriorIds = new Set();
 
-  for (const cluster of worldState.situationClusters || []) {
+  for (const cluster of current.situationClusters || []) {
     const priorMatches = [];
     for (const state of priorWorldStates.filter(Boolean)) {
       const candidates = Array.isArray(state.situationClusters) ? state.situationClusters : [];
@@ -2551,8 +2551,11 @@ function buildReportContinuity(worldState, priorWorldStates = []) {
       avgProbability: cluster.avgProbability,
     });
 
+    // priorMatches is ordered most-recent-first (mirrors priorWorldStates order from LRANGE)
     const lastMatch = priorMatches[0];
     const earliestMatch = priorMatches[priorMatches.length - 1];
+    // "strengthening" means current is >= both the most-recent and oldest prior snapshots,
+    // catching recoveries (V-shapes) as well as monotonic increases intentionally
     if (
       cluster.avgProbability >= (lastMatch?.avgProbability || 0) &&
       cluster.avgProbability >= (earliestMatch?.avgProbability || 0) &&
@@ -2575,7 +2578,7 @@ function buildReportContinuity(worldState, priorWorldStates = []) {
       id: cluster.id,
       label: cluster.label,
       forecastCount: cluster.forecastCount || 0,
-      avgProbability: +(cluster.avgProbability || 0).toFixed(3),
+      avgProbability: cluster.avgProbability || 0,
     });
   }
 
@@ -3117,6 +3120,8 @@ async function readPreviousForecastWorldState(storageConfig) {
   }
 }
 
+// Returns world states ordered most-recent-first (LPUSH prepends, LRANGE 0 N reads from head).
+// Callers that rely on priorMatches[0] being the most recent must not reorder this array.
 async function readForecastWorldStateHistory(storageConfig, limit = WORLD_STATE_HISTORY_LIMIT) {
   try {
     const { url, token } = getRedisCredentials();
@@ -3150,8 +3155,13 @@ async function writeForecastTraceArtifacts(data, context = {}) {
   const traceCap = getTraceCapLog(predictionCount);
   console.log(`  Trace cap: raw=${traceCap.raw ?? 'default'} resolved=${traceCap.resolved} total=${traceCap.totalForecasts}`);
 
-  const priorWorldState = await readPreviousForecastWorldState(storageConfig);
-  const priorWorldStates = await readForecastWorldStateHistory(storageConfig, WORLD_STATE_HISTORY_LIMIT);
+  // Run both reads in parallel; derive priorWorldState from history head to avoid
+  // a redundant R2 GET (TRACE_RUNS_KEY[0] and TRACE_LATEST_KEY normally point to the same object).
+  const [priorWorldStates, priorWorldStateFallback] = await Promise.all([
+    readForecastWorldStateHistory(storageConfig, WORLD_STATE_HISTORY_LIMIT),
+    readPreviousForecastWorldState(storageConfig),
+  ]);
+  const priorWorldState = priorWorldStates[0] ?? priorWorldStateFallback;
   const artifacts = buildForecastTraceArtifacts({
     ...data,
     priorWorldState,

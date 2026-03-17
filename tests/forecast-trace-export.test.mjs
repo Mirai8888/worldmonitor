@@ -488,4 +488,49 @@ describe('forecast run world state', () => {
     assert.equal(worldState.reportContinuity.fadingPressureCount, 0);
     assert.ok(worldState.reportContinuity.persistentPressureCount >= 1);
   });
+
+  it('marks fading pressures for situations present in prior state but absent from current run', () => {
+    const a = makePrediction('conflict', 'Iran', 'Escalation risk: Iran', 0.74, 0.64, '7d', [
+      { type: 'cii', value: 'Iran CII 79 (high)', weight: 0.4 },
+    ]);
+    buildForecastCase(a);
+
+    const baseState = buildForecastRunWorldState({
+      generatedAt: Date.parse('2026-03-17T10:00:00Z'),
+      predictions: [a],
+    });
+
+    // Inject a synthetic cluster into the prior state that will not be present in the current run
+    const priorState = {
+      ...baseState,
+      generatedAt: Date.parse('2026-03-17T10:00:00Z'),
+      situationClusters: [
+        ...baseState.situationClusters,
+        {
+          id: 'sit-redseafade-test',
+          label: 'Red Sea: Shipping disruption fading',
+          domain: 'supply_chain',
+          regionIds: ['red_sea'],
+          actorIds: [],
+          forecastIds: ['fc-supply_chain-redseafade'],
+          avgProbability: 0.55,
+          forecastCount: 1,
+        },
+      ],
+    };
+
+    const worldState = buildForecastRunWorldState({
+      generatedAt: Date.parse('2026-03-17T11:00:00Z'),
+      predictions: [a],
+      priorWorldState: priorState,
+      priorWorldStates: [priorState],
+    });
+
+    assert.ok(worldState.reportContinuity.fadingPressureCount >= 1);
+    assert.ok(worldState.reportContinuity.fadingPressurePreview.length >= 1);
+    assert.ok(worldState.reportContinuity.fadingPressurePreview.every(
+      (s) => typeof s.avgProbability === 'number' && typeof s.forecastCount === 'number',
+    ));
+    assert.ok(worldState.reportContinuity.persistentPressureCount >= 1);
+  });
 });
