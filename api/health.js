@@ -95,7 +95,7 @@ const SEED_META = {
   commodityQuotes:  { key: 'seed-meta:market:commodities',    maxStaleMin: 30 },
   // RPC/warm-ping keys — seed-meta written by relay loops or handlers
   // serviceStatuses: moved to ON_DEMAND — RPC-populated, no dedicated seed, goes stale when no users visit
-  cableHealth:      { key: 'seed-meta:cable-health',              maxStaleMin: 10080 }, // on-demand handler writes seed-meta with 7-day TTL; alert only if key goes missing entirely
+  cableHealth:      { key: 'seed-meta:cable-health',              maxStaleMin: 90 }, // ais-relay warm-ping runs every 30min; 90min = 3× interval catches missed pings without false positives
   macroSignals:     { key: 'seed-meta:economic:macro-signals',    maxStaleMin: 60 },
   bisPolicy:        { key: 'seed-meta:economic:bis:policy',       maxStaleMin: 10080 },
   bisExchange:      { key: 'seed-meta:economic:bis:eer',          maxStaleMin: 10080 },
