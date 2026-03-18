@@ -19947,3 +19947,88 @@ body.has-breaking-alert .panels-grid {
   word-break: normal;
   margin: 0;
 }
+
+/* ── MCP Presets ───────────────────────────────────── */
+.mcp-presets-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mcp-presets-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mcp-preset-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.1s, border-color 0.1s;
+  width: 100%;
+}
+
+.mcp-preset-card:hover {
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.mcp-preset-card.selected {
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+}
+
+.mcp-preset-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  width: 24px;
+  text-align: center;
+}
+
+.mcp-preset-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+  min-width: 0;
+}
+
+.mcp-preset-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.mcp-preset-desc {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.mcp-preset-key-badge {
+  font-size: 13px;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.mcp-section-divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-dim);
+  font-size: 11px;
+}
+
+.mcp-section-divider::before,
+.mcp-section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}

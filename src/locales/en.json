@@ -2600,6 +2600,8 @@
     "configure": "Configure MCP",
     "refreshNow": "Refresh now",
     "invalidJson": "Invalid JSON",
-    "confirmDelete": "Remove this MCP panel?"
+    "confirmDelete": "Remove this MCP panel?",
+    "quickConnect": "Quick Connect",
+    "or": "or enter a custom server"
   }
 }

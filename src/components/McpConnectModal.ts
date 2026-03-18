@@ -1,4 +1,5 @@
 import type { McpPanelSpec, McpToolDef } from '@/services/mcp-store';
+import { MCP_PRESETS } from '@/services/mcp-store';
 import { t } from '@/services/i18n';
 import { escapeHtml } from '@/utils/sanitize';
 import { proxyUrl } from '@/utils/proxy';
@@ -20,12 +21,34 @@ export function openMcpConnectModal(options: McpConnectOptions): void {
   const modal = document.createElement('div');
   modal.className = 'modal mcp-connect-modal';
 
+  const presetsHtml = MCP_PRESETS.map(p => `
+    <button class="mcp-preset-card" data-url="${escapeHtml(p.serverUrl)}"
+      data-tool="${escapeHtml(p.defaultTool ?? '')}"
+      data-args="${escapeHtml(JSON.stringify(p.defaultArgs ?? {}))}"
+      data-title="${escapeHtml(p.defaultTitle ?? p.name)}"
+      data-auth-note="${escapeHtml(p.authNote ?? '')}">
+      <span class="mcp-preset-icon">${p.icon}</span>
+      <span class="mcp-preset-info">
+        <span class="mcp-preset-name">${escapeHtml(p.name)}</span>
+        <span class="mcp-preset-desc">${escapeHtml(p.description)}</span>
+      </span>
+      ${p.authNote ? '<span class="mcp-preset-key-badge">🔑</span>' : ''}
+    </button>
+  `).join('');
+
   modal.innerHTML = `
     <div class="modal-header">
       <span class="modal-title">${escapeHtml(t('mcp.modalTitle'))}</span>
       <button class="modal-close" aria-label="${escapeHtml(t('common.close'))}">\u2715</button>
     </div>
     <div class="mcp-connect-body">
+      ${!existing ? `
+      <div class="mcp-presets-section">
+        <label class="mcp-label">${escapeHtml(t('mcp.quickConnect'))}</label>
+        <div class="mcp-presets-list">${presetsHtml}</div>
+      </div>
+      <div class="mcp-section-divider"><span>${escapeHtml(t('mcp.or'))}</span></div>
+      ` : ''}
       <div class="mcp-form-group">
         <label class="mcp-label">${escapeHtml(t('mcp.serverUrl'))}</label>
         <input class="mcp-input mcp-server-url" type="url"
@@ -92,6 +115,36 @@ export function openMcpConnectModal(options: McpConnectOptions): void {
   const titleInput = modal.querySelector('.mcp-panel-title') as HTMLInputElement;
   const refreshInput = modal.querySelector('.mcp-refresh-input') as HTMLInputElement;
   const addBtn = modal.querySelector('.mcp-add-btn') as HTMLButtonElement;
+
+  // Preset card click handlers
+  modal.querySelectorAll<HTMLElement>('.mcp-preset-card').forEach(card => {
+    card.addEventListener('click', () => {
+      modal.querySelectorAll('.mcp-preset-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      urlInput.value = card.dataset.url ?? '';
+      if (card.dataset.authNote) {
+        connectStatus.textContent = `\u{1f511} ${card.dataset.authNote}`;
+        connectStatus.className = 'mcp-connect-status mcp-status-loading';
+      } else {
+        connectStatus.textContent = '';
+        connectStatus.className = 'mcp-connect-status';
+      }
+      // Pre-fill tool config if preset has defaults
+      const presetTool = card.dataset.tool;
+      const presetArgs = card.dataset.args;
+      const presetTitle = card.dataset.title;
+      if (presetTool) {
+        selectedTool = { name: presetTool, description: '' };
+        argsInput.value = presetArgs ? JSON.parse(presetArgs) !== undefined ? presetArgs : '{}' : '{}';
+        if (presetTitle && !titleInput.value) titleInput.value = presetTitle;
+        toolConfig.style.display = '';
+        addBtn.disabled = false;
+        // Show a placeholder in tool list
+        toolsSection.style.display = '';
+        toolsList.innerHTML = `<div class="mcp-tool-item selected"><span class="mcp-tool-name">${escapeHtml(presetTool)}</span></div>`;
+      }
+    });
+  });
 
   // Pre-fill args if editing
   if (existing) {
