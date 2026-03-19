@@ -29,7 +29,7 @@ export function getGlobeRenderScale(): GlobeRenderScale {
   } catch {
     // ignore
   }
-  return 'auto';
+  return '1'; // default to eco mode for performance
 }
 
 export function setGlobeRenderScale(scale: GlobeRenderScale): void {
@@ -52,11 +52,12 @@ export function subscribeGlobeRenderScaleChange(cb: (scale: GlobeRenderScale) =>
 }
 
 export function resolveGlobePixelRatio(scale: GlobeRenderScale): number {
+  if (scale === '1') return 1;
   const dpr = (typeof window !== 'undefined' ? window.devicePixelRatio : 1) || 1;
-  if (scale === 'auto') return Math.min(1.5, Math.max(1, dpr));
+  if (scale === 'auto') return Math.min(1, dpr); // cap at 1x for performance
   const num = Number(scale);
   if (!Number.isFinite(num) || num <= 0) return 1;
-  return Math.min(1.5, Math.max(1, num));
+  return Math.min(1, Math.max(1, num));
 }
 
 export interface GlobePerformanceProfile {
