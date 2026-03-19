@@ -93,11 +93,11 @@ export class RegulationPanel extends Panel {
     });
 
     const typeIcons: Record<RegulatoryAction['type'], string> = {
-      'law-passed': '📜',
-      'executive-order': '🏛️',
-      'guideline': '📋',
-      'enforcement': '⚖️',
-      'consultation': '💬',
+      'law-passed': '',
+      'executive-order': '',
+      'guideline': '',
+      'enforcement': '',
+      'consultation': '',
     };
 
     const impactColors: Record<RegulatoryAction['impact'], string> = {
@@ -169,10 +169,10 @@ export class RegulationPanel extends Panel {
           <h5>${escapeHtml(regulation.shortName)}</h5>
           <p class="deadline-name">${escapeHtml(regulation.name)}</p>
           <div class="deadline-meta">
-            <span class="deadline-date">📅 ${formattedDate}</span>
-            <span class="deadline-country">🌍 ${escapeHtml(regulation.country)}</span>
+            <span class="deadline-date"> ${formattedDate}</span>
+            <span class="deadline-country"> ${escapeHtml(regulation.country)}</span>
           </div>
-          ${regulation.penalties ? `<p class="deadline-penalties">⚠️ Penalties: ${escapeHtml(regulation.penalties)}</p>` : ''}
+          ${regulation.penalties ? `<p class="deadline-penalties"> Penalties: ${escapeHtml(regulation.penalties)}</p>` : ''}
           <div class="deadline-scope">
             ${regulation.scope.map(s => `<span class="scope-tag">${escapeHtml(s)}</span>`).join('')}
           </div>
@@ -224,8 +224,8 @@ export class RegulationPanel extends Panel {
         </div>
         <p class="regulation-full-name">${escapeHtml(regulation.name)}</p>
         <div class="regulation-meta">
-          <span>🌍 ${escapeHtml(regulation.country)}</span>
-          <span>📅 ${effectiveDate}</span>
+          <span> ${escapeHtml(regulation.country)}</span>
+          <span> ${effectiveDate}</span>
           <span class="status-badge status-${regulation.status}">${regulation.status}</span>
         </div>
         ${regulation.description ? `<p class="regulation-description">${escapeHtml(regulation.description)}</p>` : ''}

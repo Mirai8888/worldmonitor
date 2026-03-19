@@ -88,9 +88,9 @@ function portScatterOffset(hullNumber: string, index: number): { lat: number; lo
 }
 
 /** Resolve homeport coordinates for an in-port vessel.
- *  Option A: USNI text supplied an explicit homePort string.
- *  Option B: Fall back to hull-number lookup table.
- *  Returns undefined if neither resolves. */
+ * Option A: USNI text supplied an explicit homePort string.
+ * Option B: Fall back to hull-number lookup table.
+ * Returns undefined if neither resolves. */
 function resolvePortCoords(
   homePort: string | undefined,
   hullNumber: string | undefined,

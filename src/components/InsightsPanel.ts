@@ -211,7 +211,7 @@ export class InsightsPanel extends Panel {
       c.sourceCount >= 2 ||
       c.isAlert ||
       (c.velocity && c.velocity.level !== 'normal') ||
-      score > 100  // Critical stories bypass source requirement
+      score > 100 // Critical stories bypass source requirement
     );
 
     // Sort by score
@@ -544,13 +544,13 @@ export class InsightsPanel extends Panel {
       const badges: string[] = [];
 
       if (story.sourceCount >= 3) {
-        badges.push(`<span class="insight-badge confirmed">✓ ${story.sourceCount} sources</span>`);
+        badges.push(`<span class="insight-badge confirmed"> ${story.sourceCount} sources</span>`);
       } else if (story.sourceCount >= 2) {
         badges.push(`<span class="insight-badge multi">${story.sourceCount} sources</span>`);
       }
 
       if (story.isAlert) {
-        badges.push('<span class="insight-badge alert">⚠ ALERT</span>');
+        badges.push('<span class="insight-badge alert"> ALERT</span>');
       }
 
       const VALID_THREAT_LEVELS = ['critical', 'high', 'elevated', 'moderate'];
@@ -593,7 +593,7 @@ export class InsightsPanel extends Panel {
   private renderWorldBrief(brief: string): string {
     return `
       <div class="insights-brief">
-        <div class="insights-section-title">${SITE_VARIANT === 'tech' ? '🚀 TECH BRIEF' : '🌍 WORLD BRIEF'}</div>
+        <div class="insights-section-title">${SITE_VARIANT === 'tech' ? ' TECH BRIEF' : ' WORLD BRIEF'}</div>
         <div class="insights-brief-text">${escapeHtml(brief)}</div>
       </div>
     `;
@@ -611,7 +611,7 @@ export class InsightsPanel extends Panel {
       const badges: string[] = [];
 
       if (cluster.sourceCount >= 3) {
-        badges.push(`<span class="insight-badge confirmed">✓ ${cluster.sourceCount} sources</span>`);
+        badges.push(`<span class="insight-badge confirmed"> ${cluster.sourceCount} sources</span>`);
       } else if (cluster.sourceCount >= 2) {
         badges.push(`<span class="insight-badge multi">${cluster.sourceCount} sources</span>`);
       }
@@ -622,7 +622,7 @@ export class InsightsPanel extends Panel {
       }
 
       if (cluster.isAlert) {
-        badges.push('<span class="insight-badge alert">⚠ ALERT</span>');
+        badges.push('<span class="insight-badge alert"> ALERT</span>');
       }
 
       return `
@@ -723,7 +723,7 @@ export class InsightsPanel extends Panel {
             <span class="insight-story-title">${escapeHtml(story.title.slice(0, 80))}${story.title.length > 80 ? '...' : ''}</span>
           </div>
           <div class="insight-badges">
-            <span class="insight-badge ml-detected">🔬 ${perspectiveName}: ${(perspectiveScore * 100).toFixed(0)}%</span>
+            <span class="insight-badge ml-detected"> ${perspectiveName}: ${(perspectiveScore * 100).toFixed(0)}%</span>
           </div>
         </div>
       `;
@@ -731,7 +731,7 @@ export class InsightsPanel extends Panel {
 
     return `
       <div class="insights-section insights-missed">
-        <div class="insights-section-title">🎯 ML DETECTED</div>
+        <div class="insights-section-title"> ML DETECTED</div>
         ${storiesHtml}
       </div>
     `;
@@ -744,14 +744,14 @@ export class InsightsPanel extends Panel {
 
     const zonesHtml = this.lastConvergenceZones.slice(0, 3).map(zone => {
       const signalIcons: Record<string, string> = {
-        internet_outage: '🌐',
-        military_flight: '✈️',
-        military_vessel: '🚢',
-        protest: '🪧',
-        ais_disruption: '⚓',
+        internet_outage: '',
+        military_flight: '',
+        military_vessel: '',
+        protest: '',
+        ais_disruption: '',
       };
 
-      const icons = zone.signalTypes.map(t => signalIcons[t] || '📍').join('');
+      const icons = zone.signalTypes.map(t => signalIcons[t] || '').join('');
 
       return `
         <div class="convergence-zone">
@@ -764,7 +764,7 @@ export class InsightsPanel extends Panel {
 
     return `
       <div class="insights-section insights-convergence">
-        <div class="insights-section-title">📍 GEOGRAPHIC CONVERGENCE</div>
+        <div class="insights-section-title"> GEOGRAPHIC CONVERGENCE</div>
         ${zonesHtml}
       </div>
     `;
@@ -782,12 +782,12 @@ export class InsightsPanel extends Panel {
     }
 
     const signalIcons: Record<string, string> = {
-      internet_outage: '🌐',
-      military_flight: '✈️',
-      military_vessel: '⚓',
-      protest: '📢',
-      ais_disruption: '🚢',
-      active_strike: '💥',
+      internet_outage: '',
+      military_flight: '',
+      military_vessel: '',
+      protest: '',
+      ais_disruption: '',
+      active_strike: '',
     };
 
     const focalPointsHtml = correlatedFPs.map(fp => {
@@ -814,7 +814,7 @@ export class InsightsPanel extends Panel {
 
     return `
       <div class="insights-section insights-focal">
-        <div class="insights-section-title">🎯 FOCAL POINTS</div>
+        <div class="insights-section-title"> FOCAL POINTS</div>
         ${focalPointsHtml}
       </div>
     `;
@@ -823,7 +823,7 @@ export class InsightsPanel extends Panel {
   private renderDisabledState(): void {
     this.setContent(`
       <div class="insights-disabled">
-        <div class="insights-disabled-icon">⚡</div>
+        <div class="insights-disabled-icon"></div>
         <div class="insights-disabled-title">${t('components.insights.insightsDisabledTitle')}</div>
         <div class="insights-disabled-hint">${t('components.insights.insightsDisabledHint')}</div>
       </div>

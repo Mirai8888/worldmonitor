@@ -63,12 +63,12 @@ export async function fetchClimateAnomalies(): Promise<ClimateFetchResult> {
 // Presentation helpers (used by ClimateAnomalyPanel)
 export function getSeverityIcon(anomaly: ClimateAnomaly): string {
   switch (anomaly.type) {
-    case 'warm': return '\u{1F321}\u{FE0F}';   // thermometer
-    case 'cold': return '\u{2744}\u{FE0F}';     // snowflake
-    case 'wet': return '\u{1F327}\u{FE0F}';     // rain
-    case 'dry': return '\u{2600}\u{FE0F}';      // sun
-    case 'mixed': return '\u{26A1}';             // lightning
-    default: return '\u{1F321}\u{FE0F}';         // thermometer
+    case 'warm': return '\u{1F321}\u{FE0F}'; // thermometer
+    case 'cold': return '\u{2744}\u{FE0F}'; // snowflake
+    case 'wet': return '\u{1F327}\u{FE0F}'; // rain
+    case 'dry': return '\u{2600}\u{FE0F}'; // sun
+    case 'mixed': return '\u{26A1}'; // lightning
+    default: return '\u{1F321}\u{FE0F}'; // thermometer
   }
 }
 

@@ -50,16 +50,16 @@ export const DEFAULT_PANELS: Record<string, PanelConfig> = {
 // ─────────────────────────────────────────────────────────────────────────────
 export const DEFAULT_MAP_LAYERS: MapLayers = {
   // ── Core commodity map layers (ENABLED) ───────────────────────────────────
-  minerals: true,           // Critical minerals projects (existing layer)
-  miningSites: true,        // ~70 major mine sites from commodity-geo.ts
-  processingPlants: true,   // Smelters, refineries, separation plants
-  commodityPorts: true,     // Mineral export/import ports
-  commodityHubs: true,      // Commodity exchanges (LME, CME, SHFE, etc.)
-  pipelines: true,          // Oil & gas pipelines (energy commodity context)
-  waterways: true,          // Strategic shipping chokepoints
-  tradeRoutes: true,        // Commodity trade routes
-  natural: true,            // Earthquakes/natural events (affect mine operations)
-  weather: true,            // Weather impacting operations
+  minerals: true, // Critical minerals projects (existing layer)
+  miningSites: true, // ~70 major mine sites from commodity-geo.ts
+  processingPlants: true, // Smelters, refineries, separation plants
+  commodityPorts: true, // Mineral export/import ports
+  commodityHubs: true, // Commodity exchanges (LME, CME, SHFE, etc.)
+  pipelines: true, // Oil & gas pipelines (energy commodity context)
+  waterways: true, // Strategic shipping chokepoints
+  tradeRoutes: true, // Commodity trade routes
+  natural: true, // Earthquakes/natural events (affect mine operations)
+  weather: true, // Weather impacting operations
 
   // ── All non-commodity layers (DISABLED) ───────────────────────────────────
   // Geopolitical / military
@@ -79,18 +79,18 @@ export const DEFAULT_MAP_LAYERS: MapLayers = {
   // Protests / civil unrest
   protests: false,
   // Transport / tracking
-  ais: true,              // Commodity shipping, tanker routes, bulk carriers
+  ais: true, // Commodity shipping, tanker routes, bulk carriers
   flights: false,
   // Infrastructure
-  cables: true,           // Undersea cables (trade comms)
-  outages: true,          // Power outages affect operations
+  cables: true, // Undersea cables (trade comms)
+  outages: true, // Power outages affect operations
   datacenters: false,
   // Sanctions / financial context
-  sanctions: true,        // Sanctions directly impact commodity trade
-  economic: true,         // Economic centers = commodity demand signals
+  sanctions: true, // Sanctions directly impact commodity trade
+  economic: true, // Economic centers = commodity demand signals
   // Environmental / operational risk
-  fires: true,            // Fires near mining/forestry operations
-  climate: true,          // Climate events disrupt supply chains
+  fires: true, // Fires near mining/forestry operations
+  climate: true, // Climate events disrupt supply chains
   // Tech variant layers
   startupHubs: false,
   cloudRegions: false,

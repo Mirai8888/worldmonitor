@@ -773,11 +773,11 @@
       "empty": "Aucun article récent pour ce sujet"
     },
     "geoHubs": {
-      "tooltip": "<strong>Points Chauds Géopolitiques</strong><br>Affiche les régions avec le plus d'activité.<br><br><em>Types:</em><br>• 🏛️ Capitales<br>• ⚔️ Zones de Conflit<br>• ⚓ Stratégique<br>• 🏢 Organisations<br><br><em>Niveaux:</em><br>• <span style=\"color: #ff4444\">Élevé</span> — Breaking news ou score 70+<br>• <span style=\"color: #ff8844\">Élevé</span> — Score 40-69<br>• <span style=\"color: #888\">Faible</span> — Score < 40",
+      "tooltip": "<strong>Points Chauds Géopolitiques</strong><br>Affiche les régions avec le plus d'activité.<br><br><em>Types:</em><br>• Capitales<br>• Zones de Conflit<br>• Stratégique<br>• Organisations<br><br><em>Niveaux:</em><br>• <span style=\"color: #ff4444\">Élevé</span> — Breaking news ou score 70+<br>• <span style=\"color: #ff8844\">Élevé</span> — Score 40-69<br>• <span style=\"color: #888\">Faible</span> — Score < 40",
       "noActive": "Aucun point chaud actif",
       "story": "article",
       "stories": "articles",
-      "infoTooltip": "<strong>Hubs d'activité géopolitique</strong><br>Affiche les régions avec le plus d'activité d'actualité.<br><br><em>Types de hubs :</em><br>• 🏛️ Capitales — Capitales mondiales et centres gouvernementaux<br>• ⚔️ Zones de conflit — Zones de conflit actives<br>• ⚓ Stratégique — Points d'étranglement et clés régions<br>• 🏢 Organisations — ONU, OTAN, AIEA, etc.<br><br><em>Niveaux d'activité :</em><br>• <span style=\"color: {{highColor}}\">Élevé</span> — Dernières nouvelles ou score de 70+<br>• <span style=\"color: {{elevatedColor}}\">Élevé</span> — Score 40-69<br>• <span style=\"color: {{lowColor}}\">Faible</span> — Score inférieur à 40<br><br>Cliquez sur un hub pour zoomer sur son emplacement."
+      "infoTooltip": "<strong>Hubs d'activité géopolitique</strong><br>Affiche les régions avec le plus d'activité d'actualité.<br><br><em>Types de hubs :</em><br>• Capitales — Capitales mondiales et centres gouvernementaux<br>• Zones de conflit — Zones de conflit actives<br>• Stratégique — Points d'étranglement et clés régions<br>• Organisations — ONU, OTAN, AIEA, etc.<br><br><em>Niveaux d'activité :</em><br>• <span style=\"color: {{highColor}}\">Élevé</span> — Dernières nouvelles ou score de 70+<br>• <span style=\"color: {{elevatedColor}}\">Élevé</span> — Score 40-69<br>• <span style=\"color: {{lowColor}}\">Faible</span> — Score inférieur à 40<br><br>Cliquez sur un hub pour zoomer sur son emplacement."
     },
     "techHubs": {
       "tooltip": "<strong>Activité Hubs Tech</strong><br>Affiche les hubs tech avec le plus d'activité.<br><br><em>Niveaux:</em><br>• <span style=\"color: #00ff88\">Élevé</span> — Breaking news ou score 50+<br>• <span style=\"color: #ffc800\">Élevé</span> — Score 20-49<br>• <span style=\"color: #888\">Faible</span> — Score < 20",
@@ -1294,7 +1294,7 @@
       "internetUsers": "Utilisateurs Internet",
       "mobileSubscriptions": "Abonnements mobiles",
       "rdSpending": "Dépenses R&D",
-      "infoTooltip": "<strong>Global Tech Readiness</strong><br>Score composite (0-100) basé sur les données de la Banque mondiale :<br><br><strong>Metrics affichés :</strong><br>🌐 Utilisateurs Internet (% de la population)<br>📱 Abonnements mobiles (pour 100 personnes)<br>🔬 R&D Dépenses (% du PIB)<br><br><strong>Poids :</strong> R&D (35 %), Internet (30 %), Haut débit (20 %), Mobile (15 %)<br><br><em>— = Aucune donnée récente disponible</em><br><em>Source : Données ouvertes de la Banque mondiale (2019-2024)</em>",
+      "infoTooltip": "<strong>Global Tech Readiness</strong><br>Score composite (0-100) basé sur les données de la Banque mondiale :<br><br><strong>Metrics affichés :</strong><br> Utilisateurs Internet (% de la population)<br> Abonnements mobiles (pour 100 personnes)<br> R&D Dépenses (% du PIB)<br><br><strong>Poids :</strong> R&D (35 %), Internet (30 %), Haut débit (20 %), Mobile (15 %)<br><br><em>— = Aucune donnée récente disponible</em><br><em>Source : Données ouvertes de la Banque mondiale (2019-2024)</em>",
       "fetchingData": "Fetching World Bank Data",
       "internetUsersIndicator": "Internet Users",
       "mobileSubscriptionsIndicator": "Mobile Subscriptions",
@@ -2079,7 +2079,7 @@
       "usniIntel": "USNI Intel",
       "usniSource": "Source: USNI News Fleet Tracker",
       "approximatePosition": "Position approximate — based on USNI weekly report, not real-time AIS.",
-      "darkDescription": "⚠ Le navire est devenu sombre - signal AIS perdu. Peut indiquer des opérations sensibles.",
+      "darkDescription": " Le navire est devenu sombre - signal AIS perdu. Peut indiquer des opérations sensibles.",
       "recentTracking": "Recent Tracking",
       "lastReport": "LATEST",
       "nearChokepoint": "NEAR CHOKEPOINT",

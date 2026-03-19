@@ -658,9 +658,9 @@ export function calculateStrategicRiskOverview(
     : 0;
 
   // Weights for composite score
-  const convergenceWeight = 0.3;  // Geo convergence of multiple event types
-  const ciiWeight = 0.5;          // Country instability (main driver)
-  const infraWeight = 0.2;        // Infrastructure incidents
+  const convergenceWeight = 0.3; // Geo convergence of multiple event types
+  const ciiWeight = 0.5; // Country instability (main driver)
+  const infraWeight = 0.2; // Infrastructure incidents
 
   const convergenceScore = Math.min(100, convergenceAlerts.length * 25);
   const infraScore = Math.min(100, countInfrastructureIncidents() * 25);
@@ -698,7 +698,7 @@ export function calculateStrategicRiskOverview(
 
   return {
     convergenceAlerts: convergenceAlerts.length,
-    avgCIIDeviation: topCIIScore,  // Now shows top country score
+    avgCIIDeviation: topCIIScore, // Now shows top country score
     infrastructureIncidents: countInfrastructureIncidents(),
     compositeScore: composite,
     trend,

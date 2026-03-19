@@ -875,7 +875,7 @@
       "internetUsers": "Internetanvändare",
       "mobileSubscriptions": "Mobilabonnemang",
       "rdSpending": "FoU-utgifter",
-      "infoTooltip": "<strong>Global Tech Readiness</strong><br>Sammansatt poäng (0-100) baserat på Världsbankens data:<br><br><strong>Visade mätvärden:</strong><br>🌐 Internetanvändare (% av befolkningen) <br>📱 per mobilabonnemang (R&PH_0__0 personer) Utgifter (% av BNP)<br><br><strong>Vikter:</strong> FoU (35%), Internet (30%), Bredband (20%), Mobilt (15%)<br><br><em>— = Ingen aktuell data tillgänglig</em><br><em> (2019-2024)</em>",
+      "infoTooltip": "<strong>Global Tech Readiness</strong><br>Sammansatt poäng (0-100) baserat på Världsbankens data:<br><br><strong>Visade mätvärden:</strong><br> Internetanvändare (% av befolkningen) <br> per mobilabonnemang (R&PH_0__0 personer) Utgifter (% av BNP)<br><br><strong>Vikter:</strong> FoU (35%), Internet (30%), Bredband (20%), Mobilt (15%)<br><br><em>— = Ingen aktuell data tillgänglig</em><br><em> (2019-2024)</em>",
       "fetchingData": "Fetching World Bank Data",
       "internetUsersIndicator": "Internet Users",
       "mobileSubscriptionsIndicator": "Mobile Subscriptions",
@@ -1211,10 +1211,10 @@
       "noActive": "Inga aktiva tech-hubbar"
     },
     "geoHubs": {
-      "infoTooltip": "<strong>Geopolitiska aktivitetsnav</strong><br>Visar regioner med mest nyhetsaktivitet.<br><br><em>Navtyper:</em><br>• 🏛️ Huvudstäder — Världshuvudstäder och regeringscentra<br>• ⚔5__• ⚔____5 Konfliktområden ⚔____• Konfliktområden Chokepoints och nyckelregioner<br>• 🏢 Organisationer — FN, NATO, IAEA, etc.<br><br><em>Aktivitetsnivåer:</em><br>• <span style=\"color: {{highColor}}\">Hög</span> — Nyheter eller 5__0+ stilar <__PH_• span {{elevatedColor}}\">Höjd</span> — Poäng 40-69<br>• <span style=\"color: {{lowColor}}\">Låg</span> — Poäng under 40<br><br>Klicka på ett nav för att zooma till dess plats.",
+      "infoTooltip": "<strong>Geopolitiska aktivitetsnav</strong><br>Visar regioner med mest nyhetsaktivitet.<br><br><em>Navtyper:</em><br>• Huvudstäder — Världshuvudstäder och regeringscentra<br>• 5__• ____5 Konfliktområden ____• Konfliktområden Chokepoints och nyckelregioner<br>• Organisationer — FN, NATO, IAEA, etc.<br><br><em>Aktivitetsnivåer:</em><br>• <span style=\"color: {{highColor}}\">Hög</span> — Nyheter eller 5__0+ stilar <__PH_• span {{elevatedColor}}\">Höjd</span> — Poäng 40-69<br>• <span style=\"color: {{lowColor}}\">Låg</span> — Poäng under 40<br><br>Klicka på ett nav för att zooma till dess plats.",
       "story": "berättelse",
       "stories": "berättelser",
-      "tooltip": "<strong>Geopolitiska aktivitetshubbar</strong><br>Visar regioner med mest nyhetsaktivitet.<br><br><em>Typer:</em><br>• 🏛️ Huvudstäder — Världshuvudstäder och regeringscentra<br>• ⚔️ Konfliktzoner — Aktiva konfliktområden<br>• ⚓ Strategiska — Flaskhalsar och nyckelregioner<br>• 🏢 Organisationer — FN, NATO, IAEA, etc.<br><br><em>Nivåer:</em><br>• <span style=\"color: #ff4444\">Hög</span> — Nyheter eller poäng 70+<br>• <span style=\"color: #ff8844\">Förhöjd</span> — Poäng 40-69<br>• <span style=\"color: #888\">Låg</span> — Poäng under 40<br><br>Klicka på en hubb för att zooma till dess plats.",
+      "tooltip": "<strong>Geopolitiska aktivitetshubbar</strong><br>Visar regioner med mest nyhetsaktivitet.<br><br><em>Typer:</em><br>• Huvudstäder — Världshuvudstäder och regeringscentra<br>• Konfliktzoner — Aktiva konfliktområden<br>• Strategiska — Flaskhalsar och nyckelregioner<br>• Organisationer — FN, NATO, IAEA, etc.<br><br><em>Nivåer:</em><br>• <span style=\"color: #ff4444\">Hög</span> — Nyheter eller poäng 70+<br>• <span style=\"color: #ff8844\">Förhöjd</span> — Poäng 40-69<br>• <span style=\"color: #888\">Låg</span> — Poäng under 40<br><br>Klicka på en hubb för att zooma till dess plats.",
       "noActive": "Inga aktiva geopolitiska hubbar"
     },
     "predictions": {
@@ -1875,7 +1875,7 @@
       "usniIntel": "USNI Intel",
       "usniSource": "Source: USNI News Fleet Tracker",
       "approximatePosition": "Position approximate — based on USNI weekly report, not real-time AIS.",
-      "darkDescription": "⚠ Fartyget har blivit mörkt - AIS-signal förlorad. Kan indikera känsliga operationer.",
+      "darkDescription": " Fartyget har blivit mörkt - AIS-signal förlorad. Kan indikera känsliga operationer.",
       "recentTracking": "Recent Tracking",
       "lastReport": "LATEST",
       "nearChokepoint": "NEAR CHOKEPOINT",

@@ -592,10 +592,10 @@ async function fetchLocalWithStartupRetry(
 // already provides.
 //
 // Defense layers that protect the renderer trust boundary:
-//   1. CSP: script-src 'self' (no unsafe-inline/eval)
-//   2. IPC origin validation: sensitive commands gated to trusted windows
-//   3. Sidecar allowlists: env-update restricted to ALLOWED_ENV_KEYS
-//   4. DevTools disabled in production builds
+// 1. CSP: script-src 'self' (no unsafe-inline/eval)
+// 2. IPC origin validation: sensitive commands gated to trusted windows
+// 3. Sidecar allowlists: env-update restricted to ALLOWED_ENV_KEYS
+// 4. DevTools disabled in production builds
 //
 // The token has a 5-minute TTL in the closure to limit exposure window
 // if IPC access is revoked mid-session.

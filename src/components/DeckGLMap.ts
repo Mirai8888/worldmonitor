@@ -1884,10 +1884,10 @@ export class DeckGLMap {
       getFillColor: (d) => {
         // Color by port type (matching old Map.ts icons)
         switch (d.type) {
-          case 'naval': return [100, 150, 255, 200] as [number, number, number, number]; // Blue - ⚓
-          case 'oil': return [255, 140, 0, 200] as [number, number, number, number]; // Orange - 🛢️
-          case 'lng': return [255, 200, 50, 200] as [number, number, number, number]; // Yellow - 🛢️
-          case 'container': return [0, 200, 255, 180] as [number, number, number, number]; // Cyan - 🏭
+          case 'naval': return [100, 150, 255, 200] as [number, number, number, number]; // Blue - 
+          case 'oil': return [255, 140, 0, 200] as [number, number, number, number]; // Orange - 
+          case 'lng': return [255, 200, 50, 200] as [number, number, number, number]; // Yellow - 
+          case 'container': return [0, 200, 255, 180] as [number, number, number, number]; // Cyan - 
           case 'mixed': return [150, 200, 150, 180] as [number, number, number, number]; // Green
           case 'bulk': return [180, 150, 120, 180] as [number, number, number, number]; // Brown
           default: return [0, 200, 255, 160] as [number, number, number, number];
@@ -2026,13 +2026,13 @@ export class DeckGLMap {
   }
 
   private static readonly TC_WIND_COLORS: [number, [number, number, number, number]][] = [
-    [137, [255, 96, 96, 200]],    // Cat5
-    [113, [255, 140, 0, 200]],    // Cat4
-    [96,  [255, 140, 0, 200]],    // Cat3
-    [83,  [255, 231, 117, 200]],  // Cat2
-    [64,  [255, 231, 117, 200]],  // Cat1
-    [34,  [94, 186, 255, 200]],   // TS
-    [0,   [160, 160, 160, 160]],  // TD
+    [137, [255, 96, 96, 200]], // Cat5
+    [113, [255, 140, 0, 200]], // Cat4
+    [96, [255, 140, 0, 200]], // Cat3
+    [83, [255, 231, 117, 200]], // Cat2
+    [64, [255, 231, 117, 200]], // Cat1
+    [34, [94, 186, 255, 200]], // TS
+    [0, [160, 160, 160, 160]], // TD
   ];
 
   private static windColor(kt: number): [number, number, number, number] {
@@ -2052,10 +2052,10 @@ export class DeckGLMap {
         id: 'natural-events-layer',
         data: nonTC,
         getPosition: (d: NaturalEvent) => [d.lon, d.lat],
-        getRadius: (d: NaturalEvent) => d.title.startsWith('🔴') ? 20000 : d.title.startsWith('🟠') ? 15000 : 8000,
+        getRadius: (d: NaturalEvent) => d.title.startsWith('') ? 20000 : d.title.startsWith('') ? 15000 : 8000,
         getFillColor: (d: NaturalEvent) => {
-          if (d.title.startsWith('🔴')) return [255, 0, 0, 220] as [number, number, number, number];
-          if (d.title.startsWith('🟠')) return [255, 140, 0, 200] as [number, number, number, number];
+          if (d.title.startsWith('')) return [255, 0, 0, 220] as [number, number, number, number];
+          if (d.title.startsWith('')) return [255, 140, 0, 200] as [number, number, number, number];
           return [255, 150, 50, 180] as [number, number, number, number];
         },
         radiusMinPixels: 5,
@@ -2588,19 +2588,19 @@ export class DeckGLMap {
 
   private mineralColor(mineral: string): [number, number, number, number] {
     switch (mineral) {
-      case 'Gold':        return [255, 215, 0, 210];
-      case 'Silver':      return [192, 192, 192, 200];
-      case 'Copper':      return [184, 115, 51, 210];
-      case 'Lithium':     return [0, 200, 255, 200];
-      case 'Cobalt':      return [100, 100, 255, 200];
+      case 'Gold': return [255, 215, 0, 210];
+      case 'Silver': return [192, 192, 192, 200];
+      case 'Copper': return [184, 115, 51, 210];
+      case 'Lithium': return [0, 200, 255, 200];
+      case 'Cobalt': return [100, 100, 255, 200];
       case 'Rare Earths': return [255, 100, 200, 200];
-      case 'Nickel':      return [100, 220, 100, 200];
-      case 'Platinum':    return [210, 210, 255, 200];
-      case 'Palladium':   return [180, 220, 180, 200];
-      case 'Iron Ore':    return [139, 69, 19, 210];
-      case 'Uranium':     return [50, 255, 80, 200];
-      case 'Coal':        return [80, 80, 80, 200];
-      default:            return [200, 200, 200, 200];
+      case 'Nickel': return [100, 220, 100, 200];
+      case 'Platinum': return [210, 210, 255, 200];
+      case 'Palladium': return [180, 220, 180, 200];
+      case 'Iron Ore': return [139, 69, 19, 210];
+      case 'Uranium': return [50, 255, 80, 200];
+      case 'Coal': return [80, 80, 80, 200];
+      default: return [200, 200, 200, 200];
     }
   }
 
@@ -2629,11 +2629,11 @@ export class DeckGLMap {
       getRadius: 8000,
       getFillColor: (d) => {
         switch (d.type) {
-          case 'smelter':    return [255, 80, 30, 210] as [number, number, number, number];
-          case 'refinery':   return [255, 160, 50, 200] as [number, number, number, number];
+          case 'smelter': return [255, 80, 30, 210] as [number, number, number, number];
+          case 'refinery': return [255, 160, 50, 200] as [number, number, number, number];
           case 'separation': return [160, 100, 255, 200] as [number, number, number, number];
           case 'processing': return [100, 200, 150, 200] as [number, number, number, number];
-          default:           return [200, 150, 100, 200] as [number, number, number, number];
+          default: return [200, 150, 100, 200] as [number, number, number, number];
         }
       },
       radiusMinPixels: 5,
@@ -3254,10 +3254,10 @@ export class DeckGLMap {
   }
 
   private static readonly CII_LEVEL_COLORS: Record<string, [number, number, number, number]> = {
-    low:      [40, 180, 60, 130],
-    normal:   [220, 200, 50, 135],
+    low: [40, 180, 60, 130],
+    normal: [220, 200, 50, 135],
     elevated: [240, 140, 30, 145],
-    high:     [220, 50, 20, 155],
+    high: [220, 50, 20, 155],
     critical: [140, 10, 0, 170],
   };
 
@@ -3483,7 +3483,7 @@ export class DeckGLMap {
       case 'spaceports-layer':
         return { html: `<div class="deckgl-tooltip"><strong>${text(obj.name)}</strong><br/>${text(obj.country || t('components.deckgl.layers.spaceports'))}</div>` };
       case 'ports-layer': {
-        const typeIcon = obj.type === 'naval' ? '⚓' : obj.type === 'oil' || obj.type === 'lng' ? '🛢️' : '🏭';
+        const typeIcon = obj.type === 'naval' ? '' : obj.type === 'oil' || obj.type === 'lng' ? '' : '';
         return { html: `<div class="deckgl-tooltip"><strong>${typeIcon} ${text(obj.name)}</strong><br/>${text(obj.type || t('components.deckgl.tooltip.port'))} - ${text(obj.country)}</div>` };
       }
       case 'flight-delays-layer':
@@ -3497,12 +3497,12 @@ export class DeckGLMap {
       case 'minerals-layer':
         return { html: `<div class="deckgl-tooltip"><strong>${text(obj.name)}</strong><br/>${text(obj.mineral)} - ${text(obj.country)}<br/>${text(obj.operator)}</div>` };
       case 'mining-sites-layer': {
-        const statusLabel = obj.status === 'producing' ? '⛏️ Producing' : obj.status === 'development' ? '🔧 Development' : '🔍 Exploration';
+        const statusLabel = obj.status === 'producing' ? ' Producing' : obj.status === 'development' ? ' Development' : ' Exploration';
         const outputStr = obj.annualOutput ? `<br/><span style="opacity:.75">${text(obj.annualOutput)}</span>` : '';
         return { html: `<div class="deckgl-tooltip"><strong>${text(obj.name)}</strong><br/>${text(obj.mineral)} · ${text(obj.country)}<br/>${statusLabel}${outputStr}</div>` };
       }
       case 'processing-plants-layer': {
-        const typeLabel = obj.type === 'smelter' ? '🏭 Smelter' : obj.type === 'refinery' ? '⚗️ Refinery' : obj.type === 'separation' ? '🧪 Separation' : '🏗️ Processing';
+        const typeLabel = obj.type === 'smelter' ? ' Smelter' : obj.type === 'refinery' ? ' Refinery' : obj.type === 'separation' ? ' Separation' : ' Processing';
         const capacityStr = obj.capacityTpa ? `<br/><span style="opacity:.75">${text(String((obj.capacityTpa / 1000).toFixed(0)))}k t/yr</span>` : '';
         const mineralLabel = obj.mineral ?? (Array.isArray(obj.materials) ? obj.materials.join(', ') : '');
         return { html: `<div class="deckgl-tooltip"><strong>${text(obj.name)}</strong><br/>${text(mineralLabel)} · ${text(obj.country)}<br/>${typeLabel}${capacityStr}</div>` };
@@ -3510,7 +3510,7 @@ export class DeckGLMap {
       case 'commodity-ports-layer': {
         const commoditiesStr = Array.isArray(obj.commodities) ? obj.commodities.join(', ') : '';
         const volumeStr = obj.annualVolumeMt ? `<br/><span style="opacity:.75">${text(String(obj.annualVolumeMt))}Mt/yr</span>` : '';
-        return { html: `<div class="deckgl-tooltip"><strong>⚓ ${text(obj.name)}</strong><br/>${text(obj.country)}<br/>${text(commoditiesStr)}${volumeStr}</div>` };
+        return { html: `<div class="deckgl-tooltip"><strong> ${text(obj.name)}</strong><br/>${text(obj.country)}<br/>${text(commoditiesStr)}${volumeStr}</div>` };
       }
       case 'ais-disruptions-layer':
         return { html: `<div class="deckgl-tooltip"><strong>AIS ${text(obj.type || t('components.deckgl.tooltip.disruption'))}</strong><br/>${text(obj.severity)} ${t('popups.severity')}<br/>${text(obj.description)}</div>` };
@@ -3534,7 +3534,7 @@ export class DeckGLMap {
       case 'iran-events-layer':
         return { html: `<div class="deckgl-tooltip"><strong>${t('components.deckgl.layers.iranAttacks')}: ${text(obj.category || '')}</strong><br/>${text((obj.title || '').slice(0, 80))}</div>` };
       case 'news-locations-layer':
-        return { html: `<div class="deckgl-tooltip"><strong>📰 ${t('components.deckgl.tooltip.news')}</strong><br/>${text(obj.title?.slice(0, 80) || '')}</div>` };
+        return { html: `<div class="deckgl-tooltip"><strong> ${t('components.deckgl.tooltip.news')}</strong><br/>${text(obj.title?.slice(0, 80) || '')}</div>` };
       case 'positive-events-layer': {
         const catLabel = obj.category ? obj.category.replace(/-/g, ' & ') : 'Positive Event';
         const countInfo = obj.count > 1 ? `<br/><span style="opacity:.7">${obj.count} sources reporting</span>` : '';
@@ -3566,7 +3566,7 @@ export class DeckGLMap {
       }
       case 'gulf-investments-layer': {
         const inv = obj as GulfInvestment;
-        const flag = inv.investingCountry === 'SA' ? '🇸🇦' : '🇦🇪';
+        const flag = inv.investingCountry === 'SA' ? '' : '';
         const usd = inv.investmentUSD != null
           ? (inv.investmentUSD >= 1000 ? `$${(inv.investmentUSD / 1000).toFixed(1)}B` : `$${inv.investmentUSD}M`)
           : t('components.deckgl.tooltip.undisclosed');
@@ -5663,10 +5663,10 @@ export class DeckGLMap {
   private updateCountryLayerPaint(theme: 'dark' | 'light'): void {
     if (!this.maplibreMap || !this.countryGeoJsonLoaded) return;
     if (!this.maplibreMap.getLayer('country-hover-fill')) return;
-    const hoverFillOpacity   = theme === 'light' ? 0.08 : 0.05;
+    const hoverFillOpacity = theme === 'light' ? 0.08 : 0.05;
     const hoverBorderOpacity = theme === 'light' ? 0.35 : 0.22;
-    const highlightOpacity   = theme === 'light' ? 0.18 : 0.12;
-    this.maplibreMap.setPaintProperty('country-hover-fill',   'fill-opacity', hoverFillOpacity);
+    const highlightOpacity = theme === 'light' ? 0.18 : 0.12;
+    this.maplibreMap.setPaintProperty('country-hover-fill', 'fill-opacity', hoverFillOpacity);
     this.maplibreMap.setPaintProperty('country-hover-border', 'line-opacity', hoverBorderOpacity);
     this.maplibreMap.setPaintProperty('country-highlight-fill', 'fill-opacity', highlightOpacity);
   }

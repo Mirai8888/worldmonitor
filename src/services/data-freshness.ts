@@ -35,8 +35,8 @@ export interface DataFreshnessSummary {
 }
 
 // Thresholds in milliseconds
-const FRESH_THRESHOLD = 15 * 60 * 1000;      // 15 minutes
-const STALE_THRESHOLD = 2 * 60 * 60 * 1000;  // 2 hours
+const FRESH_THRESHOLD = 15 * 60 * 1000; // 15 minutes
+const STALE_THRESHOLD = 2 * 60 * 60 * 1000; // 2 hours
 const VERY_STALE_THRESHOLD = 6 * 60 * 60 * 1000; // 6 hours
 
 // Core sources needed for meaningful risk assessment
@@ -299,7 +299,7 @@ export function getStatusIcon(status: FreshnessStatus): string {
     case 'fresh': return '●';
     case 'stale': return '◐';
     case 'very_stale': return '○';
-    case 'error': return '✕';
+    case 'error': return '';
     case 'disabled': return '○';
     case 'no_data': return '○';
   }
@@ -371,7 +371,7 @@ export function getIntelligenceGaps(): { source: DataSourceId; message: string; 
 export function getIntelligenceGapSummary(): string[] {
   const gaps = getIntelligenceGaps();
   return gaps.map(gap => {
-    const icon = gap.severity === 'critical' ? '⚠️ CRITICAL' : '⚡';
+    const icon = gap.severity === 'critical' ? ' CRITICAL' : '';
     return `${icon}: ${gap.message}`;
   });
 }

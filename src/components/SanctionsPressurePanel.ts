@@ -92,8 +92,8 @@ export class SanctionsPressurePanel extends Panel {
   private renderCountryRow(country: CountrySanctionsPressure): string {
     const flags: string[] = [];
     if (country.newEntryCount > 0) flags.push(`<span class="sanctions-pill sanctions-pill-new">+${country.newEntryCount} new</span>`);
-    if (country.vesselCount > 0) flags.push(`<span class="sanctions-pill">🚢 ${country.vesselCount}</span>`);
-    if (country.aircraftCount > 0) flags.push(`<span class="sanctions-pill">✈ ${country.aircraftCount}</span>`);
+    if (country.vesselCount > 0) flags.push(`<span class="sanctions-pill"> ${country.vesselCount}</span>`);
+    if (country.aircraftCount > 0) flags.push(`<span class="sanctions-pill"> ${country.aircraftCount}</span>`);
 
     return `
       <div class="sanctions-row">

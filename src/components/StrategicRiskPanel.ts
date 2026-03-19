@@ -171,9 +171,9 @@ export class StrategicRiskPanel extends Panel {
 
   private getTrendEmoji(trend: string): string {
     switch (trend) {
-      case 'escalating': return '📈';
-      case 'de-escalating': return '📉';
-      default: return '➡️';
+      case 'escalating': return '';
+      case 'de-escalating': return '';
+      default: return '';
     }
   }
 
@@ -197,22 +197,22 @@ export class StrategicRiskPanel extends Panel {
 
   private getPriorityEmoji(priority: AlertPriority): string {
     switch (priority) {
-      case 'critical': return '🔴';
-      case 'high': return '🟠';
-      case 'medium': return '🟡';
-      case 'low': return '🟢';
+      case 'critical': return '';
+      case 'high': return '';
+      case 'medium': return '';
+      case 'low': return '';
     }
   }
 
   private getTypeEmoji(type: string): string {
     switch (type) {
-      case 'convergence': return '🎯';
-      case 'cii_spike': return '📊';
-      case 'cascade': return '🔗';
-      case 'sanctions': return '🚫';
-      case 'radiation': return '☢️';
-      case 'composite': return '⚠️';
-      default: return '📍';
+      case 'convergence': return '';
+      case 'cii_spike': return '';
+      case 'cascade': return '';
+      case 'sanctions': return '';
+      case 'radiation': return '';
+      case 'composite': return '';
+      default: return '';
     }
   }
 
@@ -226,7 +226,7 @@ export class StrategicRiskPanel extends Panel {
     return `
       <div class="strategic-risk-panel">
         <div class="risk-no-data">
-          <div class="risk-no-data-icon">⚠️</div>
+          <div class="risk-no-data-icon"></div>
           <div class="risk-no-data-title">${t('components.strategicRisk.insufficientData')}</div>
           <div class="risk-no-data-desc">
             ${t('components.strategicRisk.unableToAssess')}<br>${t('components.strategicRisk.enableDataSources')}
@@ -279,7 +279,7 @@ export class StrategicRiskPanel extends Panel {
     // Only show status banner when there's something to report (learning mode)
     const statusBanner = showLearning
       ? `<div class="risk-status-banner risk-status-learning">
-          <span class="risk-status-icon">📊</span>
+          <span class="risk-status-icon"></span>
           <span class="risk-status-text">${t('components.strategicRisk.learningMode', { minutes: String(remainingMinutes) })}</span>
           <div class="learning-progress-mini">
             <div class="learning-bar" style="width: ${progress}%"></div>

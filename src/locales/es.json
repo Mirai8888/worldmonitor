@@ -797,11 +797,11 @@
       "empty": "No hay artículos recientes para este tema."
     },
     "geoHubs": {
-      "tooltip": "<strong>Centros de actividades geopolíticas</strong><br>Muestra las regiones con mayor actividad noticiosa.<br><br><em>Tipos de centros:</em><br>• 🏛️ Capitales: capitales mundiales y centros gubernamentales<br>• ⚔️ Zonas de conflicto: áreas de conflicto activas<br>• ⚓ Estratégicas: puntos críticos y regiones clave<br>• 🏢 Organizaciones: ONU, OTAN, OIEA, etc.<br><br><em>Niveles de actividad:</em><br>• <span style=\"color: #ff4444\">Alto</span> — Noticias de última hora o puntuación de 70+<br>• <span style=\"color: #ff8844\">Elevado</span> — Puntuación 40-69<br>• <span style=\"color: #888\">Baja</span> — Puntuación inferior 40<br><br>Haga clic en un centro para ampliar su ubicación.",
+      "tooltip": "<strong>Centros de actividades geopolíticas</strong><br>Muestra las regiones con mayor actividad noticiosa.<br><br><em>Tipos de centros:</em><br>• Capitales: capitales mundiales y centros gubernamentales<br>• Zonas de conflicto: áreas de conflicto activas<br>• Estratégicas: puntos críticos y regiones clave<br>• Organizaciones: ONU, OTAN, OIEA, etc.<br><br><em>Niveles de actividad:</em><br>• <span style=\"color: #ff4444\">Alto</span> — Noticias de última hora o puntuación de 70+<br>• <span style=\"color: #ff8844\">Elevado</span> — Puntuación 40-69<br>• <span style=\"color: #888\">Baja</span> — Puntuación inferior 40<br><br>Haga clic en un centro para ampliar su ubicación.",
       "noActive": "No hay centros geopolíticos activos",
       "story": "historia",
       "stories": "historias",
-      "infoTooltip": "<strong>Centros de actividades geopolíticas</strong><br>Muestra las regiones con mayor actividad noticiosa.<br><br><em>Tipos de centros:</em><br>• 🏛️ Capitales: capitales mundiales y centros gubernamentales<br>• ⚔️ Zonas de conflicto: áreas de conflicto activas<br>• ⚓ Estratégico: puntos críticos y puntos clave regiones<br>• 🏢 Organizaciones: ONU, OTAN, OIEA, etc.<br><br><em>Niveles de actividad:</em><br>• <span style=\"color: {{highColor}}\">Alto</span>: noticias de última hora o puntuación de 70+<br>• <span style=\"color: {{elevatedColor}}\">Elevado</span>: puntuación 40-69<br>• <span style=\"color: {{lowColor}}\">Bajo</span>: puntuación inferior a 40<br><br>Haga clic en un centro para ampliar su ubicación."
+      "infoTooltip": "<strong>Centros de actividades geopolíticas</strong><br>Muestra las regiones con mayor actividad noticiosa.<br><br><em>Tipos de centros:</em><br>• Capitales: capitales mundiales y centros gubernamentales<br>• Zonas de conflicto: áreas de conflicto activas<br>• Estratégico: puntos críticos y puntos clave regiones<br>• Organizaciones: ONU, OTAN, OIEA, etc.<br><br><em>Niveles de actividad:</em><br>• <span style=\"color: {{highColor}}\">Alto</span>: noticias de última hora o puntuación de 70+<br>• <span style=\"color: {{elevatedColor}}\">Elevado</span>: puntuación 40-69<br>• <span style=\"color: {{lowColor}}\">Bajo</span>: puntuación inferior a 40<br><br>Haga clic en un centro para ampliar su ubicación."
     },
     "techHubs": {
       "tooltip": "<strong>Actividad del centro tecnológico</strong><br>Muestra los centros tecnológicos con la mayor actividad de noticias.<br><br><em>Niveles de actividad:</em><br>• <span style=\"color: #00ff88\">Alto</span> — Noticias de última hora o puntuación de 50+<br>• <span style=\"color: #ffc800\">Elevado</span> — Puntuación 20-49<br>• <span style=\"color: #888\">Bajo</span>: puntuación inferior a 20<br><br>Haga clic en un centro para ampliar su ubicación.",
@@ -1206,7 +1206,7 @@
       "internetUsers": "Usuarios de Internet",
       "mobileSubscriptions": "Suscripciones móviles",
       "rdSpending": "Gasto en I+D",
-      "infoTooltip": "<strong>Preparación tecnológica global</strong><br>Puntuación compuesta (0-100) basada en datos del Banco Mundial:<br><br><strong>Métricas mostradas:</strong><br>🌐 Usuarios de Internet (% de la población)<br>📱 Suscripciones móviles (por cada 100 personas)<br>🔬 I+D Gasto (% del PIB)<br><br><strong>Peso:</strong> I+D (35%), Internet (30%), Banda ancha (20%), Móvil (15%)<br><br><em>— = No hay datos recientes disponibles</em><br><em>Fuente: Datos abiertos del Banco Mundial (2019-2024)</em>",
+      "infoTooltip": "<strong>Preparación tecnológica global</strong><br>Puntuación compuesta (0-100) basada en datos del Banco Mundial:<br><br><strong>Métricas mostradas:</strong><br> Usuarios de Internet (% de la población)<br> Suscripciones móviles (por cada 100 personas)<br> I+D Gasto (% del PIB)<br><br><strong>Peso:</strong> I+D (35%), Internet (30%), Banda ancha (20%), Móvil (15%)<br><br><em>— = No hay datos recientes disponibles</em><br><em>Fuente: Datos abiertos del Banco Mundial (2019-2024)</em>",
       "fetchingData": "Fetching World Bank Data",
       "internetUsersIndicator": "Internet Users",
       "mobileSubscriptionsIndicator": "Mobile Subscriptions",
@@ -2079,7 +2079,7 @@
       "usniIntel": "USNI Intel",
       "usniSource": "Source: USNI News Fleet Tracker",
       "approximatePosition": "Position approximate — based on USNI weekly report, not real-time AIS.",
-      "darkDescription": "⚠ La embarcación se ha quedado a oscuras: se perdió la señal AIS. Puede indicar operaciones sensibles.",
+      "darkDescription": " La embarcación se ha quedado a oscuras: se perdió la señal AIS. Puede indicar operaciones sensibles.",
       "recentTracking": "Recent Tracking",
       "lastReport": "LATEST",
       "nearChokepoint": "NEAR CHOKEPOINT",

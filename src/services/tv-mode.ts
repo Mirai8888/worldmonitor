@@ -5,7 +5,7 @@
  */
 
 const TV_INTERVAL_KEY = 'tv-mode-interval';
-const MIN_INTERVAL = 30_000;  // 30 seconds
+const MIN_INTERVAL = 30_000; // 30 seconds
 const MAX_INTERVAL = 120_000; // 2 minutes
 const DEFAULT_INTERVAL = 60_000; // 1 minute
 

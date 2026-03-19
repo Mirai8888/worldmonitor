@@ -222,12 +222,12 @@ function normalizeCountryCode(country: string): string {
 // Port importance by type for impact calculation
 function getPortImportance(port: Port): number {
   const typeWeight: Record<string, number> = {
-    'oil': 0.9,     // Oil disruption = major
-    'lng': 0.85,    // LNG disruption = major
+    'oil': 0.9, // Oil disruption = major
+    'lng': 0.85, // LNG disruption = major
     'container': 0.7,
     'mixed': 0.6,
     'bulk': 0.5,
-    'naval': 0.4,   // Naval = geopolitical but less economic
+    'naval': 0.4, // Naval = geopolitical but less economic
   };
   const baseWeight = typeWeight[port.type] || 0.5;
   // Higher rank = more important (rank 1-10 get boost)
@@ -478,8 +478,8 @@ export function buildDependencyGraph(): DependencyGraph {
   // Build dependency edges
   buildCableCountryEdges(graph);
   buildPipelineCountryEdges(graph);
-  buildPortCountryEdges(graph);      // NEW: Port → Country dependencies
-  buildChokepointEdges(graph);       // NEW: Chokepoint → Port/Country dependencies
+  buildPortCountryEdges(graph); // NEW: Port → Country dependencies
+  buildChokepointEdges(graph); // NEW: Chokepoint → Port/Country dependencies
 
   cachedGraph = graph;
   return graph;

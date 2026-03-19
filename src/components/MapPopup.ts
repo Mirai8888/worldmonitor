@@ -496,7 +496,7 @@ export class MapPopup {
     ].filter(Boolean).join(' · ');
     return `
       <div class="popup-header outage">
-        <span class="popup-title">☢ ${escapeHtml(observation.location.toUpperCase())}</span>
+        <span class="popup-title"> ${escapeHtml(observation.location.toUpperCase())}</span>
         <span class="popup-badge ${severityClass}">${escapeHtml(observation.severity.toUpperCase())}</span>
         <button class="popup-close" aria-label="Close">×</button>
       </div>
@@ -1089,7 +1089,7 @@ export class MapPopup {
     const severityClass = escapeHtml(event.severity);
     const severityLabel = escapeHtml(event.severity.toUpperCase());
     const eventTypeLabel = escapeHtml(event.eventType.replace('_', ' ').toUpperCase());
-    const icon = event.eventType === 'riot' ? '🔥' : event.eventType === 'strike' ? '✊' : '📢';
+    const icon = event.eventType === 'riot' ? '' : event.eventType === 'strike' ? '' : '';
     const sourceLabel = event.sourceType === 'acled' ? t('popups.protest.acledVerified') : t('popups.protest.gdelt');
     const validatedBadge = event.validated ? `<span class="popup-badge verified">${t('popups.verified')}</span>` : '';
     const fatalitiesSection = event.fatalities
@@ -1150,7 +1150,7 @@ export class MapPopup {
     });
 
     const listItems = sortedItems.slice(0, 10).map(event => {
-      const icon = event.eventType === 'riot' ? '🔥' : event.eventType === 'strike' ? '✊' : '📢';
+      const icon = event.eventType === 'riot' ? '' : event.eventType === 'strike' ? '' : '';
       const sevClass = event.severity;
       const dateStr = event.time.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
       const city = event.city ? escapeHtml(event.city) : '';
@@ -1165,16 +1165,16 @@ export class MapPopup {
 
     return `
       <div class="popup-header protest ${headerClass} cluster">
-        <span class="popup-title">📢 ${escapeHtml(data.country)}</span>
+        <span class="popup-title"> ${escapeHtml(data.country)}</span>
         <span class="popup-badge">${totalCount} ${t('popups.events').toUpperCase()}</span>
         <button class="popup-close" aria-label="Close">×</button>
       </div>
       <div class="popup-body cluster-popup">
         <div class="cluster-summary">
-          ${riots ? `<span class="summary-item riot">🔥 ${riots} ${t('popups.protest.riots')}</span>` : ''}
-          ${highSeverity ? `<span class="summary-item high">⚠️ ${highSeverity} ${t('popups.protest.highSeverity')}</span>` : ''}
-          ${verified ? `<span class="summary-item verified">✓ ${verified} ${t('popups.verified')}</span>` : ''}
-          ${totalFatalities > 0 ? `<span class="summary-item fatalities">💀 ${totalFatalities} ${t('popups.fatalities')}</span>` : ''}
+          ${riots ? `<span class="summary-item riot"> ${riots} ${t('popups.protest.riots')}</span>` : ''}
+          ${highSeverity ? `<span class="summary-item high"> ${highSeverity} ${t('popups.protest.highSeverity')}</span>` : ''}
+          ${verified ? `<span class="summary-item verified"> ${verified} ${t('popups.verified')}</span>` : ''}
+          ${totalFatalities > 0 ? `<span class="summary-item fatalities"> ${totalFatalities} ${t('popups.fatalities')}</span>` : ''}
         </div>
         <ul class="cluster-list">${listItems}${moreCount}</ul>
         ${data.sampled ? `<p class="popup-more">${t('popups.sampledList', { count: data.items.length })}</p>` : ''}
@@ -1194,7 +1194,7 @@ export class MapPopup {
       'closure': t('popups.flight.closure'),
     };
     const delayTypeLabel = delayTypeLabels[delay.delayType] || t('popups.flight.delays');
-    const icon = delay.delayType === 'closure' ? '🚫' : delay.delayType === 'ground_stop' ? '🛑' : delay.severity === 'severe' ? '✈️' : '🛫';
+    const icon = delay.delayType === 'closure' ? '' : delay.delayType === 'ground_stop' ? '' : delay.severity === 'severe' ? '' : '';
     const sourceLabels: Record<string, string> = {
       'faa': t('popups.flight.sources.faa'),
       'eurocontrol': t('popups.flight.sources.eurocontrol'),
@@ -1421,9 +1421,9 @@ ${isFeatureAvailable('wingbitsEnrichment') ? '<div class="wingbits-live-section"
       'financial-hub': t('popups.economic.types.financialHub'),
     };
     const typeIcons: Record<string, string> = {
-      'exchange': '📈',
-      'central-bank': '🏛',
-      'financial-hub': '💰',
+      'exchange': '',
+      'central-bank': '',
+      'financial-hub': '',
     };
 
     const marketStatus = center.marketHours ? this.getMarketStatus(center.marketHours) : null;
@@ -1471,7 +1471,7 @@ ${isFeatureAvailable('wingbitsEnrichment') ? '<div class="wingbits-live-section"
   private renderIrradiatorPopup(irradiator: GammaIrradiator): string {
     return `
       <div class="popup-header irradiator">
-        <span class="popup-title">☢ ${escapeHtml(irradiator.city.toUpperCase())}</span>
+        <span class="popup-title"> ${escapeHtml(irradiator.city.toUpperCase())}</span>
         <span class="popup-badge elevated">${t('popups.gamma')}</span>
         <button class="popup-close" aria-label="Close">×</button>
       </div>
@@ -1512,7 +1512,7 @@ ${isFeatureAvailable('wingbitsEnrichment') ? '<div class="wingbits-live-section"
       'operating': t('popups.pipeline.status.operating'),
       'construction': t('popups.pipeline.status.construction'),
     };
-    const typeIcon = pipeline.type === 'oil' ? '🛢' : pipeline.type === 'gas' ? '🔥' : '⛽';
+    const typeIcon = pipeline.type === 'oil' ? '' : pipeline.type === 'gas' ? '' : '';
 
     return `
       <div class="popup-header pipeline ${pipeline.type}">
@@ -1593,7 +1593,7 @@ ${isFeatureAvailable('wingbitsEnrichment') ? '<div class="wingbits-live-section"
 
     return `
       <div class="popup-header cable">
-        <span class="popup-title">🌐 ${cableName}</span>
+        <span class="popup-title"> ${cableName}</span>
         <span class="popup-badge ${statusBadge}">${cable.major ? t('popups.cable.major') : t('popups.cable.cable')}</span>
         <button class="popup-close" aria-label="Close">×</button>
       </div>
@@ -1664,7 +1664,7 @@ ${isFeatureAvailable('wingbitsEnrichment') ? '<div class="wingbits-live-section"
 
     return `
       <div class="popup-header cable">
-        <span class="popup-title">🚨 ${cableName}</span>
+        <span class="popup-title"> ${cableName}</span>
         <span class="popup-badge ${advisory.severity === 'fault' ? 'high' : 'elevated'}">${statusLabel}</span>
         <button class="popup-close" aria-label="Close">×</button>
       </div>
@@ -1701,7 +1701,7 @@ ${isFeatureAvailable('wingbitsEnrichment') ? '<div class="wingbits-live-section"
 
     return `
       <div class="popup-header cable">
-        <span class="popup-title">🚢 ${shipName}</span>
+        <span class="popup-title"> ${shipName}</span>
         <span class="popup-badge elevated">${t('popups.repairShip.badge')}</span>
         <button class="popup-close" aria-label="Close">×</button>
       </div>
@@ -1759,7 +1759,7 @@ ${isFeatureAvailable('wingbitsEnrichment') ? '<div class="wingbits-live-section"
 
     return `
       <div class="popup-header outage ${severityClass}">
-        <span class="popup-title">📡 ${escapeHtml(outage.country.toUpperCase())}</span>
+        <span class="popup-title"> ${escapeHtml(outage.country.toUpperCase())}</span>
         <span class="popup-badge ${severityColors[outage.severity] || 'low'}">${severityLabels[outage.severity] || t('popups.outage.levels.disruption')}</span>
         <button class="popup-close" aria-label="Close">×</button>
       </div>
@@ -1813,7 +1813,7 @@ ${isFeatureAvailable('wingbitsEnrichment') ? '<div class="wingbits-live-section"
 
     return `
       <div class="popup-header datacenter ${dc.status}">
-        <span class="popup-title">🖥️ ${escapeHtml(dc.name)}</span>
+        <span class="popup-title"> ${escapeHtml(dc.name)}</span>
         <span class="popup-badge ${statusColors[dc.status] || 'normal'}">${statusLabels[dc.status] || t('popups.datacenter.status.unknown')}</span>
         <button class="popup-close" aria-label="Close">×</button>
       </div>
@@ -1862,7 +1862,7 @@ ${isFeatureAvailable('wingbitsEnrichment') ? '<div class="wingbits-live-section"
 
     const dcListHtml = data.items.slice(0, 8).map(dc => `
       <div class="cluster-item">
-        <span class="cluster-item-icon">${dc.status === 'planned' ? '🔨' : '🖥️'}</span>
+        <span class="cluster-item-icon">${dc.status === 'planned' ? '' : ''}</span>
         <div class="cluster-item-info">
           <span class="cluster-item-name">${escapeHtml(dc.name.slice(0, 40))}${dc.name.length > 40 ? '...' : ''}</span>
           <span class="cluster-item-detail">${escapeHtml(dc.owner)} • ${formatNumber(dc.chipCount)} ${t('popups.datacenter.chips')}</span>
@@ -1872,7 +1872,7 @@ ${isFeatureAvailable('wingbitsEnrichment') ? '<div class="wingbits-live-section"
 
     return `
       <div class="popup-header datacenter cluster">
-        <span class="popup-title">🖥️ ${t('popups.datacenter.cluster.title', { count: String(totalCount) })}</span>
+        <span class="popup-title"> ${t('popups.datacenter.cluster.title', { count: String(totalCount) })}</span>
         <span class="popup-badge elevated">${escapeHtml(data.region)}</span>
         <button class="popup-close" aria-label="Close">×</button>
       </div>
@@ -1914,10 +1914,10 @@ ${isFeatureAvailable('wingbitsEnrichment') ? '<div class="wingbits-live-section"
       'major': t('popups.startupHub.tiers.major'),
       'emerging': t('popups.startupHub.tiers.emerging'),
     };
-    const tierIcons: Record<string, string> = { 'mega': '🦄', 'major': '🚀', 'emerging': '💡' };
+    const tierIcons: Record<string, string> = { 'mega': '', 'major': '', 'emerging': '' };
     return `
       <div class="popup-header startup-hub ${hub.tier}">
-        <span class="popup-title">${tierIcons[hub.tier] || '🚀'} ${escapeHtml(hub.name)}</span>
+        <span class="popup-title">${tierIcons[hub.tier] || ''} ${escapeHtml(hub.name)}</span>
         <span class="popup-badge ${hub.tier}">${tierLabels[hub.tier] || t('popups.startupHub.tiers.hub')}</span>
         <button class="popup-close" aria-label="Close">×</button>
       </div>
@@ -1938,10 +1938,10 @@ ${isFeatureAvailable('wingbitsEnrichment') ? '<div class="wingbits-live-section"
 
   private renderCloudRegionPopup(region: CloudRegion): string {
     const providerNames: Record<string, string> = { 'aws': 'Amazon Web Services', 'gcp': 'Google Cloud Platform', 'azure': 'Microsoft Azure', 'cloudflare': 'Cloudflare' };
-    const providerIcons: Record<string, string> = { 'aws': '🟠', 'gcp': '🔵', 'azure': '🟣', 'cloudflare': '🟡' };
+    const providerIcons: Record<string, string> = { 'aws': '', 'gcp': '', 'azure': '', 'cloudflare': '' };
     return `
       <div class="popup-header cloud-region ${region.provider}">
-        <span class="popup-title">${providerIcons[region.provider] || '☁️'} ${escapeHtml(region.name)}</span>
+        <span class="popup-title">${providerIcons[region.provider] || ''} ${escapeHtml(region.name)}</span>
         <span class="popup-badge ${region.provider}">${escapeHtml(region.provider.toUpperCase())}</span>
         <button class="popup-close" aria-label="Close">×</button>
       </div>
@@ -1969,10 +1969,10 @@ ${isFeatureAvailable('wingbitsEnrichment') ? '<div class="wingbits-live-section"
       'unicorn': t('popups.techHQ.types.unicorn'),
       'public': t('popups.techHQ.types.public'),
     };
-    const typeIcons: Record<string, string> = { 'faang': '🏛️', 'unicorn': '🦄', 'public': '🏢' };
+    const typeIcons: Record<string, string> = { 'faang': '', 'unicorn': '', 'public': '' };
     return `
       <div class="popup-header tech-hq ${hq.type}">
-        <span class="popup-title">${typeIcons[hq.type] || '🏢'} ${escapeHtml(hq.company)}</span>
+        <span class="popup-title">${typeIcons[hq.type] || ''} ${escapeHtml(hq.company)}</span>
         <span class="popup-badge ${hq.type}">${typeLabels[hq.type] || t('popups.techHQ.types.tech')}</span>
         <button class="popup-close" aria-label="Close">×</button>
       </div>
@@ -2002,10 +2002,10 @@ ${isFeatureAvailable('wingbitsEnrichment') ? '<div class="wingbits-live-section"
       'incubator': t('popups.accelerator.types.incubator'),
       'studio': t('popups.accelerator.types.studio'),
     };
-    const typeIcons: Record<string, string> = { 'accelerator': '🎯', 'incubator': '🔬', 'studio': '🎨' };
+    const typeIcons: Record<string, string> = { 'accelerator': '', 'incubator': '', 'studio': '' };
     return `
       <div class="popup-header accelerator ${acc.type}">
-        <span class="popup-title">${typeIcons[acc.type] || '🎯'} ${escapeHtml(acc.name)}</span>
+        <span class="popup-title">${typeIcons[acc.type] || ''} ${escapeHtml(acc.name)}</span>
         <span class="popup-badge ${acc.type}">${typeLabels[acc.type] || t('popups.accelerator.types.accelerator')}</span>
         <button class="popup-close" aria-label="Close">×</button>
       </div>
@@ -2046,12 +2046,12 @@ ${isFeatureAvailable('wingbitsEnrichment') ? '<div class="wingbits-live-section"
 
     return `
       <div class="popup-header tech-event ${urgencyClass}">
-        <span class="popup-title">📅 ${escapeHtml(event.title)}</span>
+        <span class="popup-title"> ${escapeHtml(event.title)}</span>
         <span class="popup-badge ${urgencyClass}">${daysLabel}</span>
         <button class="popup-close" aria-label="Close">×</button>
       </div>
       <div class="popup-body">
-        <div class="popup-subtitle">📍 ${escapeHtml(event.location)}, ${escapeHtml(event.country)}</div>
+        <div class="popup-subtitle"> ${escapeHtml(event.location)}, ${escapeHtml(event.country)}</div>
         <div class="popup-stats">
           <div class="popup-stat">
             <span class="stat-label">${t('popups.techEvent.date')}</span>
@@ -2083,23 +2083,23 @@ ${isFeatureAvailable('wingbitsEnrichment') ? '<div class="wingbits-live-section"
     });
 
     const listItems = sortedItems.map(hq => {
-      const icon = hq.type === 'faang' ? '🏛️' : hq.type === 'unicorn' ? '🦄' : '🏢';
+      const icon = hq.type === 'faang' ? '' : hq.type === 'unicorn' ? '' : '';
       const marketCap = hq.marketCap ? ` (${escapeHtml(hq.marketCap)})` : '';
       return `<li class="cluster-item ${hq.type}">${icon} ${escapeHtml(hq.company)}${marketCap}</li>`;
     }).join('');
 
     return `
       <div class="popup-header tech-hq cluster">
-        <span class="popup-title">🏙️ ${escapeHtml(data.city)}</span>
+        <span class="popup-title"> ${escapeHtml(data.city)}</span>
         <span class="popup-badge">${t('popups.techHQCluster.companiesCount', { count: String(totalCount) })}</span>
         <button class="popup-close" aria-label="Close">×</button>
       </div>
       <div class="popup-body cluster-popup">
-        <div class="popup-subtitle">📍 ${escapeHtml(data.city)}, ${escapeHtml(data.country)}</div>
+        <div class="popup-subtitle"> ${escapeHtml(data.city)}, ${escapeHtml(data.country)}</div>
         <div class="cluster-summary">
-          ${faangCount ? `<span class="summary-item faang">🏛️ ${t('popups.techHQCluster.bigTechCount', { count: String(faangCount) })}</span>` : ''}
-          ${unicornCount ? `<span class="summary-item unicorn">🦄 ${t('popups.techHQCluster.unicornsCount', { count: String(unicornCount) })}</span>` : ''}
-          ${publicCount ? `<span class="summary-item public">🏢 ${t('popups.techHQCluster.publicCount', { count: String(publicCount) })}</span>` : ''}
+          ${faangCount ? `<span class="summary-item faang"> ${t('popups.techHQCluster.bigTechCount', { count: String(faangCount) })}</span>` : ''}
+          ${unicornCount ? `<span class="summary-item unicorn"> ${t('popups.techHQCluster.unicornsCount', { count: String(unicornCount) })}</span>` : ''}
+          ${publicCount ? `<span class="summary-item public"> ${t('popups.techHQCluster.publicCount', { count: String(publicCount) })}</span>` : ''}
         </div>
         <ul class="cluster-list">${listItems}</ul>
         ${data.sampled ? `<p class="popup-more">${t('popups.techHQCluster.sampled', { count: String(data.items.length) })}</p>` : ''}
@@ -2116,18 +2116,18 @@ ${isFeatureAvailable('wingbitsEnrichment') ? '<div class="wingbits-live-section"
       const startDate = new Date(event.startDate);
       const dateStr = startDate.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
       const urgencyClass = event.daysUntil <= 7 ? 'urgent' : event.daysUntil <= 30 ? 'soon' : '';
-      return `<li class="cluster-item ${urgencyClass}">📅 ${dateStr}: ${escapeHtml(event.title)}</li>`;
+      return `<li class="cluster-item ${urgencyClass}"> ${dateStr}: ${escapeHtml(event.title)}</li>`;
     }).join('');
 
     return `
       <div class="popup-header tech-event cluster">
-        <span class="popup-title">📅 ${escapeHtml(data.location)}</span>
+        <span class="popup-title"> ${escapeHtml(data.location)}</span>
         <span class="popup-badge">${t('popups.techEventCluster.eventsCount', { count: String(totalCount) })}</span>
         <button class="popup-close" aria-label="Close">×</button>
       </div>
       <div class="popup-body cluster-popup">
-        <div class="popup-subtitle">📍 ${escapeHtml(data.location)}, ${escapeHtml(data.country)}</div>
-        ${upcomingSoon ? `<div class="cluster-summary"><span class="summary-item soon">⚡ ${t('popups.techEventCluster.upcomingWithin2Weeks', { count: String(upcomingSoon) })}</span></div>` : ''}
+        <div class="popup-subtitle"> ${escapeHtml(data.location)}, ${escapeHtml(data.country)}</div>
+        ${upcomingSoon ? `<div class="cluster-summary"><span class="summary-item soon"> ${t('popups.techEventCluster.upcomingWithin2Weeks', { count: String(upcomingSoon) })}</span></div>` : ''}
         <ul class="cluster-list">${listItems}</ul>
         ${data.sampled ? `<p class="popup-more">${t('popups.techEventCluster.sampled', { count: String(data.items.length) })}</p>` : ''}
       </div>
@@ -2735,12 +2735,12 @@ ${isFeatureAvailable('wingbitsEnrichment') ? '<div class="wingbits-live-section"
       bulk: 'low',
     };
     const typeIcons: Record<string, string> = {
-      container: '🏭',
-      oil: '🛢️',
-      lng: '🔥',
-      naval: '⚓',
-      mixed: '🚢',
-      bulk: '📦',
+      container: '',
+      oil: '',
+      lng: '',
+      naval: '',
+      mixed: '',
+      bulk: '',
     };
 
     const rankSection = port.rank
@@ -2749,7 +2749,7 @@ ${isFeatureAvailable('wingbitsEnrichment') ? '<div class="wingbits-live-section"
 
     return `
       <div class="popup-header port ${escapeHtml(port.type)}">
-        <span class="popup-icon">${typeIcons[port.type] || '🚢'}</span>
+        <span class="popup-icon">${typeIcons[port.type] || ''}</span>
         <span class="popup-title">${escapeHtml(port.name.toUpperCase())}</span>
         <span class="popup-badge ${typeColors[port.type] || 'normal'}">${typeLabels[port.type] || port.type.toUpperCase()}</span>
         <button class="popup-close" aria-label="Close">×</button>
@@ -2786,7 +2786,7 @@ ${isFeatureAvailable('wingbitsEnrichment') ? '<div class="wingbits-live-section"
 
     return `
       <div class="popup-header spaceport ${port.status}">
-        <span class="popup-icon">🚀</span>
+        <span class="popup-icon"></span>
         <span class="popup-title">${escapeHtml(port.name.toUpperCase())}</span>
         <span class="popup-badge ${statusColors[port.status] || 'normal'}">${statusLabels[port.status] || port.status.toUpperCase()}</span>
         <button class="popup-close" aria-label="Close">×</button>
@@ -2821,7 +2821,7 @@ ${isFeatureAvailable('wingbitsEnrichment') ? '<div class="wingbits-live-section"
     };
 
     // Icon based on mineral type
-    const icon = mine.mineral === 'Lithium' ? '🔋' : mine.mineral === 'Rare Earths' ? '🧲' : '💎';
+    const icon = mine.mineral === 'Lithium' ? '' : mine.mineral === 'Rare Earths' ? '' : '';
 
     return `
       <div class="popup-header mineral ${mine.status}">

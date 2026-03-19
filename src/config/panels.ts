@@ -729,7 +729,7 @@ const COMMODITY_MAP_LAYERS: MapLayers = {
   // Data source layers
   ucdpEvents: false,
   displacement: false,
-  climate: true,         // Climate events disrupt supply chains
+  climate: true, // Climate events disrupt supply chains
   // Tech layers (disabled)
   startupHubs: false,
   cloudRegions: false,

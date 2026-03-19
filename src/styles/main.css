@@ -12088,7 +12088,7 @@ a.prediction-link:hover {
 }
 
 .hotspot-gdelt-header::before {
-  content: '📡';
+  content: '';
   font-size: 12px;
 }
 
@@ -14912,7 +14912,7 @@ a.prediction-link:hover {
 }
 
 .deckgl-layer-toggles .layer-toggle.zoom-hidden::after {
-  content: '🔍+';
+  content: '+';
   position: absolute;
   top: -4px;
   right: 2px;
@@ -14942,7 +14942,7 @@ a.prediction-link:hover {
 }
 
 .deckgl-layer-toggles .layer-toggle input[type="checkbox"]:checked::after {
-  content: '✓';
+  content: '';
   position: absolute;
   top: 50%;
   left: 50%;
@@ -19234,8 +19234,8 @@ body.has-breaking-alert .panels-grid {
 }
 
 @keyframes globe-pulse {
-  0%   { transform: scale(1); opacity: 0.6; }
-  70%  { transform: scale(2.5); opacity: 0; }
+  0% { transform: scale(1); opacity: 0.6; }
+  70% { transform: scale(2.5); opacity: 0; }
   100% { transform: scale(2.5); opacity: 0; }
 }
 

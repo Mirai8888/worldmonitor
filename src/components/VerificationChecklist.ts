@@ -9,7 +9,7 @@ export interface VerificationCheck {
 }
 
 export interface VerificationResult {
-  score: number;  // 0-100
+  score: number; // 0-100
   checks: VerificationCheck[];
   verdict: 'verified' | 'likely' | 'uncertain' | 'unreliable';
   notes: string[];
@@ -17,14 +17,14 @@ export interface VerificationResult {
 
 function getVerificationTemplate(): VerificationCheck[] {
   return [
-    { id: 'recency', label: t('components.verification.checks.recency'), checked: false, icon: '🕐' },
-    { id: 'geolocation', label: t('components.verification.checks.geolocation'), checked: false, icon: '📍' },
-    { id: 'source', label: t('components.verification.checks.source'), checked: false, icon: '📰' },
-    { id: 'crossref', label: t('components.verification.checks.crossref'), checked: false, icon: '🔗' },
-    { id: 'no_ai', label: t('components.verification.checks.noAi'), checked: false, icon: '🤖' },
-    { id: 'no_recrop', label: t('components.verification.checks.noRecrop'), checked: false, icon: '🔄' },
-    { id: 'metadata', label: t('components.verification.checks.metadata'), checked: false, icon: '📋' },
-    { id: 'context', label: t('components.verification.checks.context'), checked: false, icon: '📖' },
+    { id: 'recency', label: t('components.verification.checks.recency'), checked: false, icon: '' },
+    { id: 'geolocation', label: t('components.verification.checks.geolocation'), checked: false, icon: '' },
+    { id: 'source', label: t('components.verification.checks.source'), checked: false, icon: '' },
+    { id: 'crossref', label: t('components.verification.checks.crossref'), checked: false, icon: '' },
+    { id: 'no_ai', label: t('components.verification.checks.noAi'), checked: false, icon: '' },
+    { id: 'no_recrop', label: t('components.verification.checks.noRecrop'), checked: false, icon: '' },
+    { id: 'metadata', label: t('components.verification.checks.metadata'), checked: false, icon: '' },
+    { id: 'context', label: t('components.verification.checks.context'), checked: false, icon: '' },
   ];
 }
 

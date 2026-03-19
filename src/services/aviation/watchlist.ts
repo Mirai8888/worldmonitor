@@ -6,9 +6,9 @@
 const STORAGE_KEY = 'aviation:watchlist:v1';
 
 export interface AviationWatchlist {
-  airports: string[];   // IATA codes e.g. ['IST','LHR']
-  airlines: string[];   // IATA codes e.g. ['TK','LH']
-  routes: string[];     // "ORG-DST" e.g. ['IST-LHR']
+  airports: string[]; // IATA codes e.g. ['IST','LHR']
+  airlines: string[]; // IATA codes e.g. ['TK','LH']
+  routes: string[]; // "ORG-DST" e.g. ['IST-LHR']
 }
 
 const DEFAULT_WATCHLIST: AviationWatchlist = {

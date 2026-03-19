@@ -56,21 +56,21 @@ export class CascadePanel extends Panel {
 
   private getImpactEmoji(level: CascadeImpactLevel): string {
     switch (level) {
-      case 'critical': return '🔴';
-      case 'high': return '🟠';
-      case 'medium': return '🟡';
-      case 'low': return '🟢';
+      case 'critical': return '';
+      case 'high': return '';
+      case 'medium': return '';
+      case 'low': return '';
     }
   }
 
   private getNodeTypeEmoji(type: string): string {
     switch (type) {
-      case 'cable': return '🔌';
-      case 'pipeline': return '🛢️';
-      case 'port': return '⚓';
-      case 'chokepoint': return '🚢';
-      case 'country': return '🏳️';
-      default: return '📍';
+      case 'cable': return '';
+      case 'pipeline': return '';
+      case 'port': return '';
+      case 'chokepoint': return '';
+      case 'country': return '';
+      default: return '';
     }
   }
 
@@ -181,12 +181,12 @@ export class CascadePanel extends Panel {
     const stats = getGraphStats();
     const statsHtml = `
       <div class="cascade-stats">
-        <span>🔌 ${stats.cables}</span>
-        <span>🛢️ ${stats.pipelines}</span>
-        <span>⚓ ${stats.ports}</span>
-        <span>🌊 ${stats.chokepoints}</span>
-        <span>🏳️ ${stats.countries}</span>
-        <span>📊 ${stats.edges} ${t('components.cascade.links')}</span>
+        <span> ${stats.cables}</span>
+        <span> ${stats.pipelines}</span>
+        <span> ${stats.ports}</span>
+        <span> ${stats.chokepoints}</span>
+        <span> ${stats.countries}</span>
+        <span> ${stats.edges} ${t('components.cascade.links')}</span>
       </div>
     `;
 

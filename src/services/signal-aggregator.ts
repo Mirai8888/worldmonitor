@@ -21,11 +21,11 @@ export type SignalType =
   | 'military_vessel'
   | 'protest'
   | 'ais_disruption'
-  | 'satellite_fire'        // NASA FIRMS thermal anomalies
-  | 'radiation_anomaly'     // Radiation readings meaningfully above local baseline
+  | 'satellite_fire' // NASA FIRMS thermal anomalies
+  | 'radiation_anomaly' // Radiation readings meaningfully above local baseline
   | 'temporal_anomaly'
-  | 'sanctions_pressure'      // Baseline deviation alerts
-  | 'active_strike'         // Iran attack / military conflict events
+  | 'sanctions_pressure' // Baseline deviation alerts
+  | 'active_strike' // Iran attack / military conflict events
 
 export interface GeoSignal {
   type: SignalType;

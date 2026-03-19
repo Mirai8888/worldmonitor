@@ -59,7 +59,7 @@ export class IntelligenceFindingsBadge {
     this.badge = document.createElement('button');
     this.badge.className = 'intel-findings-badge';
     this.badge.title = t('components.intelligenceFindings.badgeTitle');
-    this.badge.innerHTML = '<span class="findings-icon">🎯</span><span class="findings-count">0</span>';
+    this.badge.innerHTML = '<span class="findings-icon"></span><span class="findings-count">0</span>';
 
     this.dropdown = document.createElement('div');
     this.dropdown.className = 'intel-findings-dropdown';
@@ -325,11 +325,11 @@ export class IntelligenceFindingsBadge {
     const breakingSettings = getAlertSettings();
     const breakingLabel = t('components.intelligenceFindings.breakingAlerts');
     return `<div class="popup-toggle-row" data-toggle="popup">
-        <span class="popup-toggle-label">🔔 ${escapeHtml(label)}</span>
+        <span class="popup-toggle-label"> ${escapeHtml(label)}</span>
         <span class="popup-toggle-switch${checked ? ' on' : ''}"><span class="popup-toggle-knob"></span></span>
       </div>
       <div class="popup-toggle-row" data-toggle="breaking-alerts">
-        <span class="popup-toggle-label">🚨 ${escapeHtml(breakingLabel)}</span>
+        <span class="popup-toggle-label"> ${escapeHtml(breakingLabel)}</span>
         <span class="popup-toggle-switch${breakingSettings.enabled ? ' on' : ''}"><span class="popup-toggle-knob"></span></span>
       </div>`;
   }
@@ -346,7 +346,7 @@ export class IntelligenceFindingsBadge {
         ${toggleHtml}
         <div class="findings-content">
           <div class="findings-empty">
-            <span class="empty-icon">📡</span>
+            <span class="empty-icon"></span>
             <span class="empty-text">${t('components.intelligenceFindings.scanning')}</span>
           </div>
         </div>
@@ -426,27 +426,27 @@ export class IntelligenceFindingsBadge {
   private getTypeIcon(type: string): string {
     const icons: Record<string, string> = {
       // Correlation signals
-      breaking_surge: '🔥',
-      silent_divergence: '🔇',
-      flow_price_divergence: '📊',
-      explained_market_move: '💡',
-      prediction_leads_news: '🔮',
-      geo_convergence: '🌍',
-      hotspot_escalation: '⚠️',
-      news_leads_markets: '📰',
-      velocity_spike: '📈',
-      keyword_spike: '📊',
-      convergence: '🔀',
-      triangulation: '🔺',
-      flow_drop: '⬇️',
-      sector_cascade: '🌊',
+      breaking_surge: '',
+      silent_divergence: '',
+      flow_price_divergence: '',
+      explained_market_move: '',
+      prediction_leads_news: '',
+      geo_convergence: '',
+      hotspot_escalation: '',
+      news_leads_markets: '',
+      velocity_spike: '',
+      keyword_spike: '',
+      convergence: '',
+      triangulation: '',
+      flow_drop: '⬇',
+      sector_cascade: '',
       // Unified alerts
-      cii_spike: '🔴',
-      cascade: '⚡',
-      radiation: '☢️',
-      composite: '🔗',
+      cii_spike: '',
+      cascade: '',
+      radiation: '',
+      composite: '',
     };
-    return icons[type] || '📌';
+    return icons[type] || '';
   }
 
   private formatTimeAgo(date: Date): string {
@@ -500,7 +500,7 @@ export class IntelligenceFindingsBadge {
     overlay.innerHTML = `
       <div class="findings-modal">
         <div class="findings-modal-header">
-          <span class="findings-modal-title">🎯 ${t('components.intelligenceFindings.all', { count: String(this.findings.length) })}</span>
+          <span class="findings-modal-title"> ${t('components.intelligenceFindings.all', { count: String(this.findings.length) })}</span>
           <button class="findings-modal-close" aria-label="Close">×</button>
         </div>
         <div class="findings-modal-content">

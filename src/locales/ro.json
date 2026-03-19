@@ -807,11 +807,11 @@
       "empty": "Nu există articole recente pentru acest subiect"
     },
     "geoHubs": {
-      "tooltip": "<strong>Huburi de activitate geopolitica</strong><br>Afiseaza regiunile cu cea mai mare activitate de stiri.<br><br><em>Tipuri de huburi:</em><br>• 🏛️ Capitale — Capitale mondiale si centre guvernamentale<br>• ⚔️ Zone de conflict — Zone de conflict active<br>• ⚓ Strategice — Chokepoints si regiuni-cheie<br>• 🏢 Organizatii — ONU, NATO, IAEA etc.<br><br><em>Niveluri de activitate:</em><br>• <span style=\"color: #ff4444\">Ridicat</span> — Stiri de ultima ora sau scor 70+<br>• <span style=\"color: #ff8844\">Crescut</span> — Scor 40-69<br>• <span style=\"color: #888\">Scazut</span> — Scor sub 40<br><br>Apasa pe un hub pentru a mari zona sa.",
+      "tooltip": "<strong>Huburi de activitate geopolitica</strong><br>Afiseaza regiunile cu cea mai mare activitate de stiri.<br><br><em>Tipuri de huburi:</em><br>• Capitale — Capitale mondiale si centre guvernamentale<br>• Zone de conflict — Zone de conflict active<br>• Strategice — Chokepoints si regiuni-cheie<br>• Organizatii — ONU, NATO, IAEA etc.<br><br><em>Niveluri de activitate:</em><br>• <span style=\"color: #ff4444\">Ridicat</span> — Stiri de ultima ora sau scor 70+<br>• <span style=\"color: #ff8844\">Crescut</span> — Scor 40-69<br>• <span style=\"color: #888\">Scazut</span> — Scor sub 40<br><br>Apasa pe un hub pentru a mari zona sa.",
       "noActive": "Nu există centre geopolitice active",
       "story": "articol",
       "stories": "articole",
-      "infoTooltip": "<strong>Huburi de activitate geopolitica</strong><br>Afiseaza regiunile cu cea mai mare activitate de stiri.<br><br><em>Tipuri de huburi:</em><br>• 🏛️ Capitale — Capitale mondiale si centre guvernamentale<br>• ⚔️ Zone de conflict — Zone de conflict active<br>• ⚓ Strategice — Chokepoints si regiuni-cheie<br>• 🏢 Organizatii — ONU, NATO, IAEA etc.<br><br><em>Niveluri de activitate:</em><br>• <span style=\"color: {{highColor}}\">Ridicat</span> — Stiri de ultima ora sau scor 70+<br>• <span style=\"color: {{elevatedColor}}\">Crescut</span> — Scor 40-69<br>• <span style=\"color: {{lowColor}}\">Scazut</span> — Scor sub 40<br><br>Apasa pe un hub pentru a mari zona sa."
+      "infoTooltip": "<strong>Huburi de activitate geopolitica</strong><br>Afiseaza regiunile cu cea mai mare activitate de stiri.<br><br><em>Tipuri de huburi:</em><br>• Capitale — Capitale mondiale si centre guvernamentale<br>• Zone de conflict — Zone de conflict active<br>• Strategice — Chokepoints si regiuni-cheie<br>• Organizatii — ONU, NATO, IAEA etc.<br><br><em>Niveluri de activitate:</em><br>• <span style=\"color: {{highColor}}\">Ridicat</span> — Stiri de ultima ora sau scor 70+<br>• <span style=\"color: {{elevatedColor}}\">Crescut</span> — Scor 40-69<br>• <span style=\"color: {{lowColor}}\">Scazut</span> — Scor sub 40<br><br>Apasa pe un hub pentru a mari zona sa."
     },
     "techHubs": {
       "tooltip": "<strong>Activitate huburi tech</strong><br>Afiseaza huburile tech cu cea mai mare activitate de stiri.<br><br><em>Niveluri de activitate:</em><br>• <span style=\"color: #00ff88\">Ridicat</span> — Stiri de ultima ora sau scor 50+<br>• <span style=\"color: #ffc800\">Crescut</span> — Scor 20-49<br>• <span style=\"color: #888\">Scazut</span> — Scor sub 20<br><br>Apasa pe un hub pentru a mari zona sa.",
@@ -1336,7 +1336,7 @@
       "analyzingCountries": "Se analizează peste 200 de țări...",
       "source": "Sursa: Banca Mondială",
       "updated": "Actualizat: {{date}}",
-      "infoTooltip": "<strong>Global Tech Readiness</strong><br>Scor compozit (0-100) pe baza datelor Băncii Mondiale:<br><br><strong>Valori afișate:</strong><br>🌐 Utilizatori de internet (% din populație)<br>📱 Abonamente mobile (la 100 de persoane)<br>🔬 Cheltuieli de cercetare-dezvoltare (% din C&D)<br>D:</strong> (35%), Internet (30%), bandă largă (20%), mobil (15%)<br><br><em>— = Nu există date recente disponibile</em><br><em>Sursa: Date deschise ale Băncii Mondiale (2019-2024)</em>"
+      "infoTooltip": "<strong>Global Tech Readiness</strong><br>Scor compozit (0-100) pe baza datelor Băncii Mondiale:<br><br><strong>Valori afișate:</strong><br> Utilizatori de internet (% din populație)<br> Abonamente mobile (la 100 de persoane)<br> Cheltuieli de cercetare-dezvoltare (% din C&D)<br>D:</strong> (35%), Internet (30%), bandă largă (20%), mobil (15%)<br><br><em>— = Nu există date recente disponibile</em><br><em>Sursa: Date deschise ale Băncii Mondiale (2019-2024)</em>"
     },
     "populationExposure": {
       "noData": "Nu sunt disponibile date despre expunere",
@@ -1365,7 +1365,7 @@
         "hoursAgo": "acum {{count}}h",
         "daysAgo": "{{count}}d acum"
       },
-      "infoTooltip": "<strong>Aviz de securitate</strong><br>Aviz de călătorie și alerte de securitate de la agențiile guvernamentale de afaceri externe:<br><br><strong>Surse:</strong><br>🇺🇸 Avizele de călătorie ale Departamentului de Stat al SUA<br>🇦🇺 AU DFAT Smartraveller<br>🇬🇧 Sfat de călătorie 🇬🇧 Marea Britanie SafeTravel<br><br><strong>Niveluri:</strong><br>🟥 Nu călătoriți<br>🟧 Reconsiderați călătoriile<br>🟨 Fiți atenți<br>🟩 Precauții normale"
+      "infoTooltip": "<strong>Aviz de securitate</strong><br>Aviz de călătorie și alerte de securitate de la agențiile guvernamentale de afaceri externe:<br><br><strong>Surse:</strong><br> Avizele de călătorie ale Departamentului de Stat al SUA<br> AU DFAT Smartraveller<br> Sfat de călătorie Marea Britanie SafeTravel<br><br><strong>Niveluri:</strong><br> Nu călătoriți<br> Reconsiderați călătoriile<br> Fiți atenți<br> Precauții normale"
     },
     "orefSirens": {
       "checking": "Se verifică alertele sirenelor...",
@@ -2087,7 +2087,7 @@
       "usniIntel": "USNI Intel",
       "usniSource": "Sursa: USNI News Fleet Tracker",
       "approximatePosition": "Poziția aproximativă - bazată pe raportul săptămânal USNI, nu AIS în timp real.",
-      "darkDescription": "⚠ Nava s-a întunecat - semnalul AIS s-a pierdut. Poate indica operațiuni sensibile.",
+      "darkDescription": " Nava s-a întunecat - semnalul AIS s-a pierdut. Poate indica operațiuni sensibile.",
       "recentTracking": "Recent Tracking",
       "lastReport": "LATEST",
       "nearChokepoint": "NEAR CHOKEPOINT",

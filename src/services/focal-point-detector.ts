@@ -27,16 +27,16 @@ const SIGNAL_TYPE_LABELS: Record<SignalType, string> = {
 };
 
 const SIGNAL_TYPE_ICONS: Record<SignalType, string> = {
-  internet_outage: '🌐',
-  military_flight: '✈️',
-  military_vessel: '⚓',
-  protest: '📢',
-  ais_disruption: '🚢',
-  satellite_fire: '🔥',
-  radiation_anomaly: '☢️',
-  temporal_anomaly: '📊',
-  sanctions_pressure: '🚫',
-  active_strike: '💥',
+  internet_outage: '',
+  military_flight: '',
+  military_vessel: '',
+  protest: '',
+  ais_disruption: '',
+  satellite_fire: '',
+  radiation_anomaly: '',
+  temporal_anomaly: '',
+  sanctions_pressure: '',
+  active_strike: '',
 };
 
 class FocalPointDetector {
@@ -379,7 +379,7 @@ class FocalPointDetector {
         const icons = fp.signalTypes.map(t => SIGNAL_TYPE_ICONS[t as SignalType]).join('');
         lines.push(`- ${fp.displayName} [CRITICAL] ${icons}: ${fp.narrative}`);
         if (fp.correlationEvidence.length > 0) {
-          lines.push(`  → ${fp.correlationEvidence[0]}`);
+          lines.push(` → ${fp.correlationEvidence[0]}`);
         }
       }
     }
@@ -476,7 +476,7 @@ class FocalPointDetector {
       }
       const evidence = fp.correlationEvidence[0];
       if (evidence) {
-        lines.push(`  → ${evidence}`);
+        lines.push(` → ${evidence}`);
       }
     }
 

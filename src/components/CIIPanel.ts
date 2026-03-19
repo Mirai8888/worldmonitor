@@ -43,11 +43,11 @@ export class CIIPanel extends Panel {
 
   private getLevelEmoji(level: CountryScore['level']): string {
     switch (level) {
-      case 'critical': return '🔴';
-      case 'high': return '🟠';
-      case 'elevated': return '🟡';
-      case 'normal': return '🟢';
-      case 'low': return '⚪';
+      case 'critical': return '';
+      case 'high': return '';
+      case 'elevated': return '';
+      case 'normal': return '';
+      case 'low': return '';
     }
   }
 

@@ -371,29 +371,29 @@ export class MapComponent {
 
     // Variant-aware layer buttons
     const fullLayers: (keyof MapLayers)[] = [
-      'iranAttacks',                                      // Iran conflict
-      'conflicts', 'hotspots', 'sanctions', 'protests',  // geopolitical
-      'bases', 'nuclear', 'irradiators',                 // military/strategic
-      'military',                                         // military tracking (flights + vessels)
-      'cables', 'pipelines', 'outages', 'datacenters',   // infrastructure
+      'iranAttacks', // Iran conflict
+      'conflicts', 'hotspots', 'sanctions', 'protests', // geopolitical
+      'bases', 'nuclear', 'irradiators', // military/strategic
+      'military', // military tracking (flights + vessels)
+      'cables', 'pipelines', 'outages', 'datacenters', // infrastructure
       // cyberThreats is intentionally hidden on SVG/mobile fallback (DeckGL desktop only)
-      'ais', 'flights', 'gpsJamming',                      // transport/interference
-      'natural', 'weather',                               // natural
-      'economic',                                         // economic
-      'waterways',                                        // labels
-      'ciiChoropleth',                                    // CII heat-map (DeckGL only, shown as disabled toggle)
+      'ais', 'flights', 'gpsJamming', // transport/interference
+      'natural', 'weather', // natural
+      'economic', // economic
+      'waterways', // labels
+      'ciiChoropleth', // CII heat-map (DeckGL only, shown as disabled toggle)
     ];
     const techLayers: (keyof MapLayers)[] = [
-      'cables', 'datacenters', 'outages',                // tech infrastructure
+      'cables', 'datacenters', 'outages', // tech infrastructure
       'startupHubs', 'cloudRegions', 'accelerators', 'techHQs', 'techEvents', // tech ecosystem
-      'natural', 'weather',                               // natural events
-      'economic',                                         // economic/geographic
+      'natural', 'weather', // natural events
+      'economic', // economic/geographic
     ];
     const financeLayers: (keyof MapLayers)[] = [
       'stockExchanges', 'financialCenters', 'centralBanks', 'commodityHubs', // finance ecosystem
-      'cables', 'pipelines', 'outages',                   // infrastructure
-      'sanctions', 'economic', 'waterways',               // geopolitical/economic
-      'natural', 'weather',                               // natural events
+      'cables', 'pipelines', 'outages', // infrastructure
+      'sanctions', 'economic', 'waterways', // geopolitical/economic
+      'natural', 'weather', // natural events
     ];
     const happyLayers: (keyof MapLayers)[] = [
       'positiveEvents', 'kindness', 'happiness', 'speciesRecovery', 'renewableInstallations',
@@ -657,8 +657,8 @@ export class MapComponent {
         <div class="map-legend-item"><span class="legend-dot" style="background:#8b5cf6"></span>${escapeHtml(t('components.deckgl.layers.techHQs').toUpperCase())}</div>
         <div class="map-legend-item"><span class="legend-dot" style="background:#06b6d4"></span>${escapeHtml(t('components.deckgl.layers.startupHubs').toUpperCase())}</div>
         <div class="map-legend-item"><span class="legend-dot" style="background:#f59e0b"></span>${escapeHtml(t('components.deckgl.layers.cloudRegions').toUpperCase())}</div>
-        <div class="map-legend-item"><span class="map-legend-icon" style="color:#a855f7">📅</span>${escapeHtml(t('components.deckgl.layers.techEvents').toUpperCase())}</div>
-        <div class="map-legend-item"><span class="map-legend-icon" style="color:#4ecdc4">💾</span>${escapeHtml(t('components.deckgl.layers.aiDataCenters').toUpperCase())}</div>
+        <div class="map-legend-item"><span class="map-legend-icon" style="color:#a855f7"></span>${escapeHtml(t('components.deckgl.layers.techEvents').toUpperCase())}</div>
+        <div class="map-legend-item"><span class="map-legend-icon" style="color:#4ecdc4"></span>${escapeHtml(t('components.deckgl.layers.aiDataCenters').toUpperCase())}</div>
       `;
     } else if (SITE_VARIANT === 'happy') {
       // Happy variant legend — natural events only
@@ -671,9 +671,9 @@ export class MapComponent {
         <div class="map-legend-item"><span class="legend-dot high"></span>${escapeHtml((t('popups.hotspot.levels.high') ?? 'HIGH').toUpperCase())}</div>
         <div class="map-legend-item"><span class="legend-dot elevated"></span>${escapeHtml((t('popups.hotspot.levels.elevated') ?? 'ELEVATED').toUpperCase())}</div>
         <div class="map-legend-item"><span class="legend-dot low"></span>${escapeHtml((t('popups.monitoring') ?? 'MONITORING').toUpperCase())}</div>
-        <div class="map-legend-item"><span class="map-legend-icon conflict">⚔</span>${escapeHtml(t('modals.search.types.conflict').toUpperCase())}</div>
+        <div class="map-legend-item"><span class="map-legend-icon conflict"></span>${escapeHtml(t('modals.search.types.conflict').toUpperCase())}</div>
         <div class="map-legend-item"><span class="map-legend-icon earthquake">●</span>${escapeHtml(t('modals.search.types.earthquake').toUpperCase())}</div>
-        <div class="map-legend-item"><span class="map-legend-icon apt">⚠</span>APT</div>
+        <div class="map-legend-item"><span class="map-legend-icon apt"></span>APT</div>
       `;
     }
     return legend;
@@ -1137,7 +1137,7 @@ export class MapComponent {
   private getProjection(width: number, height: number): d3.GeoProjection {
     // Equirectangular with cropped latitude range (72°N to 56°S = 128°)
     // Shows Greenland/Iceland while trimming extreme polar regions
-    const LAT_NORTH = 72;  // Includes Greenland (extends to ~83°N but 72 shows most)
+    const LAT_NORTH = 72; // Includes Greenland (extends to ~83°N but 72 shows most)
     const LAT_SOUTH = -56; // Just below Tierra del Fuego
     const LAT_RANGE = LAT_NORTH - LAT_SOUTH; // 128°
     const LAT_CENTER = (LAT_NORTH + LAT_SOUTH) / 2; // 8°N
@@ -1647,7 +1647,7 @@ export class MapComponent {
 
         const icon = document.createElement('div');
         icon.className = 'economic-icon';
-        icon.textContent = center.type === 'exchange' ? '📈' : center.type === 'central-bank' ? '🏛' : '💰';
+        icon.textContent = center.type === 'exchange' ? '' : center.type === 'central-bank' ? '' : '';
         div.appendChild(icon);
         div.title = center.name;
 
@@ -1681,7 +1681,7 @@ export class MapComponent {
 
         const icon = document.createElement('div');
         icon.className = 'weather-icon';
-        icon.textContent = '⚠';
+        icon.textContent = '';
         div.appendChild(icon);
 
         div.addEventListener('click', (e) => {
@@ -1745,7 +1745,7 @@ export class MapComponent {
 
         const icon = document.createElement('div');
         icon.className = 'outage-icon';
-        icon.textContent = '📡';
+        icon.textContent = '';
         div.appendChild(icon);
 
         const label = document.createElement('div');
@@ -1781,7 +1781,7 @@ export class MapComponent {
 
         const icon = document.createElement('div');
         icon.className = 'cable-advisory-icon';
-        icon.textContent = advisory.severity === 'fault' ? '⚡' : '⚠';
+        icon.textContent = advisory.severity === 'fault' ? '' : '';
         div.appendChild(icon);
 
         const label = document.createElement('div');
@@ -1814,7 +1814,7 @@ export class MapComponent {
 
         const icon = document.createElement('div');
         icon.className = 'repair-ship-icon';
-        icon.textContent = '🚢';
+        icon.textContent = '';
         div.appendChild(icon);
 
         const label = document.createElement('div');
@@ -1837,7 +1837,7 @@ export class MapComponent {
       });
     }
 
-    // AI Data Centers (always HTML - 🖥️ icons, filter to ≥10k GPUs)
+    // AI Data Centers (always HTML - icons, filter to ≥10k GPUs)
     const MIN_GPU_COUNT = 10000;
     if (this.state.layers.datacenters) {
       AI_DATA_CENTERS.filter(dc => (dc.chipCount || 0) >= MIN_GPU_COUNT).forEach((dc) => {
@@ -1852,7 +1852,7 @@ export class MapComponent {
 
         const icon = document.createElement('div');
         icon.className = 'datacenter-icon';
-        icon.textContent = '🖥️';
+        icon.textContent = '';
         div.appendChild(icon);
 
         div.addEventListener('click', (e) => {
@@ -1870,7 +1870,7 @@ export class MapComponent {
       });
     }
 
-    // Spaceports (🚀 icon)
+    // Spaceports ( icon)
     if (this.state.layers.spaceports) {
       SPACEPORTS.forEach((port) => {
         const pos = projection([port.lon, port.lat]);
@@ -1883,7 +1883,7 @@ export class MapComponent {
 
         const icon = document.createElement('div');
         icon.className = 'spaceport-icon';
-        icon.textContent = '🚀';
+        icon.textContent = '';
         div.appendChild(icon);
 
         const label = document.createElement('div');
@@ -1906,7 +1906,7 @@ export class MapComponent {
       });
     }
 
-    // Critical Minerals (💎 icon)
+    // Critical Minerals ( icon)
     if (this.state.layers.minerals) {
       CRITICAL_MINERALS.forEach((mine) => {
         const pos = projection([mine.lon, mine.lat]);
@@ -1920,7 +1920,7 @@ export class MapComponent {
         const icon = document.createElement('div');
         icon.className = 'mineral-icon';
         // Select icon based on mineral type
-        icon.textContent = mine.mineral === 'Lithium' ? '🔋' : mine.mineral === 'Rare Earths' ? '🧲' : '💎';
+        icon.textContent = mine.mineral === 'Lithium' ? '' : mine.mineral === 'Rare Earths' ? '' : '';
         div.appendChild(icon);
 
         const label = document.createElement('div');
@@ -1945,7 +1945,7 @@ export class MapComponent {
 
     // === TECH VARIANT LAYERS ===
 
-    // Startup Hubs (🚀 icon by tier)
+    // Startup Hubs ( icon by tier)
     if (this.state.layers.startupHubs) {
       STARTUP_HUBS.forEach((hub) => {
         const pos = projection([hub.lon, hub.lat]);
@@ -1958,7 +1958,7 @@ export class MapComponent {
 
         const icon = document.createElement('div');
         icon.className = 'startup-hub-icon';
-        icon.textContent = hub.tier === 'mega' ? '🦄' : hub.tier === 'major' ? '🚀' : '💡';
+        icon.textContent = hub.tier === 'mega' ? '' : hub.tier === 'major' ? '' : '';
         div.appendChild(icon);
 
         if (this.state.zoom >= 2 || hub.tier === 'mega') {
@@ -1983,7 +1983,7 @@ export class MapComponent {
       });
     }
 
-    // Cloud Regions (☁️ icons by provider)
+    // Cloud Regions ( icons by provider)
     if (this.state.layers.cloudRegions) {
       CLOUD_REGIONS.forEach((region) => {
         const pos = projection([region.lon, region.lat]);
@@ -1997,8 +1997,8 @@ export class MapComponent {
         const icon = document.createElement('div');
         icon.className = 'cloud-region-icon';
         // Provider-specific icons
-        const icons: Record<string, string> = { aws: '🟠', gcp: '🔵', azure: '🟣', cloudflare: '🟡' };
-        icon.textContent = icons[region.provider] || '☁️';
+        const icons: Record<string, string> = { aws: '', gcp: '', azure: '', cloudflare: '' };
+        icon.textContent = icons[region.provider] || '';
         div.appendChild(icon);
 
         if (this.state.zoom >= 3) {
@@ -2023,7 +2023,7 @@ export class MapComponent {
       });
     }
 
-    // Tech HQs (🏢 icons by company type) - with clustering by city
+    // Tech HQs ( icons by company type) - with clustering by city
     if (this.state.layers.techHQs) {
       // Cluster radius depends on zoom - tighter clustering when zoomed out
       const clusterRadius = this.state.zoom >= 4 ? 15 : this.state.zoom >= 3 ? 25 : 40;
@@ -2047,7 +2047,7 @@ export class MapComponent {
           // Show count for clusters
           const unicornCount = cluster.items.filter(h => h.type === 'unicorn').length;
           const faangCount = cluster.items.filter(h => h.type === 'faang').length;
-          icon.textContent = faangCount > 0 ? '🏛️' : unicornCount > 0 ? '🦄' : '🏢';
+          icon.textContent = faangCount > 0 ? '' : unicornCount > 0 ? '' : '';
 
           const badge = document.createElement('div');
           badge.className = 'cluster-badge';
@@ -2056,7 +2056,7 @@ export class MapComponent {
 
           div.title = cluster.items.map(h => h.company).join(', ');
         } else {
-          icon.textContent = primaryItem.type === 'faang' ? '🏛️' : primaryItem.type === 'unicorn' ? '🦄' : '🏢';
+          icon.textContent = primaryItem.type === 'faang' ? '' : primaryItem.type === 'unicorn' ? '' : '';
         }
         div.appendChild(icon);
 
@@ -2093,7 +2093,7 @@ export class MapComponent {
       });
     }
 
-    // Accelerators (🎯 icons)
+    // Accelerators ( icons)
     if (this.state.layers.accelerators) {
       ACCELERATORS.forEach((acc) => {
         const pos = projection([acc.lon, acc.lat]);
@@ -2106,7 +2106,7 @@ export class MapComponent {
 
         const icon = document.createElement('div');
         icon.className = 'accelerator-icon';
-        icon.textContent = acc.type === 'accelerator' ? '🎯' : acc.type === 'incubator' ? '🔬' : '🎨';
+        icon.textContent = acc.type === 'accelerator' ? '' : acc.type === 'incubator' ? '' : '';
         div.appendChild(icon);
 
         if (this.state.zoom >= 3) {
@@ -2131,7 +2131,7 @@ export class MapComponent {
       });
     }
 
-    // Tech Events / Conferences (📅 icons) - with clustering
+    // Tech Events / Conferences ( icons) - with clustering
     if (this.state.layers.techEvents && this.techEvents.length > 0) {
       const mapWidth = this.container.clientWidth;
       const mapHeight = this.container.clientHeight;
@@ -2191,13 +2191,13 @@ export class MapComponent {
       });
     }
 
-    // Stock Exchanges (🏛️ icon by tier)
+    // Stock Exchanges ( icon by tier)
     if (this.state.layers.stockExchanges) {
       STOCK_EXCHANGES.forEach((exchange) => {
         const pos = projection([exchange.lon, exchange.lat]);
         if (!pos || !Number.isFinite(pos[0]) || !Number.isFinite(pos[1])) return;
 
-        const icon = exchange.tier === 'mega' ? '🏛️' : exchange.tier === 'major' ? '📊' : '📈';
+        const icon = exchange.tier === 'mega' ? '' : exchange.tier === 'major' ? '' : '';
         const div = document.createElement('div');
         div.className = `map-marker exchange-marker tier-${exchange.tier}`;
         div.style.left = `${pos[0]}px`;
@@ -2228,13 +2228,13 @@ export class MapComponent {
       });
     }
 
-    // Financial Centers (💰 icon by type)
+    // Financial Centers ( icon by type)
     if (this.state.layers.financialCenters) {
       FINANCIAL_CENTERS.forEach((center) => {
         const pos = projection([center.lon, center.lat]);
         if (!pos || !Number.isFinite(pos[0]) || !Number.isFinite(pos[1])) return;
 
-        const icon = center.type === 'global' ? '💰' : center.type === 'regional' ? '🏦' : '🏝️';
+        const icon = center.type === 'global' ? '' : center.type === 'regional' ? '' : '';
         const div = document.createElement('div');
         div.className = `map-marker financial-center-marker type-${center.type}`;
         div.style.left = `${pos[0]}px`;
@@ -2265,13 +2265,13 @@ export class MapComponent {
       });
     }
 
-    // Central Banks (🏛️ icon by type)
+    // Central Banks ( icon by type)
     if (this.state.layers.centralBanks) {
       CENTRAL_BANKS.forEach((bank) => {
         const pos = projection([bank.lon, bank.lat]);
         if (!pos || !Number.isFinite(pos[0]) || !Number.isFinite(pos[1])) return;
 
-        const icon = bank.type === 'supranational' ? '🌐' : bank.type === 'major' ? '🏛️' : '🏦';
+        const icon = bank.type === 'supranational' ? '' : bank.type === 'major' ? '' : '';
         const div = document.createElement('div');
         div.className = `map-marker central-bank-marker type-${bank.type}`;
         div.style.left = `${pos[0]}px`;
@@ -2302,13 +2302,13 @@ export class MapComponent {
       });
     }
 
-    // Commodity Hubs (⛽ icon by type)
+    // Commodity Hubs ( icon by type)
     if (this.state.layers.commodityHubs) {
       COMMODITY_HUBS.forEach((hub) => {
         const pos = projection([hub.lon, hub.lat]);
         if (!pos || !Number.isFinite(pos[0]) || !Number.isFinite(pos[1])) return;
 
-        const icon = hub.type === 'exchange' ? '📦' : hub.type === 'port' ? '🚢' : '⛽';
+        const icon = hub.type === 'exchange' ? '' : hub.type === 'port' ? '' : '';
         const div = document.createElement('div');
         div.className = `map-marker commodity-hub-marker type-${hub.type}`;
         div.style.left = `${pos[0]}px`;
@@ -2439,7 +2439,7 @@ export class MapComponent {
 
         const icon = document.createElement('div');
         icon.className = 'protest-icon';
-        icon.textContent = hasRiot ? '🔥' : primaryEvent.eventType === 'strike' ? '✊' : '📢';
+        icon.textContent = hasRiot ? '' : primaryEvent.eventType === 'strike' ? '' : '';
         div.appendChild(icon);
 
         if (isCluster) {
@@ -2479,7 +2479,7 @@ export class MapComponent {
       });
     }
 
-    // Flight Delays (delay severity colors + ✈️ icons)
+    // Flight Delays (delay severity colors + icons)
     if (this.state.layers.flights) {
       this.flightDelays.forEach((delay) => {
         const pos = projection([delay.lon, delay.lat]);
@@ -2492,7 +2492,7 @@ export class MapComponent {
 
         const icon = document.createElement('div');
         icon.className = 'flight-delay-icon';
-        icon.textContent = delay.delayType === 'ground_stop' ? '🛑' : delay.severity === 'severe' ? '✈️' : '🛫';
+        icon.textContent = delay.delayType === 'ground_stop' ? '' : delay.severity === 'severe' ? '' : '';
         div.appendChild(icon);
 
         if (this.state.zoom >= 3) {
@@ -2676,7 +2676,7 @@ export class MapComponent {
         if (vessel.isDark) {
           const darkIndicator = document.createElement('div');
           darkIndicator.className = 'dark-vessel-indicator';
-          darkIndicator.textContent = '⚠️';
+          darkIndicator.textContent = '';
           darkIndicator.title = 'AIS Signal Lost';
           div.appendChild(darkIndicator);
         }
@@ -3079,7 +3079,7 @@ export class MapComponent {
 
       const icon = document.createElement('div');
       icon.className = 'ais-disruption-icon';
-      icon.textContent = event.type === 'gap_spike' ? '🛰️' : '🚢';
+      icon.textContent = event.type === 'gap_spike' ? '' : '';
       div.appendChild(icon);
 
       const label = document.createElement('div');
@@ -3111,10 +3111,10 @@ export class MapComponent {
       if (!pos) return;
 
       const intensity = Math.min(Math.max(zone.intensity, 0.15), 1);
-      const radius = 4 + intensity * 8;  // Small dots (4-12px)
+      const radius = 4 + intensity * 8; // Small dots (4-12px)
       const isCongested = zone.deltaPct >= 15;
       const color = isCongested ? getCSSColor('--semantic-elevated') : getCSSColor('--semantic-info');
-      const fillOpacity = 0.15 + intensity * 0.25;  // More visible individual dots
+      const fillOpacity = 0.15 + intensity * 0.25; // More visible individual dots
 
       densityGroup
         .append('circle')
@@ -3140,7 +3140,7 @@ export class MapComponent {
 
       const icon = document.createElement('div');
       icon.className = 'port-icon';
-      icon.textContent = port.type === 'naval' ? '⚓' : port.type === 'oil' || port.type === 'lng' ? '🛢️' : '🏭';
+      icon.textContent = port.type === 'naval' ? '' : port.type === 'oil' || port.type === 'lng' ? '' : '';
       div.appendChild(icon);
 
       const label = document.createElement('div');
@@ -3173,7 +3173,7 @@ export class MapComponent {
       div.style.left = `${pos[0]}px`;
       div.style.top = `${pos[1]}px`;
       div.innerHTML = `
-        <div class="apt-icon">⚠</div>
+        <div class="apt-icon"></div>
         <div class="apt-label">${escapeHtml(apt.name)}</div>
       `;
 

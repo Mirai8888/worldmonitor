@@ -524,12 +524,12 @@ if (!('__TAURI_INTERNALS__' in window) && !('__TAURI__' in window) && 'serviceWo
 // let alreadyNuked = false;
 // try { alreadyNuked = !!localStorage.getItem(nukeKey); } catch {}
 // if (!alreadyNuked) {
-//   try { localStorage.setItem(nukeKey, '1'); } catch {}
-//   navigator.serviceWorker.getRegistrations().then(async (regs) => {
-//     await Promise.all(regs.map(r => r.unregister()));
-//     const keys = await caches.keys();
-//     await Promise.all(keys.map(k => caches.delete(k)));
-//     console.log('[PWA] Nuked stale service workers and caches');
-//     window.location.reload();
-//   });
+// try { localStorage.setItem(nukeKey, '1'); } catch {}
+// navigator.serviceWorker.getRegistrations().then(async (regs) => {
+// await Promise.all(regs.map(r => r.unregister()));
+// const keys = await caches.keys();
+// await Promise.all(keys.map(k => caches.delete(k)));
+// console.log('[PWA] Nuked stale service workers and caches');
+// window.location.reload();
+// });
 // }

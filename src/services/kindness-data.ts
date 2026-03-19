@@ -8,7 +8,7 @@ export interface KindnessPoint {
   lon: number;
   name: string;
   description: string;
-  intensity: number;      // 0-1, higher = more prominent on map
+  intensity: number; // 0-1, higher = more prominent on map
   type: 'baseline' | 'real';
   timestamp: number;
 }

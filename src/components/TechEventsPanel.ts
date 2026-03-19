@@ -105,8 +105,8 @@ export class TechEventsPanel extends Panel {
           ),
         ),
         h('div', { className: 'tech-events-stats' },
-          h('span', { className: 'stat' }, `📅 ${t('components.techEvents.conferencesCount', { count: String(upcomingConferences.length) })}`),
-          h('span', { className: 'stat' }, `📍 ${t('components.techEvents.onMap', { count: String(mappableCount) })}`),
+          h('span', { className: 'stat' }, ` ${t('components.techEvents.conferencesCount', { count: String(upcomingConferences.length) })}`),
+          h('span', { className: 'stat' }, ` ${t('components.techEvents.onMap', { count: String(mappableCount) })}`),
           h('a', { href: 'https://www.techmeme.com/events', target: '_blank', rel: 'noopener', className: 'source-link' }, t('components.techEvents.techmemeEvents')),
         ),
         h('div', { className: 'tech-events-list' },
@@ -158,10 +158,10 @@ export class TechEventsPanel extends Panel {
       : '';
 
     const typeIcons: Record<string, string> = {
-      conference: '🎤',
-      earnings: '📊',
-      ipo: '🔔',
-      other: '📌',
+      conference: '',
+      earnings: '',
+      ipo: '',
+      other: '',
     };
 
     const typeClasses: Record<string, string> = {
@@ -190,7 +190,7 @@ export class TechEventsPanel extends Panel {
       ),
       h('div', { className: 'event-content' },
         h('div', { className: 'event-header' },
-          h('span', { className: 'event-icon' }, typeIcons[event.type] ?? '📌'),
+          h('span', { className: 'event-icon' }, typeIcons[event.type] ?? ''),
           h('span', { className: 'event-title' }, event.title),
           safeEventUrl
             ? h('a', { href: safeEventUrl, target: '_blank', rel: 'noopener', className: 'event-url', title: t('components.techEvents.moreInfo') }, '↗')
@@ -232,7 +232,7 @@ export class TechEventsPanel extends Panel {
                 e.preventDefault();
                 this.panToLocation(event.coords!.lat, event.coords!.lng);
               },
-            }, '📍')
+            }, '')
             : false,
         ),
       ),

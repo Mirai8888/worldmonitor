@@ -164,7 +164,7 @@ export class CountryBriefPage implements CountryBriefPanel {
   }
 
   private countryFlag(code: string): string {
-    return toFlagEmoji(code, '🌍');
+    return toFlagEmoji(code, '');
   }
 
   private levelColor(level: string): string {
@@ -214,10 +214,10 @@ export class CountryBriefPage implements CountryBriefPanel {
 
   private componentBars(components: CountryScore['components']): string {
     const items = [
-      { label: t('modals.countryBrief.components.unrest'), value: components.unrest, icon: '📢' },
-      { label: t('modals.countryBrief.components.conflict'), value: components.conflict, icon: '⚔' },
-      { label: t('modals.countryBrief.components.security'), value: components.security, icon: '🛡️' },
-      { label: t('modals.countryBrief.components.information'), value: components.information, icon: '📡' },
+      { label: t('modals.countryBrief.components.unrest'), value: components.unrest, icon: '' },
+      { label: t('modals.countryBrief.components.conflict'), value: components.conflict, icon: '' },
+      { label: t('modals.countryBrief.components.security'), value: components.security, icon: '' },
+      { label: t('modals.countryBrief.components.information'), value: components.information, icon: '' },
     ];
     return items.map(({ label, value, icon }) => {
       const pct = Math.min(100, Math.max(0, value));
@@ -234,25 +234,25 @@ export class CountryBriefPage implements CountryBriefPanel {
 
   private signalChips(signals: CountryBriefSignals): string {
     const chips: string[] = [];
-    if (signals.criticalNews > 0) chips.push(`<span class="signal-chip conflict">🚨 ${signals.criticalNews} Critical News</span>`);
-    if (signals.protests > 0) chips.push(`<span class="signal-chip protest">📢 ${signals.protests} ${t('modals.countryBrief.signals.protests')}</span>`);
-    if (signals.militaryFlights > 0) chips.push(`<span class="signal-chip military">✈️ ${signals.militaryFlights} ${t('modals.countryBrief.signals.militaryAir')}</span>`);
-    if (signals.militaryVessels > 0) chips.push(`<span class="signal-chip military">⚓ ${signals.militaryVessels} ${t('modals.countryBrief.signals.militarySea')}</span>`);
-    if (signals.outages > 0) chips.push(`<span class="signal-chip outage">🌐 ${signals.outages} ${t('modals.countryBrief.signals.outages')}</span>`);
-    if (signals.aisDisruptions > 0) chips.push(`<span class="signal-chip outage">🚢 ${signals.aisDisruptions} AIS Disruptions</span>`);
-    if (signals.satelliteFires > 0) chips.push(`<span class="signal-chip climate">🔥 ${signals.satelliteFires} Satellite Fires</span>`);
-    if (signals.radiationAnomalies > 0) chips.push(`<span class="signal-chip outage">☢️ ${signals.radiationAnomalies} Radiation Anomalies</span>`);
-    if (signals.temporalAnomalies > 0) chips.push(`<span class="signal-chip outage">⏱️ ${signals.temporalAnomalies} Temporal Anomalies</span>`);
-    if (signals.cyberThreats > 0) chips.push(`<span class="signal-chip conflict">🛡️ ${signals.cyberThreats} Cyber Threats</span>`);
-    if (signals.earthquakes > 0) chips.push(`<span class="signal-chip quake">🌍 ${signals.earthquakes} ${t('modals.countryBrief.signals.earthquakes')}</span>`);
+    if (signals.criticalNews > 0) chips.push(`<span class="signal-chip conflict"> ${signals.criticalNews} Critical News</span>`);
+    if (signals.protests > 0) chips.push(`<span class="signal-chip protest"> ${signals.protests} ${t('modals.countryBrief.signals.protests')}</span>`);
+    if (signals.militaryFlights > 0) chips.push(`<span class="signal-chip military"> ${signals.militaryFlights} ${t('modals.countryBrief.signals.militaryAir')}</span>`);
+    if (signals.militaryVessels > 0) chips.push(`<span class="signal-chip military"> ${signals.militaryVessels} ${t('modals.countryBrief.signals.militarySea')}</span>`);
+    if (signals.outages > 0) chips.push(`<span class="signal-chip outage"> ${signals.outages} ${t('modals.countryBrief.signals.outages')}</span>`);
+    if (signals.aisDisruptions > 0) chips.push(`<span class="signal-chip outage"> ${signals.aisDisruptions} AIS Disruptions</span>`);
+    if (signals.satelliteFires > 0) chips.push(`<span class="signal-chip climate"> ${signals.satelliteFires} Satellite Fires</span>`);
+    if (signals.radiationAnomalies > 0) chips.push(`<span class="signal-chip outage"> ${signals.radiationAnomalies} Radiation Anomalies</span>`);
+    if (signals.temporalAnomalies > 0) chips.push(`<span class="signal-chip outage"> ${signals.temporalAnomalies} Temporal Anomalies</span>`);
+    if (signals.cyberThreats > 0) chips.push(`<span class="signal-chip conflict"> ${signals.cyberThreats} Cyber Threats</span>`);
+    if (signals.earthquakes > 0) chips.push(`<span class="signal-chip quake"> ${signals.earthquakes} ${t('modals.countryBrief.signals.earthquakes')}</span>`);
     if (signals.displacementOutflow > 0) {
       const fmt = signals.displacementOutflow >= 1_000_000
         ? `${(signals.displacementOutflow / 1_000_000).toFixed(1)}M`
         : `${(signals.displacementOutflow / 1000).toFixed(0)}K`;
-      chips.push(`<span class="signal-chip displacement">🌊 ${fmt} ${t('modals.countryBrief.signals.displaced')}</span>`);
+      chips.push(`<span class="signal-chip displacement"> ${fmt} ${t('modals.countryBrief.signals.displaced')}</span>`);
     }
-    if (signals.climateStress > 0) chips.push(`<span class="signal-chip climate">🌡️ ${t('modals.countryBrief.signals.climate')}</span>`);
-    if (signals.conflictEvents > 0) chips.push(`<span class="signal-chip conflict">⚔️ ${signals.conflictEvents} ${t('modals.countryBrief.signals.conflictEvents')}</span>`);
+    if (signals.climateStress > 0) chips.push(`<span class="signal-chip climate"> ${t('modals.countryBrief.signals.climate')}</span>`);
+    if (signals.conflictEvents > 0) chips.push(`<span class="signal-chip conflict"> ${signals.conflictEvents} ${t('modals.countryBrief.signals.conflictEvents')}</span>`);
     if (signals.activeStrikes > 0) chips.push(`<span class="signal-chip conflict">\u{1F4A5} ${signals.activeStrikes} ${t('modals.countryBrief.signals.activeStrikes')}</span>`);
     if (signals.travelAdvisories > 0 && signals.travelAdvisoryMaxLevel) {
       const advisoryClass = signals.travelAdvisoryMaxLevel === 'do-not-travel' ? 'conflict'
@@ -267,7 +267,7 @@ export class CountryBriefPage implements CountryBriefPanel {
     if (signals.orefHistory24h > 0) chips.push(`<span class="signal-chip conflict">\u{1F553} ${signals.orefHistory24h} Sirens / 24h</span>`);
     if (signals.aviationDisruptions > 0) chips.push(`<span class="signal-chip outage">\u{1F6AB} ${signals.aviationDisruptions} ${t('modals.countryBrief.signals.aviationDisruptions')}</span>`);
     if (signals.gpsJammingHexes > 0) chips.push(`<span class="signal-chip outage">\u{1F4E1} ${signals.gpsJammingHexes} ${t('modals.countryBrief.signals.gpsJammingZones')}</span>`);
-    chips.push(`<span class="signal-chip stock-loading">📈 ${t('modals.countryBrief.loadingIndex')}</span>`);
+    chips.push(`<span class="signal-chip stock-loading"> ${t('modals.countryBrief.loadingIndex')}</span>`);
     return chips.join('');
   }
 
@@ -285,7 +285,7 @@ export class CountryBriefPage implements CountryBriefPanel {
       <div class="country-brief-page">
         <div class="cb-header">
           <div class="cb-header-left">
-            <span class="cb-flag">🌍</span>
+            <span class="cb-flag"></span>
             <span class="cb-country-name">${t('modals.countryBrief.identifying')}</span>
           </div>
           <div class="cb-header-right">
@@ -424,7 +424,7 @@ export class CountryBriefPage implements CountryBriefPanel {
                 <section class="cb-section cb-risk-section">
                   <h3 class="cb-section-title">${t('modals.countryBrief.instabilityIndex')}</h3>
                   <div class="cb-not-tracked">
-                    <span class="cb-not-tracked-icon">📊</span>
+                    <span class="cb-not-tracked-icon"></span>
                     <span>${t('modals.countryBrief.notTracked', { country: escapeHtml(country) })}</span>
                   </div>
                 </section>`}
@@ -500,7 +500,7 @@ export class CountryBriefPage implements CountryBriefPanel {
     section.innerHTML = `
       <div class="cb-brief-text">${formatted}</div>
       <div class="cb-brief-footer">
-        ${data.cached ? `<span class="intel-cached">📋 ${t('modals.countryBrief.cached')}</span>` : `<span class="intel-fresh">✨ ${t('modals.countryBrief.fresh')}</span>`}
+        ${data.cached ? `<span class="intel-cached"> ${t('modals.countryBrief.cached')}</span>` : `<span class="intel-fresh"> ${t('modals.countryBrief.fresh')}</span>`}
         <span class="intel-timestamp">${data.generatedAt ? new Date(data.generatedAt).toLocaleTimeString() : ''}</span>
       </div>`;
   }
@@ -544,7 +544,7 @@ export class CountryBriefPage implements CountryBriefPanel {
     const pct = parseFloat(data.weekChangePercent);
     const sign = pct >= 0 ? '+' : '';
     const cls = pct >= 0 ? 'stock-up' : 'stock-down';
-    const arrow = pct >= 0 ? '📈' : '📉';
+    const arrow = pct >= 0 ? '' : '';
     el.className = `signal-chip stock ${cls}`;
     el.innerHTML = `${arrow} ${escapeHtml(data.indexName)}: ${sign}${data.weekChangePercent}% (1W)`;
   }

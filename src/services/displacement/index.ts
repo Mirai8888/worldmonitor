@@ -14,8 +14,8 @@ export interface DisplacementFlow {
   originName: string;
   asylumCode: string;
   asylumName: string;
-  refugees: number;        // number, NOT string
-  originLat?: number;      // flat, NOT GeoCoordinates
+  refugees: number; // number, NOT string
+  originLat?: number; // flat, NOT GeoCoordinates
   originLon?: number;
   asylumLat?: number;
   asylumLon?: number;
@@ -129,9 +129,9 @@ const breaker = createCircuitBreaker<UnhcrSummary>({
 export async function fetchUnhcrPopulation(): Promise<UnhcrFetchResult> {
   const data = await breaker.execute(async () => {
     const response = await client.getDisplacementSummary({
-      year: 0,          // 0 = handler uses year fallback
-      countryLimit: 0,  // 0 = all countries
-      flowLimit: 50,    // top 50 flows (matching legacy)
+      year: 0, // 0 = handler uses year fallback
+      countryLimit: 0, // 0 = all countries
+      flowLimit: 50, // top 50 flows (matching legacy)
     });
     return toDisplaySummary(response);
   }, emptyResult);

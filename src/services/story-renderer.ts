@@ -198,10 +198,10 @@ export async function renderStoryToCanvas(data: StoryData): Promise<HTMLCanvasEl
 
     y += 48;
     const sigItems = [
-      { icon: '📢', label: 'Protests', count: data.signals.protests, color: '#f97316' },
-      { icon: '✈', label: 'Military Aircraft', count: data.signals.militaryFlights, color: '#ef4444' },
-      { icon: '⚓', label: 'Military Vessels', count: data.signals.militaryVessels, color: '#3b82f6' },
-      { icon: '🌐', label: 'Internet Outages', count: data.signals.outages, color: '#8b5cf6' },
+      { icon: '', label: 'Protests', count: data.signals.protests, color: '#f97316' },
+      { icon: '', label: 'Military Aircraft', count: data.signals.militaryFlights, color: '#ef4444' },
+      { icon: '', label: 'Military Vessels', count: data.signals.militaryVessels, color: '#3b82f6' },
+      { icon: '', label: 'Internet Outages', count: data.signals.outages, color: '#8b5cf6' },
     ].filter(s => s.count > 0);
 
     const colW = (RIGHT - PAD) / Math.min(sigItems.length, 4);
@@ -239,7 +239,7 @@ export async function renderStoryToCanvas(data: StoryData): Promise<HTMLCanvasEl
       y += 36;
       ctx.fillStyle = '#999';
       ctx.font = '400 22px Inter, system-ui, sans-serif';
-      ctx.fillText(data.convergence.signalTypes.map(humanizeSignalType).join('  ·  '), PAD, y);
+      ctx.fillText(data.convergence.signalTypes.map(humanizeSignalType).join(' · '), PAD, y);
     }
 
     for (const desc of data.convergence.regionalDescriptions.slice(0, 2)) {
@@ -299,7 +299,7 @@ export async function renderStoryToCanvas(data: StoryData): Promise<HTMLCanvasEl
     ctx.fillStyle = '#555';
     ctx.font = '400 22px Inter, system-ui, sans-serif';
     let statsText = `${totalSources} sources across ${data.news.length} stories`;
-    if (alertCount > 0) statsText += `  ·  ${alertCount} high-priority alerts`;
+    if (alertCount > 0) statsText += ` · ${alertCount} high-priority alerts`;
     ctx.fillText(statsText, PAD, y);
   }
 
@@ -331,9 +331,9 @@ export async function renderStoryToCanvas(data: StoryData): Promise<HTMLCanvasEl
     y += 48;
     ctx.font = '400 28px Inter, system-ui, sans-serif';
     ctx.fillStyle = '#bbb';
-    ctx.fillText(`✈ ${data.theater.totalAircraft} aircraft`, PAD, y);
-    const acW = ctx.measureText(`✈ ${data.theater.totalAircraft} aircraft`).width;
-    ctx.fillText(`⚓ ${data.theater.totalVessels} vessels`, PAD + acW + 40, y);
+    ctx.fillText(` ${data.theater.totalAircraft} aircraft`, PAD, y);
+    const acW = ctx.measureText(` ${data.theater.totalAircraft} aircraft`).width;
+    ctx.fillText(` ${data.theater.totalVessels} vessels`, PAD + acW + 40, y);
 
     if (data.theater.fighters || data.theater.tankers || data.theater.awacs) {
       y += 40;
@@ -343,14 +343,14 @@ export async function renderStoryToCanvas(data: StoryData): Promise<HTMLCanvasEl
       if (data.theater.fighters) parts.push(`Fighters: ${data.theater.fighters}`);
       if (data.theater.tankers) parts.push(`Tankers: ${data.theater.tankers}`);
       if (data.theater.awacs) parts.push(`AWACS: ${data.theater.awacs}`);
-      ctx.fillText(parts.join('   ·   '), PAD, y);
+      ctx.fillText(parts.join(' · '), PAD, y);
     }
 
     if (data.theater.strikeCapable) {
       y += 40;
       ctx.fillStyle = '#ef4444';
       ctx.font = '700 24px Inter, system-ui, sans-serif';
-      ctx.fillText('⚠ STRIKE CAPABLE', PAD, y);
+      ctx.fillText(' STRIKE CAPABLE', PAD, y);
     }
   }
 
@@ -417,7 +417,7 @@ export async function renderStoryToCanvas(data: StoryData): Promise<HTMLCanvasEl
       y += 6;
       ctx.fillStyle = '#888';
       ctx.font = '400 24px Inter, system-ui, sans-serif';
-      ctx.fillText(data.threats.categories.map(c => c.charAt(0).toUpperCase() + c.slice(1)).join('  ·  '), PAD, y);
+      ctx.fillText(data.threats.categories.map(c => c.charAt(0).toUpperCase() + c.slice(1)).join(' · '), PAD, y);
     }
   }
 

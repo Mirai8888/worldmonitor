@@ -141,7 +141,7 @@ const emptyResult: GivingSummary = {
 const breaker = createCircuitBreaker<GivingSummary>({
   name: 'Global Giving',
   cacheTtlMs: 30 * 60 * 1000, // 30 min -- data is mostly static baselines
-  persistCache: true,          // survive page reloads
+  persistCache: true, // survive page reloads
 });
 
 // In-memory cache + request deduplication

@@ -6,7 +6,7 @@ import { getHydratedData } from '@/services/bootstrap';
 
 export interface PredictionMarket {
   title: string;
-  yesPrice: number;     // 0-100 scale (legacy compat)
+  yesPrice: number; // 0-100 scale (legacy compat)
   volume?: number;
   url?: string;
   endDate?: string;

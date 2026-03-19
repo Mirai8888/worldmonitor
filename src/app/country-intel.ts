@@ -355,17 +355,17 @@ export class CountryIntelManager implements AppModule {
           if (signals.militaryFlights > 0) lines.push(t('countryBrief.fallback.aircraftTracked', { count: String(signals.militaryFlights) }));
           if (signals.militaryVessels > 0) lines.push(t('countryBrief.fallback.vesselsTracked', { count: String(signals.militaryVessels) }));
           if (signals.activeStrikes > 0) lines.push(t('countryBrief.fallback.activeStrikes', { count: String(signals.activeStrikes) }));
-          if (signals.travelAdvisoryMaxLevel === 'do-not-travel') lines.push(`⚠️ Travel advisory: Do Not Travel (${signals.travelAdvisories} source${signals.travelAdvisories > 1 ? 's' : ''})`);
-          else if (signals.travelAdvisoryMaxLevel === 'reconsider') lines.push(`⚠️ Travel advisory: Reconsider Travel (${signals.travelAdvisories} source${signals.travelAdvisories > 1 ? 's' : ''})`);
+          if (signals.travelAdvisoryMaxLevel === 'do-not-travel') lines.push(` Travel advisory: Do Not Travel (${signals.travelAdvisories} source${signals.travelAdvisories > 1 ? 's' : ''})`);
+          else if (signals.travelAdvisoryMaxLevel === 'reconsider') lines.push(` Travel advisory: Reconsider Travel (${signals.travelAdvisories} source${signals.travelAdvisories > 1 ? 's' : ''})`);
           if (signals.outages > 0) lines.push(t('countryBrief.fallback.internetOutages', { count: String(signals.outages) }));
-          if (signals.criticalNews > 0) lines.push(`🚨 Critical headlines in scope: ${signals.criticalNews}`);
-          if (signals.cyberThreats > 0) lines.push(`🛡️ Cyber threat indicators: ${signals.cyberThreats}`);
-          if (signals.aisDisruptions > 0) lines.push(`🚢 Maritime AIS disruptions: ${signals.aisDisruptions}`);
-          if (signals.satelliteFires > 0) lines.push(`🔥 Satellite fire detections: ${signals.satelliteFires}`);
-          if (signals.radiationAnomalies > 0) lines.push(`☢️ Radiation anomalies: ${signals.radiationAnomalies}`);
-          if (signals.temporalAnomalies > 0) lines.push(`⏱️ Temporal anomaly alerts: ${signals.temporalAnomalies}`);
+          if (signals.criticalNews > 0) lines.push(` Critical headlines in scope: ${signals.criticalNews}`);
+          if (signals.cyberThreats > 0) lines.push(` Cyber threat indicators: ${signals.cyberThreats}`);
+          if (signals.aisDisruptions > 0) lines.push(` Maritime AIS disruptions: ${signals.aisDisruptions}`);
+          if (signals.satelliteFires > 0) lines.push(` Satellite fire detections: ${signals.satelliteFires}`);
+          if (signals.radiationAnomalies > 0) lines.push(` Radiation anomalies: ${signals.radiationAnomalies}`);
+          if (signals.temporalAnomalies > 0) lines.push(` Temporal anomaly alerts: ${signals.temporalAnomalies}`);
           if (signals.earthquakes > 0) lines.push(t('countryBrief.fallback.recentEarthquakes', { count: String(signals.earthquakes) }));
-          if (signals.orefHistory24h > 0) lines.push(`🚨 Sirens in past 24h: ${signals.orefHistory24h}`);
+          if (signals.orefHistory24h > 0) lines.push(` Sirens in past 24h: ${signals.orefHistory24h}`);
           if (context.stockIndex) lines.push(t('countryBrief.fallback.stockIndex', { value: context.stockIndex }));
           if (lines.length > 0) {
             this.ctx.countryBriefPage?.updateBrief({ brief: lines.join('\n'), country, code, fallback: true });
@@ -1006,6 +1006,6 @@ export class CountryIntelManager implements AppModule {
   }
 
   static toFlagEmoji(code: string): string {
-    return toFlagEmoji(code, '🏳️');
+    return toFlagEmoji(code, '');
   }
 }

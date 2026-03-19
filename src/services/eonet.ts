@@ -9,23 +9,23 @@ import { createCircuitBreaker } from '@/utils';
 import { getHydratedData } from '@/services/bootstrap';
 
 const CATEGORY_ICONS: Record<NaturalEventCategory, string> = {
-  severeStorms: '🌀',
-  wildfires: '🔥',
-  volcanoes: '🌋',
-  earthquakes: '🔴',
-  floods: '🌊',
-  landslides: '⛰️',
-  drought: '☀️',
-  dustHaze: '🌫️',
-  snow: '❄️',
-  tempExtremes: '🌡️',
-  seaLakeIce: '🧊',
-  waterColor: '🦠',
-  manmade: '⚠️',
+  severeStorms: '',
+  wildfires: '',
+  volcanoes: '',
+  earthquakes: '',
+  floods: '',
+  landslides: '',
+  drought: '',
+  dustHaze: '',
+  snow: '',
+  tempExtremes: '',
+  seaLakeIce: '',
+  waterColor: '',
+  manmade: '',
 };
 
 export function getNaturalEventIcon(category: NaturalEventCategory): string {
-  return CATEGORY_ICONS[category] || '⚠️';
+  return CATEGORY_ICONS[category] || '';
 }
 
 function normalizeNaturalCategory(category: string | undefined): NaturalEventCategory {

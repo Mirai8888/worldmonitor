@@ -30,7 +30,7 @@ export interface SummarizationResult {
 export type ProgressCallback = (step: number, total: number, message: string) => void;
 
 export interface SummarizeOptions {
-  skipCloudProviders?: boolean;  // true = skip Ollama/Groq/OpenRouter, go straight to browser T5
+  skipCloudProviders?: boolean; // true = skip Ollama/Groq/OpenRouter, go straight to browser T5
   skipBrowserFallback?: boolean; // true = skip browser T5 fallback
 }
 
@@ -57,9 +57,9 @@ interface ApiProviderDef {
 }
 
 const API_PROVIDERS: ApiProviderDef[] = [
-  { featureId: 'aiOllama',      provider: 'ollama',     label: 'Ollama' },
-  { featureId: 'aiGroq',        provider: 'groq',       label: 'Groq AI' },
-  { featureId: 'aiOpenRouter',  provider: 'openrouter', label: 'OpenRouter' },
+  { featureId: 'aiOllama', provider: 'ollama', label: 'Ollama' },
+  { featureId: 'aiGroq', provider: 'groq', label: 'Groq AI' },
+  { featureId: 'aiOpenRouter', provider: 'openrouter', label: 'OpenRouter' },
 ];
 
 let lastAttemptedProvider = 'none';

@@ -17,17 +17,17 @@ import { toApiUrl } from '@/services/runtime';
 // ---- Types ----
 
 export interface RegionRenewableData {
-  code: string;       // World Bank region code (e.g., "1W", "EAS")
-  name: string;       // Human-readable name (e.g., "World", "East Asia & Pacific")
-  percentage: number;  // Latest renewable electricity % value
-  year: number;       // Year of latest data point
+  code: string; // World Bank region code (e.g., "1W", "EAS")
+  name: string; // Human-readable name (e.g., "World", "East Asia & Pacific")
+  percentage: number; // Latest renewable electricity % value
+  year: number; // Year of latest data point
 }
 
 export interface RenewableEnergyData {
-  globalPercentage: number;          // Latest global renewable electricity %
-  globalYear: number;                // Year of latest global data
-  historicalData: Array<{ year: number; value: number }>;  // Global time-series
-  regions: RegionRenewableData[];    // Regional breakdown
+  globalPercentage: number; // Latest global renewable electricity %
+  globalYear: number; // Year of latest global data
+  historicalData: Array<{ year: number; value: number }>; // Global time-series
+  regions: RegionRenewableData[]; // Regional breakdown
 }
 
 // ---- Default / Empty ----
@@ -108,8 +108,8 @@ export interface CapacityDataPoint {
 }
 
 export interface CapacitySeries {
-  source: string;   // 'SUN', 'WND', 'COL'
-  name: string;     // 'Solar', 'Wind', 'Coal'
+  source: string; // 'SUN', 'WND', 'COL'
+  name: string; // 'Solar', 'Wind', 'Coal'
   data: CapacityDataPoint[];
 }
 

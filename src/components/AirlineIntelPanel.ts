@@ -58,8 +58,8 @@ const TABS = ['ops', 'flights', 'airlines', 'tracking', 'news', 'prices'] as con
 type Tab = typeof TABS[number];
 
 const TAB_LABELS: Record<Tab, string> = {
-    ops: '🛫 Ops', flights: '✈️ Flights', airlines: '🏢 Airlines',
-    tracking: '📡 Track', news: '📰 News', prices: '💸 Prices',
+    ops: ' Ops', flights: ' Flights', airlines: ' Airlines',
+    tracking: ' Track', news: ' News', prices: ' Prices',
 };
 
 // ---- Panel class ----
@@ -252,7 +252,7 @@ export class AirlineIntelPanel extends Panel {
         <div class="ops-delay">${s.avgDelayMinutes > 0 ? `+${s.avgDelayMinutes}m` : '—'}</div>
         <div class="ops-cancel">${s.cancellationRate > 0 ? `${s.cancellationRate.toFixed(1)}% cxl` : ''}</div>
         ${s.closureStatus ? '<div class="ops-closed">CLOSED</div>' : ''}
-        ${s.notamFlags.length ? `<div class="ops-notam">⚠️ NOTAM</div>` : ''}
+        ${s.notamFlags.length ? `<div class="ops-notam"> NOTAM</div>` : ''}
       </div>`).join('');
         this.content.innerHTML = `<div class="ops-grid">${rows}</div>`;
     }

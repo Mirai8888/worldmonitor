@@ -1,8 +1,8 @@
 /**
  * Unified economic service module -- replaces three legacy services:
- *   - src/services/fred.ts (FRED economic data)
- *   - src/services/oil-analytics.ts (EIA energy data)
- *   - src/services/worldbank.ts (World Bank indicators)
+ * - src/services/fred.ts (FRED economic data)
+ * - src/services/oil-analytics.ts (EIA energy data)
+ * - src/services/worldbank.ts (World Bank indicators)
  *
  * All data now flows through the EconomicServiceClient RPC.
  */

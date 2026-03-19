@@ -3,7 +3,7 @@
  * Desktop (Tauri) manages AI config via its own settings window.
  *
  * TODO: Migrate panel visibility, sources, and language selector into this
- *       settings hub once the UI is extended with additional sections.
+ * settings hub once the UI is extended with additional sections.
  */
 
 const STORAGE_KEY_BROWSER_MODEL = 'wm-ai-flow-browser-model';

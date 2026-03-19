@@ -117,9 +117,9 @@ export interface PriceQuote {
   stops: number;
   durationMinutes: number;
   isIndicative: boolean;
-  provider: string;          // 'travelpayouts_data' | 'demo'
-  expiresAt: Date | null;   // null means no known expiry
-  checkoutRef: string;       // empty for cached/demo
+  provider: string; // 'travelpayouts_data' | 'demo'
+  expiresAt: Date | null; // null means no known expiry
+  checkoutRef: string; // empty for cached/demo
 }
 
 /** Returns true if a quote has a known expiry that has passed. */

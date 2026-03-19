@@ -807,11 +807,11 @@
       "empty": "Không có bài viết gần đây cho chủ đề này"
     },
     "geoHubs": {
-      "tooltip": "<strong>Trung tâm Hoạt động Địa chính trị</strong><br>Hiển thị các khu vực có nhiều hoạt động tin tức nhất.<br><br><em>Loại trung tâm:</em><br>• 🏛️ Thủ đô — Thủ đô và trung tâm chính phủ<br>• ⚔️ Vùng Xung đột — Khu vực xung đột đang diễn ra<br>• ⚓ Chiến lược — Điểm nghẽn và khu vực trọng yếu<br>• 🏢 Tổ chức — UN, NATO, IAEA, v.v.<br><br><em>Mức hoạt động:</em><br>• <span style=\"color: #ff4444\">Cao</span> — Tin nóng hoặc điểm 70+<br>• <span style=\"color: #ff8844\">Nâng cao</span> — Điểm 40-69<br>• <span style=\"color: #888\">Thấp</span> — Điểm dưới 40<br><br>Nhấp vào trung tâm để phóng to vị trí.",
+      "tooltip": "<strong>Trung tâm Hoạt động Địa chính trị</strong><br>Hiển thị các khu vực có nhiều hoạt động tin tức nhất.<br><br><em>Loại trung tâm:</em><br>• Thủ đô — Thủ đô và trung tâm chính phủ<br>• Vùng Xung đột — Khu vực xung đột đang diễn ra<br>• Chiến lược — Điểm nghẽn và khu vực trọng yếu<br>• Tổ chức — UN, NATO, IAEA, v.v.<br><br><em>Mức hoạt động:</em><br>• <span style=\"color: #ff4444\">Cao</span> — Tin nóng hoặc điểm 70+<br>• <span style=\"color: #ff8844\">Nâng cao</span> — Điểm 40-69<br>• <span style=\"color: #888\">Thấp</span> — Điểm dưới 40<br><br>Nhấp vào trung tâm để phóng to vị trí.",
       "noActive": "Không có trung tâm địa chính trị hoạt động",
       "story": "bài viết",
       "stories": "bài viết",
-      "infoTooltip": "<strong>Trung tâm Hoạt động Địa chính trị</strong><br>Hiển thị các khu vực có nhiều hoạt động tin tức nhất.<br><br><em>Loại trung tâm:</em><br>• 🏛️ Thủ đô — Thủ đô và trung tâm chính phủ<br>• ⚔️ Vùng Xung đột — Khu vực xung đột đang diễn ra<br>• ⚓ Chiến lược — Điểm nghẽn và khu vực trọng yếu<br>• 🏢 Tổ chức — UN, NATO, IAEA, v.v.<br><br><em>Mức hoạt động:</em><br>• <span style=\"color: {{highColor}}\">Cao</span> — Tin nóng hoặc điểm 70+<br>• <span style=\"color: {{elevatedColor}}\">Nâng cao</span> — Điểm 40-69<br>• <span style=\"color: {{lowColor}}\">Thấp</span> — Điểm dưới 40<br><br>Nhấp vào trung tâm để phóng to vị trí."
+      "infoTooltip": "<strong>Trung tâm Hoạt động Địa chính trị</strong><br>Hiển thị các khu vực có nhiều hoạt động tin tức nhất.<br><br><em>Loại trung tâm:</em><br>• Thủ đô — Thủ đô và trung tâm chính phủ<br>• Vùng Xung đột — Khu vực xung đột đang diễn ra<br>• Chiến lược — Điểm nghẽn và khu vực trọng yếu<br>• Tổ chức — UN, NATO, IAEA, v.v.<br><br><em>Mức hoạt động:</em><br>• <span style=\"color: {{highColor}}\">Cao</span> — Tin nóng hoặc điểm 70+<br>• <span style=\"color: {{elevatedColor}}\">Nâng cao</span> — Điểm 40-69<br>• <span style=\"color: {{lowColor}}\">Thấp</span> — Điểm dưới 40<br><br>Nhấp vào trung tâm để phóng to vị trí."
     },
     "techHubs": {
       "tooltip": "<strong>Hoạt động Trung tâm Công nghệ</strong><br>Hiển thị các trung tâm công nghệ có nhiều hoạt động tin tức nhất.<br><br><em>Mức hoạt động:</em><br>• <span style=\"color: #00ff88\">Cao</span> — Tin nóng hoặc điểm 50+<br>• <span style=\"color: #ffc800\">Nâng cao</span> — Điểm 20-49<br>• <span style=\"color: #888\">Thấp</span> — Điểm dưới 20<br><br>Nhấp vào trung tâm để phóng to vị trí.",
@@ -1336,7 +1336,7 @@
       "analyzingCountries": "Đang phân tích hơn 200 quốc gia...",
       "source": "Nguồn: Ngân hàng Thế giới",
       "updated": "Cập nhật: {{date}}",
-      "infoTooltip": "<strong>Sẵn sàng Công nghệ Toàn cầu</strong><br>Điểm tổng hợp (0-100) dựa trên dữ liệu Ngân hàng Thế giới:<br><br><strong>Chỉ số hiển thị:</strong><br>🌐 Người dùng Internet (% dân số)<br>📱 Thuê bao Di động (trên 100 người)<br>🔬 Chi tiêu R&D (% GDP)<br><br><strong>Trọng số:</strong> R&D (35%), Internet (30%), Băng rộng (20%), Di động (15%)<br><br><em>— = Không có dữ liệu gần đây</em><br><em>Nguồn: Dữ liệu Mở Ngân hàng Thế giới (2019-2024)</em>"
+      "infoTooltip": "<strong>Sẵn sàng Công nghệ Toàn cầu</strong><br>Điểm tổng hợp (0-100) dựa trên dữ liệu Ngân hàng Thế giới:<br><br><strong>Chỉ số hiển thị:</strong><br> Người dùng Internet (% dân số)<br> Thuê bao Di động (trên 100 người)<br> Chi tiêu R&D (% GDP)<br><br><strong>Trọng số:</strong> R&D (35%), Internet (30%), Băng rộng (20%), Di động (15%)<br><br><em>— = Không có dữ liệu gần đây</em><br><em>Nguồn: Dữ liệu Mở Ngân hàng Thế giới (2019-2024)</em>"
     },
     "populationExposure": {
       "noData": "Không có dữ liệu phơi nhiễm",
@@ -2087,7 +2087,7 @@
       "usniIntel": "Tình báo USNI",
       "usniSource": "Nguồn: USNI News Fleet Tracker",
       "approximatePosition": "Vị trí ước tính — dựa trên báo cáo hàng tuần USNI, không phải AIS thời gian thực.",
-      "darkDescription": "⚠ Tàu đã mất tín hiệu - mất tín hiệu AIS. Có thể cho thấy hoạt động nhạy cảm.",
+      "darkDescription": " Tàu đã mất tín hiệu - mất tín hiệu AIS. Có thể cho thấy hoạt động nhạy cảm.",
       "recentTracking": "Recent Tracking",
       "lastReport": "LATEST",
       "nearChokepoint": "NEAR CHOKEPOINT",

@@ -70,9 +70,9 @@ export function formatAwardAmount(amount: number): string {
 
 export function getAwardTypeIcon(type: GovernmentAward['awardType']): string {
   switch (type) {
-    case 'contract': return '📄';
-    case 'grant': return '🎁';
-    case 'loan': return '💰';
-    default: return '📋';
+    case 'contract': return '';
+    case 'grant': return '';
+    case 'loan': return '';
+    default: return '';
   }
 }

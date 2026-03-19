@@ -32,7 +32,7 @@ export function openMcpConnectModal(options: McpConnectOptions): void {
         <span class="mcp-preset-name">${escapeHtml(p.name)}</span>
         <span class="mcp-preset-desc">${escapeHtml(p.description)}</span>
       </span>
-      ${p.authNote ? '<span class="mcp-preset-key-badge">🔑</span>' : ''}
+      ${p.authNote ? '<span class="mcp-preset-key-badge"></span>' : ''}
     </button>
   `).join('');
 

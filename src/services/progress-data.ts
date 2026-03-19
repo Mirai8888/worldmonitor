@@ -19,11 +19,11 @@ export interface ProgressDataPoint {
 
 export interface ProgressIndicator {
   id: string;
-  code: string;         // World Bank indicator code
+  code: string; // World Bank indicator code
   label: string;
-  unit: string;         // e.g., "years", "%", "per 1,000"
-  color: string;        // CSS color from happy theme
-  years: number;        // How many years of data to fetch
+  unit: string; // e.g., "years", "%", "per 1,000"
+  color: string; // CSS color from happy theme
+  years: number; // How many years of data to fetch
   invertTrend: boolean; // true for metrics where DOWN is good (mortality, poverty)
 }
 
@@ -41,10 +41,10 @@ export interface ProgressDataSet {
  * 4 progress indicators with World Bank codes and warm happy-theme colors.
  *
  * Data ranges verified against World Bank API:
- *   SP.DYN.LE00.IN  -- Life expectancy: 46.4 (1960) -> 73.3 (2023)
- *   SE.ADT.LITR.ZS  -- Literacy rate:   65.4% (1975) -> 87.6% (2023)
- *   SH.DYN.MORT     -- Child mortality:  226.8 (1960) -> 36.7 (2023) per 1,000
- *   SI.POV.DDAY     -- Extreme poverty:  52.2% (1981) -> 10.5% (2023)
+ * SP.DYN.LE00.IN -- Life expectancy: 46.4 (1960) -> 73.3 (2023)
+ * SE.ADT.LITR.ZS -- Literacy rate: 65.4% (1975) -> 87.6% (2023)
+ * SH.DYN.MORT -- Child mortality: 226.8 (1960) -> 36.7 (2023) per 1,000
+ * SI.POV.DDAY -- Extreme poverty: 52.2% (1981) -> 10.5% (2023)
  */
 export const PROGRESS_INDICATORS: ProgressIndicator[] = [
   {
@@ -52,7 +52,7 @@ export const PROGRESS_INDICATORS: ProgressIndicator[] = [
     code: 'SP.DYN.LE00.IN',
     label: 'Life Expectancy',
     unit: 'years',
-    color: '#6B8F5E',   // sage green
+    color: '#6B8F5E', // sage green
     years: 65,
     invertTrend: false,
   },
@@ -61,7 +61,7 @@ export const PROGRESS_INDICATORS: ProgressIndicator[] = [
     code: 'SE.ADT.LITR.ZS',
     label: 'Literacy Rate',
     unit: '%',
-    color: '#7BA5C4',   // soft blue
+    color: '#7BA5C4', // soft blue
     years: 55,
     invertTrend: false,
   },
@@ -70,7 +70,7 @@ export const PROGRESS_INDICATORS: ProgressIndicator[] = [
     code: 'SH.DYN.MORT',
     label: 'Child Mortality',
     unit: 'per 1,000',
-    color: '#C4A35A',   // warm gold
+    color: '#C4A35A', // warm gold
     years: 65,
     invertTrend: true,
   },
@@ -79,7 +79,7 @@ export const PROGRESS_INDICATORS: ProgressIndicator[] = [
     code: 'SI.POV.DDAY',
     label: 'Extreme Poverty',
     unit: '%',
-    color: '#C48B9F',   // muted rose
+    color: '#C48B9F', // muted rose
     years: 45,
     invertTrend: true,
   },

@@ -3,10 +3,10 @@
 // Updated with 2024-25 status changes where known
 //
 // STATUS UPDATES SINCE DATASET (2020):
-//   - French Chad, Niger, Senegal, Ivory Coast: CLOSED 2024-25
-//   - US Niger Air Base 201: CLOSING 2024
-//   - Chinese Ream Naval Base: OPERATIONAL April 2025
-//   - US Afghanistan bases: CLOSED 2021
+// - French Chad, Niger, Senegal, Ivory Coast: CLOSED 2024-25
+// - US Niger Air Base 201: CLOSING 2024
+// - Chinese Ream Naval Base: OPERATIONAL April 2025
+// - US Afghanistan bases: CLOSED 2021
 
 import type { MilitaryBase } from '@/types';
 

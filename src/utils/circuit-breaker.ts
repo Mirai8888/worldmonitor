@@ -23,18 +23,18 @@ export interface CircuitBreakerOptions<T = unknown> {
   cooldownMs?: number;
   cacheTtlMs?: number;
   /** Persist cache to IndexedDB across page reloads. Default: false.
-   *  Opt-in only — cached payloads must be JSON-safe (no Date objects).
-   *  Auto-disabled when cacheTtlMs === 0. */
+   * Opt-in only — cached payloads must be JSON-safe (no Date objects).
+   * Auto-disabled when cacheTtlMs === 0. */
   persistCache?: boolean;
   /** Revive deserialized data after loading from persistent storage.
-   *  Use this to convert JSON-parsed strings back to Date objects or other
-   *  non-JSON-safe types. Called only on data loaded from IndexedDB. */
+   * Use this to convert JSON-parsed strings back to Date objects or other
+   * non-JSON-safe types. Called only on data loaded from IndexedDB. */
   revivePersistedData?: (data: T) => T;
   /** Maximum in-memory cache entries before LRU eviction. Default: 256. */
   maxCacheEntries?: number;
   /** Override the global 24h persistent stale ceiling for this breaker.
-   *  Persistent entries older than this are discarded during hydration.
-   *  Useful for time-sensitive data (e.g. risk scores → 1h). */
+   * Persistent entries older than this are discarded during hydration.
+   * Useful for time-sensitive data (e.g. risk scores → 1h). */
   persistentStaleCeilingMs?: number;
 }
 
@@ -294,8 +294,8 @@ export class CircuitBreaker<T> {
   }
 
   /** Clear only the in-memory cache without touching persistent storage.
-   *  Use when the caller wants fresh live data but must not destroy the
-   *  persisted fallback that a concurrent hydration may still need. */
+   * Use when the caller wants fresh live data but must not destroy the
+   * persisted fallback that a concurrent hydration may still need. */
   clearMemoryCache(cacheKey?: string): void {
     if (cacheKey !== undefined) {
       this.evictCacheKey(this.resolveCacheKey(cacheKey));

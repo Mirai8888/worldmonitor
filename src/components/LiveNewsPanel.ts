@@ -1040,7 +1040,7 @@ export class LiveNewsPanel extends Panel {
     const safeName = escapeHtml(channel.name);
     this.content.innerHTML = `
       <div class="live-offline">
-        <div class="offline-icon">📺</div>
+        <div class="offline-icon"></div>
         <div class="offline-text">${t('components.liveNews.notLive', { name: safeName })}</div>
         <button class="offline-retry" onclick="this.closest('.panel').querySelector('.live-channel-btn.active')?.click()">${t('common.retry')}</button>
       </div>

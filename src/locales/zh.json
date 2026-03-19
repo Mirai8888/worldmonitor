@@ -807,11 +807,11 @@
       "empty": "该主题暂无近期文章"
     },
     "geoHubs": {
-      "tooltip": "<strong>地缘政治活动枢纽</strong><br>显示新闻活动最多的地区。<br><br><em>枢纽类型：</em><br>• 🏛️ 首都 — 世界各国首都和政府中心<br>• ⚔️ 冲突区 — 活跃冲突地区<br>• ⚓ 战略要地 — 咽喉要道和关键区域<br>• 🏢 国际组织 — 联合国、NATO、IAEA等<br><br><em>活动级别：</em><br>• <span style=\"color: #ff4444\">高</span> — 突发新闻或70+评分<br>• <span style=\"color: #ff8844\">升高</span> — 评分40-69<br>• <span style=\"color: #888\">低</span> — 评分低于40<br><br>点击枢纽可缩放到其位置。",
+      "tooltip": "<strong>地缘政治活动枢纽</strong><br>显示新闻活动最多的地区。<br><br><em>枢纽类型：</em><br>• 首都 — 世界各国首都和政府中心<br>• 冲突区 — 活跃冲突地区<br>• 战略要地 — 咽喉要道和关键区域<br>• 国际组织 — 联合国、NATO、IAEA等<br><br><em>活动级别：</em><br>• <span style=\"color: #ff4444\">高</span> — 突发新闻或70+评分<br>• <span style=\"color: #ff8844\">升高</span> — 评分40-69<br>• <span style=\"color: #888\">低</span> — 评分低于40<br><br>点击枢纽可缩放到其位置。",
       "noActive": "无活跃的地缘政治枢纽",
       "story": "条报道",
       "stories": "条报道",
-      "infoTooltip": "<strong>地缘政治活动枢纽</strong><br>显示新闻活动最多的地区。<br><br><em>枢纽类型：</em><br>• 🏛️ 首都 — 世界各国首都和政府中心<br>• ⚔️ 冲突区 — 活跃冲突地区<br>• ⚓ 战略要地 — 咽喉要道和关键区域<br>• 🏢 国际组织 — 联合国、NATO、IAEA等<br><br><em>活动级别：</em><br>• <span style=\"color: {{highColor}}\">高</span> — 突发新闻或70+评分<br>• <span style=\"color: {{elevatedColor}}\">升高</span> — 评分40-69<br>• <span style=\"color: {{lowColor}}\">低</span> — 评分低于40<br><br>点击枢纽可缩放到其位置。"
+      "infoTooltip": "<strong>地缘政治活动枢纽</strong><br>显示新闻活动最多的地区。<br><br><em>枢纽类型：</em><br>• 首都 — 世界各国首都和政府中心<br>• 冲突区 — 活跃冲突地区<br>• 战略要地 — 咽喉要道和关键区域<br>• 国际组织 — 联合国、NATO、IAEA等<br><br><em>活动级别：</em><br>• <span style=\"color: {{highColor}}\">高</span> — 突发新闻或70+评分<br>• <span style=\"color: {{elevatedColor}}\">升高</span> — 评分40-69<br>• <span style=\"color: {{lowColor}}\">低</span> — 评分低于40<br><br>点击枢纽可缩放到其位置。"
     },
     "techHubs": {
       "tooltip": "<strong>科技中心活动</strong><br>显示新闻活动最多的科技中心。<br><br><em>活动级别：</em><br>• <span style=\"color: #00ff88\">高</span> — 突发新闻或50+评分<br>• <span style=\"color: #ffc800\">升高</span> — 评分20-49<br>• <span style=\"color: #888\">低</span> — 评分低于20<br><br>点击中心可缩放到其位置。",
@@ -1336,7 +1336,7 @@
       "analyzingCountries": "Analyzing 200+ countries...",
       "source": "Source: World Bank",
       "updated": "Updated: {{date}}",
-      "infoTooltip": "<strong>全球科技就绪度</strong><br>基于世界银行数据的综合评分（0-100）：<br><br><strong>显示指标：</strong><br>🌐 互联网用户（占人口百分比）<br>📱 移动订阅（每100人）<br>🔬 研发支出（占GDP百分比）<br><br><strong>权重：</strong>研发（35%）、互联网（30%）、宽带（20%）、移动（15%）<br><br><em>— = 无近期可用数据</em><br><em>来源：世界银行开放数据（2019-2024）</em>"
+      "infoTooltip": "<strong>全球科技就绪度</strong><br>基于世界银行数据的综合评分（0-100）：<br><br><strong>显示指标：</strong><br> 互联网用户（占人口百分比）<br> 移动订阅（每100人）<br> 研发支出（占GDP百分比）<br><br><strong>权重：</strong>研发（35%）、互联网（30%）、宽带（20%）、移动（15%）<br><br><em>— = 无近期可用数据</em><br><em>来源：世界银行开放数据（2019-2024）</em>"
     },
     "populationExposure": {
       "noData": "无可用暴露数据",
@@ -2087,7 +2087,7 @@
       "usniIntel": "USNI Intel",
       "usniSource": "Source: USNI News Fleet Tracker",
       "approximatePosition": "Position approximate — based on USNI weekly report, not real-time AIS.",
-      "darkDescription": "⚠ 舰艇进入暗航状态 - AIS信号丢失。可能表明正在执行敏感任务。",
+      "darkDescription": " 舰艇进入暗航状态 - AIS信号丢失。可能表明正在执行敏感任务。",
       "recentTracking": "Recent Tracking",
       "lastReport": "LATEST",
       "nearChokepoint": "NEAR CHOKEPOINT",

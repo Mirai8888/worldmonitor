@@ -1,7 +1,7 @@
 /**
  * Unified infrastructure service module -- replaces two legacy services:
- *   - src/services/outages.ts (Cloudflare Radar internet outages)
- *   - ServiceStatusPanel's direct /api/service-status fetch
+ * - src/services/outages.ts (Cloudflare Radar internet outages)
+ * - ServiceStatusPanel's direct /api/service-status fetch
  *
  * All data now flows through the InfrastructureServiceClient RPC.
  */

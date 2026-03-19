@@ -38,17 +38,17 @@ function getSectorLabel(sector: GulfInvestmentSector): string {
 }
 
 const STATUS_COLORS: Record<GulfInvestmentStatus, string> = {
-  'operational':         '#22c55e',
-  'under-construction':  '#f59e0b',
-  'announced':           '#60a5fa',
-  'rumoured':            '#a78bfa',
-  'cancelled':           '#ef4444',
-  'divested':            '#6b7280',
+  'operational': '#22c55e',
+  'under-construction': '#f59e0b',
+  'announced': '#60a5fa',
+  'rumoured': '#a78bfa',
+  'cancelled': '#ef4444',
+  'divested': '#6b7280',
 };
 
 const FLAG: Record<string, string> = {
-  SA:  '🇸🇦',
-  UAE: '🇦🇪',
+  SA: '',
+  UAE: '',
 };
 
 function formatUSD(usd?: number): string {
@@ -155,13 +155,13 @@ export class InvestmentsPanel extends Panel {
         <input class="fdi-search" type="text"
           placeholder="${t('components.investments.searchPlaceholder')}"
           value="${escapeHtml(this.filters.search)}"/>
-        <button class="${toggleCls}" data-action="toggle-filters" title="Filters" aria-label="Toggle filters" aria-pressed="${this.filtersExpanded}">⚙</button>
+        <button class="${toggleCls}" data-action="toggle-filters" title="Filters" aria-label="Toggle filters" aria-pressed="${this.filtersExpanded}"></button>
       </div>
       <div class="${filtersCls}">
         <select class="fdi-filter" data-filter="investingCountry">
-          <option value="ALL">🌐 ${t('components.investments.allCountries')}</option>
-          <option value="SA"${this.filters.investingCountry === 'SA' ? ' selected' : ''}>🇸🇦 ${t('components.investments.saudiArabia')}</option>
-          <option value="UAE"${this.filters.investingCountry === 'UAE' ? ' selected' : ''}>🇦🇪 ${t('components.investments.uae')}</option>
+          <option value="ALL"> ${t('components.investments.allCountries')}</option>
+          <option value="SA"${this.filters.investingCountry === 'SA' ? ' selected' : ''}> ${t('components.investments.saudiArabia')}</option>
+          <option value="UAE"${this.filters.investingCountry === 'UAE' ? ' selected' : ''}> ${t('components.investments.uae')}</option>
         </select>
         <select class="fdi-filter" data-filter="sector">
           <option value="ALL">${t('components.investments.allSectors')}</option>

@@ -797,11 +797,11 @@
       "empty": "Nessun articolo recente per questo argomento"
     },
     "geoHubs": {
-      "tooltip": "<strong>Hub di attività geopolitiche</strong><br>Mostra le regioni con la maggior parte dell'attività di notizie.<br><br><em>Tipi di hub:</em><br>• 🏛️ Capitali: capitali mondiali e centri governativi<br>• ⚔️ Zone di conflitto: aree di conflitto attive<br>• ⚓ Strategiche: punti di strozzatura e punti chiave regioni<br>• 🏢 Organizzazioni: ONU, NATO, AIEA, ecc.<br><br><em>Livelli di attività:</em><br>• <span style=\"color: #ff4444\">Alto</span> — Ultime notizie o punteggio 70+<br>• <span style=\"color: #ff8844\">Elevated</span> — Punteggio 40-69<br>• <span style=\"color: #888\">Low</span> — Punteggio inferiore a 40<br><br>Fai clic su un hub per ingrandire la sua posizione.",
+      "tooltip": "<strong>Hub di attività geopolitiche</strong><br>Mostra le regioni con la maggior parte dell'attività di notizie.<br><br><em>Tipi di hub:</em><br>• Capitali: capitali mondiali e centri governativi<br>• Zone di conflitto: aree di conflitto attive<br>• Strategiche: punti di strozzatura e punti chiave regioni<br>• Organizzazioni: ONU, NATO, AIEA, ecc.<br><br><em>Livelli di attività:</em><br>• <span style=\"color: #ff4444\">Alto</span> — Ultime notizie o punteggio 70+<br>• <span style=\"color: #ff8844\">Elevated</span> — Punteggio 40-69<br>• <span style=\"color: #888\">Low</span> — Punteggio inferiore a 40<br><br>Fai clic su un hub per ingrandire la sua posizione.",
       "noActive": "Nessun hub geopolitico attivo",
       "story": "storia",
       "stories": "storie",
-      "infoTooltip": "<strong>Hub di attività geopolitiche</strong><br>Mostra le regioni con la maggior parte dell'attività di notizie.<br><br><em>Tipi di hub:</em><br>• 🏛️ Capitali: capitali mondiali e centri governativi<br>• ⚔️ Zone di conflitto: aree di conflitto attive<br>• ⚓ Strategico: punti di strozzatura e regioni chiave<br>• 🏢 Organizzazioni: ONU, NATO, AIEA, ecc.<br><br><em>Livelli di attività:</em><br>• <span style=\"color: {{highColor}}\">Alto</span> — Ultime notizie o punteggio 70+<br>• <span style=\"color: {{elevatedColor}}\">Elevato</span> - Punteggio 40-69<br>• <span style=\"color: {{lowColor}}\">Basso</span> - Punteggio inferiore a 40<br><br>Fai clic su un hub per ingrandire la sua posizione."
+      "infoTooltip": "<strong>Hub di attività geopolitiche</strong><br>Mostra le regioni con la maggior parte dell'attività di notizie.<br><br><em>Tipi di hub:</em><br>• Capitali: capitali mondiali e centri governativi<br>• Zone di conflitto: aree di conflitto attive<br>• Strategico: punti di strozzatura e regioni chiave<br>• Organizzazioni: ONU, NATO, AIEA, ecc.<br><br><em>Livelli di attività:</em><br>• <span style=\"color: {{highColor}}\">Alto</span> — Ultime notizie o punteggio 70+<br>• <span style=\"color: {{elevatedColor}}\">Elevato</span> - Punteggio 40-69<br>• <span style=\"color: {{lowColor}}\">Basso</span> - Punteggio inferiore a 40<br><br>Fai clic su un hub per ingrandire la sua posizione."
     },
     "techHubs": {
       "tooltip": "<strong>Attività hub tecnologico</strong><br>Mostra gli hub tecnologici con la maggior parte delle attività di notizie.<br><br><em>Livelli di attività:</em><br>• <span style=\"color: #00ff88\">Alto</span> — Ultime notizie o punteggio 50+<br>• <span style=\"color: #ffc800\">Elevato</span> — Punteggio 20-49<br>• <span style=\"color: #888\">Low</span> — Punteggio inferiore a 20<br><br>Fai clic su un hub per ingrandire la sua posizione.",
@@ -1206,7 +1206,7 @@
       "internetUsers": "Utenti di Internet",
       "mobileSubscriptions": "Abbonamenti mobili",
       "rdSpending": "Spesa per ricerca e sviluppo",
-      "infoTooltip": "<strong>Preparazione tecnologica globale</strong><br>Punteggio composito (0-100) basato sui dati della Banca Mondiale:<br><br><strong>Metriche mostrate:</strong><br>🌐 Utenti Internet (% della popolazione)<br>📱 Abbonamenti mobili (per 100 persone)<br>🔬 Spesa per ricerca e sviluppo (% del PIL)<br><br><strong>Pesi:</strong> Ricerca e sviluppo (35%), Internet (30%), Banda larga (20%), Mobile (15%)<br><br><em>— = Nessun dato recente disponibile</em><br><em>Fonte: dati aperti della Banca mondiale (2019-2024)</em>",
+      "infoTooltip": "<strong>Preparazione tecnologica globale</strong><br>Punteggio composito (0-100) basato sui dati della Banca Mondiale:<br><br><strong>Metriche mostrate:</strong><br> Utenti Internet (% della popolazione)<br> Abbonamenti mobili (per 100 persone)<br> Spesa per ricerca e sviluppo (% del PIL)<br><br><strong>Pesi:</strong> Ricerca e sviluppo (35%), Internet (30%), Banda larga (20%), Mobile (15%)<br><br><em>— = Nessun dato recente disponibile</em><br><em>Fonte: dati aperti della Banca mondiale (2019-2024)</em>",
       "fetchingData": "Fetching World Bank Data",
       "internetUsersIndicator": "Internet Users",
       "mobileSubscriptionsIndicator": "Mobile Subscriptions",
@@ -2079,7 +2079,7 @@
       "usniIntel": "USNI Intel",
       "usniSource": "Source: USNI News Fleet Tracker",
       "approximatePosition": "Position approximate — based on USNI weekly report, not real-time AIS.",
-      "darkDescription": "⚠ L'imbarcazione si è oscurata: segnale AIS perso. Può indicare operazioni sensibili.",
+      "darkDescription": " L'imbarcazione si è oscurata: segnale AIS perso. Può indicare operazioni sensibili.",
       "recentTracking": "Recent Tracking",
       "lastReport": "LATEST",
       "nearChokepoint": "NEAR CHOKEPOINT",

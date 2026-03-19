@@ -583,7 +583,7 @@ export function foreignPresenceToSignal(alert: ForeignPresenceAlert): {
     id: `foreign-${alert.id}-${alert.firstDetected.getTime()}`,
     type: 'military_surge',
     source: 'Military Flight Tracking',
-    title: `🚨 ${alert.operatorCountry} Military in ${alert.region.name}`,
+    title: ` ${alert.operatorCountry} Military in ${alert.region.name}`,
     description,
     severity,
     confidence,
@@ -620,9 +620,9 @@ export function surgeAlertToSignal(surge: SurgeAlert): {
   metadata: Record<string, unknown>;
 } {
   const typeLabels = {
-    airlift: '🛫 Military Airlift Surge',
-    fighter: '✈️ Fighter Deployment Surge',
-    reconnaissance: '🔭 Reconnaissance Surge',
+    airlift: ' Military Airlift Surge',
+    fighter: ' Fighter Deployment Surge',
+    reconnaissance: ' Reconnaissance Surge',
   };
 
   const aircraftList = Array.from(surge.aircraftTypes.entries())
@@ -690,7 +690,7 @@ const POSTURE_THEATERS: PostureTheater[] = [
     regions: ['persian-gulf', 'strait-hormuz', 'iran-border'],
     bounds: { north: 42, south: 20, east: 65, west: 30 },
     thresholds: { elevated: 8, critical: 20 },
-    navalThresholds: { elevated: 2, critical: 5 },  // Low: AIS coverage poor in Persian Gulf, military vessels go dark
+    navalThresholds: { elevated: 2, critical: 5 }, // Low: AIS coverage poor in Persian Gulf, military vessels go dark
     strikeIndicators: { minTankers: 2, minAwacs: 1, minFighters: 5 },
   },
   {

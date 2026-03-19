@@ -1,15 +1,15 @@
 // TODO: Phase 2 — Orbital Surveillance Analysis Panel
 // - Overhead Pass Prediction: compute next pass times over user-selected locations
-//   (hotspots, conflict zones, bases). "GAOFEN-12 will be overhead Tartus in 14 min"
+// (hotspots, conflict zones, bases). "GAOFEN-12 will be overhead Tartus in 14 min"
 // - Revisit Time Analysis: how often a location is observed by hostile/friendly sats
 // - Imaging Window Alerts: notify when SAR/optical sats are overhead a watched region
 // - Sensor Swath Visualization: show ground coverage cone (FOV-based) not just nadir dot
 // - Cross-Layer Correlation: satellite overhead + GPS jamming zone = EW context;
-//   satellite overhead + conflict zone = battlefield ISR; satellite + AIS gap = maritime recon
+// satellite overhead + conflict zone = battlefield ISR; satellite + AIS gap = maritime recon
 // - Satellite Intel Summary Panel: table of tracked sats with orbit type, operator,
-//   sensor capability, current position, next pass over user POI
+// sensor capability, current position, next pass over user POI
 // - Historical Pass Log: which sats passed over a location in the last 24h
-//   (useful for identifying imaging windows after events)
+// (useful for identifying imaging windows after events)
 
 import { toApiUrl } from '@/services/runtime';
 import { twoline2satrec, propagate, eciToGeodetic, gstime, degreesLong, degreesLat } from 'satellite.js';

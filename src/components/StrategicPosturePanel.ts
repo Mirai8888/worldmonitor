@@ -306,18 +306,18 @@ export class StrategicPosturePanel extends Panel {
     this.setContent(`
       <div class="posture-panel">
         <div class="posture-no-data">
-          <div class="posture-no-data-icon pulse">📡</div>
+          <div class="posture-no-data-icon pulse"></div>
           <div class="posture-no-data-title">${t('components.strategicPosture.acquiringData')}</div>
           <div class="posture-no-data-desc">
             ${t('components.strategicPosture.acquiringDesc')}
           </div>
           <div class="posture-data-sources">
             <div class="posture-source">
-              <span class="posture-source-icon connecting">✈️</span>
+              <span class="posture-source-icon connecting"></span>
               <span>${t('components.strategicPosture.openSkyAdsb')}</span>
             </div>
             <div class="posture-source">
-              <span class="posture-source-icon waiting">🚢</span>
+              <span class="posture-source-icon waiting"></span>
               <span>${t('components.strategicPosture.aisVesselStream')}</span>
             </div>
           </div>
@@ -333,7 +333,7 @@ export class StrategicPosturePanel extends Panel {
     this.setContent(`
       <div class="posture-panel">
         <div class="posture-no-data">
-          <div class="posture-no-data-icon">⚠️</div>
+          <div class="posture-no-data-icon"></div>
           <div class="posture-no-data-title">${t('components.strategicPosture.feedRateLimited')}</div>
           <div class="posture-no-data-desc">
             ${t('components.strategicPosture.rateLimitedDesc')}
@@ -383,8 +383,8 @@ export class StrategicPosturePanel extends Panel {
     if (!isExpanded) {
       // Compact single-line view for normal theaters
       const chips: string[] = [];
-      if (p.totalAircraft > 0) chips.push(`<span class="posture-chip air">✈️ ${p.totalAircraft}</span>`);
-      if (p.totalVessels > 0) chips.push(`<span class="posture-chip naval">⚓ ${p.totalVessels}</span>`);
+      if (p.totalAircraft > 0) chips.push(`<span class="posture-chip air"> ${p.totalAircraft}</span>`);
+      if (p.totalVessels > 0) chips.push(`<span class="posture-chip naval"> ${p.totalVessels}</span>`);
 
       return `
         <div class="posture-theater posture-compact" data-lat="${p.centerLat}" data-lon="${p.centerLon}" title="${t('components.strategicPosture.clickToView', { name: escapeHtml(displayName) })}">
@@ -397,28 +397,28 @@ export class StrategicPosturePanel extends Panel {
 
     // Build compact stat chips for expanded view
     const airChips: string[] = [];
-    if (p.fighters > 0) airChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.fighters')}">✈️ ${p.fighters}</span>`);
-    if (p.tankers > 0) airChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.tankers')}">⛽ ${p.tankers}</span>`);
-    if (p.awacs > 0) airChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.awacs')}">📡 ${p.awacs}</span>`);
-    if (p.reconnaissance > 0) airChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.recon')}">🔍 ${p.reconnaissance}</span>`);
-    if (p.transport > 0) airChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.transport')}">📦 ${p.transport}</span>`);
-    if (p.bombers > 0) airChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.bombers')}">💣 ${p.bombers}</span>`);
-    if (p.drones > 0) airChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.drones')}">🛸 ${p.drones}</span>`);
+    if (p.fighters > 0) airChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.fighters')}"> ${p.fighters}</span>`);
+    if (p.tankers > 0) airChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.tankers')}"> ${p.tankers}</span>`);
+    if (p.awacs > 0) airChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.awacs')}"> ${p.awacs}</span>`);
+    if (p.reconnaissance > 0) airChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.recon')}"> ${p.reconnaissance}</span>`);
+    if (p.transport > 0) airChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.transport')}"> ${p.transport}</span>`);
+    if (p.bombers > 0) airChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.bombers')}"> ${p.bombers}</span>`);
+    if (p.drones > 0) airChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.drones')}"> ${p.drones}</span>`);
     // Fallback: show total aircraft if no typed breakdown available
     if (airChips.length === 0 && p.totalAircraft > 0) {
-      airChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.aircraft')}">✈️ ${p.totalAircraft}</span>`);
+      airChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.aircraft')}"> ${p.totalAircraft}</span>`);
     }
 
     const navalChips: string[] = [];
-    if (p.carriers > 0) navalChips.push(`<span class="posture-stat carrier" title="${t('components.strategicPosture.units.carriers')}">🚢 ${p.carriers}</span>`);
-    if (p.destroyers > 0) navalChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.destroyers')}">⚓ ${p.destroyers}</span>`);
-    if (p.frigates > 0) navalChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.frigates')}">🛥️ ${p.frigates}</span>`);
-    if (p.submarines > 0) navalChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.submarines')}">🦈 ${p.submarines}</span>`);
-    if (p.patrol > 0) navalChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.patrol')}">🚤 ${p.patrol}</span>`);
-    if (p.auxiliaryVessels > 0) navalChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.auxiliary')}">⚓ ${p.auxiliaryVessels}</span>`);
+    if (p.carriers > 0) navalChips.push(`<span class="posture-stat carrier" title="${t('components.strategicPosture.units.carriers')}"> ${p.carriers}</span>`);
+    if (p.destroyers > 0) navalChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.destroyers')}"> ${p.destroyers}</span>`);
+    if (p.frigates > 0) navalChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.frigates')}"> ${p.frigates}</span>`);
+    if (p.submarines > 0) navalChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.submarines')}"> ${p.submarines}</span>`);
+    if (p.patrol > 0) navalChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.patrol')}"> ${p.patrol}</span>`);
+    if (p.auxiliaryVessels > 0) navalChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.auxiliary')}"> ${p.auxiliaryVessels}</span>`);
     // Fallback: show total vessels if no typed breakdown available
     if (navalChips.length === 0 && p.totalVessels > 0) {
-      navalChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.navalVessels')}">⚓ ${p.totalVessels}</span>`);
+      navalChips.push(`<span class="posture-stat" title="${t('components.strategicPosture.units.navalVessels')}"> ${p.totalVessels}</span>`);
     }
 
     const hasAir = airChips.length > 0;
@@ -437,7 +437,7 @@ export class StrategicPosturePanel extends Panel {
         </div>
 
         <div class="posture-footer">
-          ${p.strikeCapable ? `<span class="posture-strike">⚡ ${t('components.strategicPosture.strike')}</span>` : ''}
+          ${p.strikeCapable ? `<span class="posture-strike"> ${t('components.strategicPosture.strike')}</span>` : ''}
           ${this.getTrendIcon(p.trend, p.changePercent)}
           ${p.targetNation ? `<span class="posture-focus">→ ${escapeHtml(p.targetNation)}</span>` : ''}
           ${isDesktopRuntime() ? `<button class="posture-deduce-btn" title="Deduce Situation with AI" style="background: none; border: none; cursor: pointer; opacity: 0.7; font-size: 1.1em; transition: opacity 0.2s; margin-left: auto;" data-theater='${escapeHtml(JSON.stringify(p))}'>\u{1F9E0}</button>` : ''}
@@ -458,7 +458,7 @@ export class StrategicPosturePanel extends Panel {
       : new Date().toLocaleTimeString();
 
     const staleWarning = this.isStale
-      ? `<div class="posture-stale-warning">⚠️ ${t('components.strategicPosture.staleWarning')}</div>`
+      ? `<div class="posture-stale-warning"> ${t('components.strategicPosture.staleWarning')}</div>`
       : '';
 
     const html = `
@@ -467,7 +467,7 @@ export class StrategicPosturePanel extends Panel {
         ${sorted.map((p) => this.renderTheater(p)).join('')}
 
         <div class="posture-footer">
-          <span class="posture-updated">${this.isStale ? '⚠️ ' : ''}${t('components.strategicPosture.updated')} ${updatedTime}</span>
+          <span class="posture-updated">${this.isStale ? ' ' : ''}${t('components.strategicPosture.updated')} ${updatedTime}</span>
           <button class="posture-refresh-btn" title="${t('components.strategicPosture.refresh')}" aria-label="${t('components.strategicPosture.refresh')}">↻</button>
         </div>
       </div>

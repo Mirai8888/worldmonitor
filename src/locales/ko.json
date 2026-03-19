@@ -807,11 +807,11 @@
       "empty": "이 주제에 대한 최근 기사 없음"
     },
     "geoHubs": {
-      "tooltip": "<strong>지정학적 활동 허브</strong><br>뉴스 활동이 가장 많은 지역을 표시합니다.<br><br><em>허브 유형:</em><br>• 🏛️ 수도 — 세계 수도 및 정부 중심지<br>• ⚔️ 분쟁 지역 — 활성 분쟁 지역<br>• ⚓ 전략적 — 병목 지점 및 주요 지역<br>• 🏢 기구 — UN, NATO, IAEA 등<br><br><em>활동 수준:</em><br>• <span style=\"color: #ff4444\">높음</span> — 속보 또는 점수 70+<br>• <span style=\"color: #ff8844\">경계</span> — 점수 40-69<br>• <span style=\"color: #888\">낮음</span> — 점수 40 미만<br><br>허브를 클릭하면 해당 위치로 이동합니다.",
+      "tooltip": "<strong>지정학적 활동 허브</strong><br>뉴스 활동이 가장 많은 지역을 표시합니다.<br><br><em>허브 유형:</em><br>• 수도 — 세계 수도 및 정부 중심지<br>• 분쟁 지역 — 활성 분쟁 지역<br>• 전략적 — 병목 지점 및 주요 지역<br>• 기구 — UN, NATO, IAEA 등<br><br><em>활동 수준:</em><br>• <span style=\"color: #ff4444\">높음</span> — 속보 또는 점수 70+<br>• <span style=\"color: #ff8844\">경계</span> — 점수 40-69<br>• <span style=\"color: #888\">낮음</span> — 점수 40 미만<br><br>허브를 클릭하면 해당 위치로 이동합니다.",
       "noActive": "활성 지정학적 허브 없음",
       "story": "기사",
       "stories": "기사",
-      "infoTooltip": "<strong>지정학적 활동 허브</strong><br>뉴스 활동이 가장 많은 지역을 표시합니다.<br><br><em>허브 유형:</em><br>• 🏛️ 수도 — 세계 수도 및 정부 중심지<br>• ⚔️ 분쟁 지역 — 활성 분쟁 지역<br>• ⚓ 전략적 — 병목 지점 및 주요 지역<br>• 🏢 기구 — UN, NATO, IAEA 등<br><br><em>활동 수준:</em><br>• <span style=\"color: {{highColor}}\">높음</span> — 속보 또는 점수 70+<br>• <span style=\"color: {{elevatedColor}}\">경계</span> — 점수 40-69<br>• <span style=\"color: {{lowColor}}\">낮음</span> — 점수 40 미만<br><br>허브를 클릭하면 해당 위치로 이동합니다."
+      "infoTooltip": "<strong>지정학적 활동 허브</strong><br>뉴스 활동이 가장 많은 지역을 표시합니다.<br><br><em>허브 유형:</em><br>• 수도 — 세계 수도 및 정부 중심지<br>• 분쟁 지역 — 활성 분쟁 지역<br>• 전략적 — 병목 지점 및 주요 지역<br>• 기구 — UN, NATO, IAEA 등<br><br><em>활동 수준:</em><br>• <span style=\"color: {{highColor}}\">높음</span> — 속보 또는 점수 70+<br>• <span style=\"color: {{elevatedColor}}\">경계</span> — 점수 40-69<br>• <span style=\"color: {{lowColor}}\">낮음</span> — 점수 40 미만<br><br>허브를 클릭하면 해당 위치로 이동합니다."
     },
     "techHubs": {
       "tooltip": "<strong>기술 허브 활동</strong><br>뉴스 활동이 가장 많은 기술 허브를 표시합니다.<br><br><em>활동 수준:</em><br>• <span style=\"color: #00ff88\">높음</span> — 속보 또는 점수 50+<br>• <span style=\"color: #ffc800\">경계</span> — 점수 20-49<br>• <span style=\"color: #888\">낮음</span> — 점수 20 미만<br><br>허브를 클릭하면 해당 위치로 이동합니다.",
@@ -1336,7 +1336,7 @@
       "analyzingCountries": "200개 이상 국가 분석 중...",
       "source": "출처: 세계은행",
       "updated": "업데이트: {{date}}",
-      "infoTooltip": "<strong>글로벌 기술 준비도</strong><br>세계은행 데이터 기반 종합 점수 (0-100):<br><br><strong>표시 지표:</strong><br>🌐 인터넷 사용자 (인구 비율)<br>📱 모바일 가입 (인구 100명당)<br>🔬 R&D 지출 (GDP 비율)<br><br><strong>가중치:</strong> R&D (35%), 인터넷 (30%), 광대역 (20%), 모바일 (15%)<br><br><em>— = 최근 데이터 없음</em><br><em>출처: 세계은행 공개 데이터 (2019-2024)</em>"
+      "infoTooltip": "<strong>글로벌 기술 준비도</strong><br>세계은행 데이터 기반 종합 점수 (0-100):<br><br><strong>표시 지표:</strong><br> 인터넷 사용자 (인구 비율)<br> 모바일 가입 (인구 100명당)<br> R&D 지출 (GDP 비율)<br><br><strong>가중치:</strong> R&D (35%), 인터넷 (30%), 광대역 (20%), 모바일 (15%)<br><br><em>— = 최근 데이터 없음</em><br><em>출처: 세계은행 공개 데이터 (2019-2024)</em>"
     },
     "populationExposure": {
       "noData": "노출 정보 없음",
@@ -1365,7 +1365,7 @@
         "hoursAgo": "{{count}}h 전",
         "daysAgo": "{{count}}d 전"
       },
-      "infoTooltip": "<strong>보안 주의보</strong><br>각국 외교부의 여행 주의보 및 보안 경보:<br><br><strong>출처:</strong><br>🇺🇸 미 국무부 여행 주의보<br>🇦🇺 호주 DFAT Smartraveller<br>🇬🇧 영국 FCDO 여행 안내<br>🇳🇿 뉴질랜드 MFAT SafeTravel<br><br><strong>수준:</strong><br>🟥 여행 금지<br>🟧 여행 재고<br>🟨 주의 필요<br>🟩 일반 주의"
+      "infoTooltip": "<strong>보안 주의보</strong><br>각국 외교부의 여행 주의보 및 보안 경보:<br><br><strong>출처:</strong><br> 미 국무부 여행 주의보<br> 호주 DFAT Smartraveller<br> 영국 FCDO 여행 안내<br> 뉴질랜드 MFAT SafeTravel<br><br><strong>수준:</strong><br> 여행 금지<br> 여행 재고<br> 주의 필요<br> 일반 주의"
     },
     "orefSirens": {
       "checking": "공습 경보 확인 중...",
@@ -2087,7 +2087,7 @@
       "usniIntel": "USNI 정보",
       "usniSource": "출처: USNI News Fleet Tracker",
       "approximatePosition": "대략적 위치 — USNI 주간 보고서 기반이며 실시간 AIS가 아닙니다.",
-      "darkDescription": "⚠ 함정의 AIS 신호가 소실되었습니다 — 민감한 작전 수행 가능성이 있습니다.",
+      "darkDescription": " 함정의 AIS 신호가 소실되었습니다 — 민감한 작전 수행 가능성이 있습니다.",
       "recentTracking": "Recent Tracking",
       "lastReport": "LATEST",
       "nearChokepoint": "NEAR CHOKEPOINT",

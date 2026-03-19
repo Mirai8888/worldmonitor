@@ -1028,7 +1028,7 @@ const seedAllDynamicData = (): void => {
   const naturalEvents: NaturalEvent[] = [
     {
       id: 'e2e-natural-1',
-      title: '🔴 Harness Volcano Activity',
+      title: ' Harness Volcano Activity',
       category: 'volcanoes',
       categoryTitle: 'Volcano',
       lat: 14.7,

@@ -19,7 +19,7 @@ export interface McpPreset {
 export const MCP_PRESETS: McpPreset[] = [
   {
     name: 'GitHub',
-    icon: '🐙',
+    icon: '',
     description: 'Your repos, issues, PRs, pull requests, and code reviews',
     serverUrl: 'https://api.githubcopilot.com/mcp/',
     authNote: 'Requires Authorization: Bearer <GITHUB_TOKEN>',
@@ -29,7 +29,7 @@ export const MCP_PRESETS: McpPreset[] = [
   },
   {
     name: 'Slack',
-    icon: '💬',
+    icon: '',
     description: 'Your team channels, messages, and workspace activity',
     serverUrl: 'https://slack.mcp.cloudflare.com/mcp',
     authNote: 'Requires Authorization: Bearer <SLACK_BOT_TOKEN> (xoxb-...)',
@@ -39,7 +39,7 @@ export const MCP_PRESETS: McpPreset[] = [
   },
   {
     name: 'Cloudflare Radar',
-    icon: '🌐',
+    icon: '',
     description: 'Live internet traffic, outages, BGP anomalies, and attack trends',
     serverUrl: 'https://radar.mcp.cloudflare.com/sse',
     defaultTool: 'get_summary_attacks',
@@ -48,7 +48,7 @@ export const MCP_PRESETS: McpPreset[] = [
   },
   {
     name: 'Google Maps',
-    icon: '🗺️',
+    icon: '',
     description: 'Location search, place details, directions, and geocoding',
     serverUrl: 'https://maps.mcp.cloudflare.com/mcp',
     authNote: 'Requires Authorization: Bearer <GOOGLE_MAPS_API_KEY>',
@@ -58,7 +58,7 @@ export const MCP_PRESETS: McpPreset[] = [
   },
   {
     name: 'PostgreSQL',
-    icon: '🗄️',
+    icon: '',
     description: 'Query any PostgreSQL database you own or have access to',
     serverUrl: 'https://your-pg-mcp-server.example.com/mcp',
     authNote: 'Self-hosted — replace URL with your own PostgreSQL MCP server',
@@ -68,7 +68,7 @@ export const MCP_PRESETS: McpPreset[] = [
   },
   {
     name: 'Web Fetch',
-    icon: '📄',
+    icon: '',
     description: 'Fetch and read content from any public URL as plain text',
     serverUrl: 'https://mcp-fetch.cloudflare.com/mcp',
     defaultTool: 'fetch',
@@ -77,7 +77,7 @@ export const MCP_PRESETS: McpPreset[] = [
   },
   {
     name: 'Linear',
-    icon: '📋',
+    icon: '',
     description: 'Your issues, projects, cycles, and team roadmap',
     serverUrl: 'https://mcp.linear.app/mcp',
     authNote: 'Requires Authorization: Bearer <LINEAR_API_KEY>',
@@ -87,7 +87,7 @@ export const MCP_PRESETS: McpPreset[] = [
   },
   {
     name: 'Sentry',
-    icon: '🐛',
+    icon: '',
     description: 'Live error rates, recent exceptions, and release health',
     serverUrl: 'https://mcp.sentry.dev/mcp',
     authNote: 'Requires Authorization: Bearer <SENTRY_AUTH_TOKEN>',
@@ -97,7 +97,7 @@ export const MCP_PRESETS: McpPreset[] = [
   },
   {
     name: 'Datadog',
-    icon: '📈',
+    icon: '',
     description: 'Metrics, monitors, dashboards, and infrastructure alerts',
     serverUrl: 'https://mcp.datadoghq.com/mcp',
     authNote: 'Requires DD-API-KEY and DD-APPLICATION-KEY headers',
@@ -107,7 +107,7 @@ export const MCP_PRESETS: McpPreset[] = [
   },
   {
     name: 'Stripe',
-    icon: '💳',
+    icon: '',
     description: 'Revenue, charges, subscriptions, and payment activity',
     serverUrl: 'https://mcp.stripe.com/',
     authNote: 'Requires Authorization: Bearer <STRIPE_SECRET_KEY>',
@@ -117,7 +117,7 @@ export const MCP_PRESETS: McpPreset[] = [
   },
   {
     name: 'Overpass (OSM)',
-    icon: '🛰️',
+    icon: '',
     description: 'Free geospatial queries on OpenStreetMap — free Smithery API key required',
     serverUrl: 'https://server.smithery.ai/@dokterbob/mcp-overpass-server/mcp',
     authNote: 'Requires x-smithery-api-key: <KEY> (free at smithery.ai — no Overpass API key needed)',
@@ -127,7 +127,7 @@ export const MCP_PRESETS: McpPreset[] = [
   },
   {
     name: 'Perplexity',
-    icon: '🔮',
+    icon: '',
     description: 'AI-powered research with cited, real-time answers',
     serverUrl: 'https://mcp.perplexity.ai/mcp',
     authNote: 'Requires Authorization: Bearer <PERPLEXITY_API_KEY>',
@@ -137,7 +137,7 @@ export const MCP_PRESETS: McpPreset[] = [
   },
   {
     name: 'Polygon.io',
-    icon: '📊',
+    icon: '',
     description: 'Real-time and historical stock, options, forex, and crypto data',
     serverUrl: 'https://mcp.polygon.io/mcp',
     authNote: 'Requires Authorization: Bearer <POLYGON_API_KEY>',
@@ -147,7 +147,7 @@ export const MCP_PRESETS: McpPreset[] = [
   },
   {
     name: 'Notion',
-    icon: '📝',
+    icon: '',
     description: 'Search and query your Notion databases, pages, and notes',
     serverUrl: 'https://mcp.notion.com/mcp',
     authNote: 'Requires Authorization: Bearer <NOTION_INTEGRATION_TOKEN>',
@@ -157,7 +157,7 @@ export const MCP_PRESETS: McpPreset[] = [
   },
   {
     name: 'Airtable',
-    icon: '🏗️',
+    icon: '',
     description: 'Query records from any Airtable base you own',
     serverUrl: 'https://mcp.airtable.com/mcp',
     authNote: 'Requires Authorization: Bearer <AIRTABLE_PERSONAL_ACCESS_TOKEN>',
@@ -167,7 +167,7 @@ export const MCP_PRESETS: McpPreset[] = [
   },
   {
     name: 'Shodan',
-    icon: '🔭',
+    icon: '',
     description: 'Search internet-facing devices, open ports, and exposed services',
     serverUrl: 'https://server.smithery.ai/@dokterbob/mcp-shodan/mcp',
     authNote: 'Requires x-smithery-api-key: <KEY> (free at smithery.ai) and Authorization: Bearer <SHODAN_API_KEY>',

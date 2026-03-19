@@ -4,18 +4,18 @@ import { getTechReadinessRankings, type TechReadinessScore } from '@/services/ec
 import { escapeHtml } from '@/utils/sanitize';
 
 const COUNTRY_FLAGS: Record<string, string> = {
-  'USA': '🇺🇸', 'CHN': '🇨🇳', 'JPN': '🇯🇵', 'DEU': '🇩🇪', 'KOR': '🇰🇷',
-  'GBR': '🇬🇧', 'IND': '🇮🇳', 'ISR': '🇮🇱', 'SGP': '🇸🇬', 'TWN': '🇹🇼',
-  'FRA': '🇫🇷', 'CAN': '🇨🇦', 'SWE': '🇸🇪', 'NLD': '🇳🇱', 'CHE': '🇨🇭',
-  'FIN': '🇫🇮', 'IRL': '🇮🇪', 'AUS': '🇦🇺', 'BRA': '🇧🇷', 'IDN': '🇮🇩',
-  'ESP': '🇪🇸', 'ITA': '🇮🇹', 'MEX': '🇲🇽', 'RUS': '🇷🇺', 'TUR': '🇹🇷',
-  'SAU': '🇸🇦', 'ARE': '🇦🇪', 'POL': '🇵🇱', 'THA': '🇹🇭', 'MYS': '🇲🇾',
-  'VNM': '🇻🇳', 'PHL': '🇵🇭', 'NZL': '🇳🇿', 'AUT': '🇦🇹', 'BEL': '🇧🇪',
-  'DNK': '🇩🇰', 'NOR': '🇳🇴', 'PRT': '🇵🇹', 'CZE': '🇨🇿', 'ZAF': '🇿🇦',
-  'NGA': '🇳🇬', 'KEN': '🇰🇪', 'EGY': '🇪🇬', 'ARG': '🇦🇷', 'CHL': '🇨🇱',
-  'COL': '🇨🇴', 'PAK': '🇵🇰', 'BGD': '🇧🇩', 'UKR': '🇺🇦', 'ROU': '🇷🇴',
-  'EST': '🇪🇪', 'LVA': '🇱🇻', 'LTU': '🇱🇹', 'HUN': '🇭🇺', 'GRC': '🇬🇷',
-  'QAT': '🇶🇦', 'BHR': '🇧🇭', 'KWT': '🇰🇼', 'OMN': '🇴🇲', 'JOR': '🇯🇴',
+  'USA': '', 'CHN': '', 'JPN': '', 'DEU': '', 'KOR': '',
+  'GBR': '', 'IND': '', 'ISR': '', 'SGP': '', 'TWN': '',
+  'FRA': '', 'CAN': '', 'SWE': '', 'NLD': '', 'CHE': '',
+  'FIN': '', 'IRL': '', 'AUS': '', 'BRA': '', 'IDN': '',
+  'ESP': '', 'ITA': '', 'MEX': '', 'RUS': '', 'TUR': '',
+  'SAU': '', 'ARE': '', 'POL': '', 'THA': '', 'MYS': '',
+  'VNM': '', 'PHL': '', 'NZL': '', 'AUT': '', 'BEL': '',
+  'DNK': '', 'NOR': '', 'PRT': '', 'CZE': '', 'ZAF': '',
+  'NGA': '', 'KEN': '', 'EGY': '', 'ARG': '', 'CHL': '',
+  'COL': '', 'PAK': '', 'BGD': '', 'UKR': '', 'ROU': '',
+  'EST': '', 'LVA': '', 'LTU': '', 'HUN': '', 'GRC': '',
+  'QAT': '', 'BHR': '', 'KWT': '', 'OMN': '', 'JOR': '',
 };
 
 export class TechReadinessPanel extends Panel {
@@ -62,27 +62,27 @@ export class TechReadinessPanel extends Panel {
       <div class="tech-fetch-progress">
         <div class="tech-fetch-icon">
           <div class="tech-globe-ring"></div>
-          <span class="tech-globe">🌐</span>
+          <span class="tech-globe"></span>
         </div>
         <div class="tech-fetch-title">${t('components.techReadiness.fetchingData')}</div>
         <div class="tech-fetch-indicators">
           <div class="tech-indicator-item" style="animation-delay: 0s">
-            <span class="tech-indicator-icon">🌐</span>
+            <span class="tech-indicator-icon"></span>
             <span class="tech-indicator-name">${t('components.techReadiness.internetUsersIndicator')}</span>
             <span class="tech-indicator-status"></span>
           </div>
           <div class="tech-indicator-item" style="animation-delay: 0.2s">
-            <span class="tech-indicator-icon">📱</span>
+            <span class="tech-indicator-icon"></span>
             <span class="tech-indicator-name">${t('components.techReadiness.mobileSubscriptionsIndicator')}</span>
             <span class="tech-indicator-status"></span>
           </div>
           <div class="tech-indicator-item" style="animation-delay: 0.4s">
-            <span class="tech-indicator-icon">📡</span>
+            <span class="tech-indicator-icon"></span>
             <span class="tech-indicator-name">${t('components.techReadiness.broadbandAccess')}</span>
             <span class="tech-indicator-status"></span>
           </div>
           <div class="tech-indicator-item" style="animation-delay: 0.6s">
-            <span class="tech-indicator-icon">🔬</span>
+            <span class="tech-indicator-icon"></span>
             <span class="tech-indicator-name">${t('components.techReadiness.rdExpenditure')}</span>
             <span class="tech-indicator-status"></span>
           </div>
@@ -93,7 +93,7 @@ export class TechReadinessPanel extends Panel {
   }
 
   private getFlag(countryCode: string): string {
-    return COUNTRY_FLAGS[countryCode] || '🌐';
+    return COUNTRY_FLAGS[countryCode] || '';
   }
 
   private getScoreClass(score: number): string {
@@ -127,9 +127,9 @@ export class TechReadinessPanel extends Panel {
               <div class="readiness-info">
                 <div class="readiness-name">${escapeHtml(country.countryName)}</div>
                 <div class="readiness-components">
-                  <span title="${t('components.techReadiness.internetUsers')}">🌐${this.formatComponent(country.components.internet)}</span>
-                  <span title="${t('components.techReadiness.mobileSubscriptions')}">📱${this.formatComponent(country.components.mobile)}</span>
-                  <span title="${t('components.techReadiness.rdSpending')}">🔬${this.formatComponent(country.components.rdSpend)}</span>
+                  <span title="${t('components.techReadiness.internetUsers')}">${this.formatComponent(country.components.internet)}</span>
+                  <span title="${t('components.techReadiness.mobileSubscriptions')}">${this.formatComponent(country.components.mobile)}</span>
+                  <span title="${t('components.techReadiness.rdSpending')}">${this.formatComponent(country.components.rdSpend)}</span>
                 </div>
               </div>
               <div class="readiness-score ${scoreClass}">${country.score}</div>

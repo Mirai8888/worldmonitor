@@ -3163,12 +3163,12 @@ export const NUCLEAR_FACILITIES: NuclearFacility[] = [
 ];
 
 export const SANCTIONED_COUNTRIES: Record<number, 'severe' | 'high' | 'moderate'> = {
-  408: 'severe',   // North Korea
-  728: 'severe',   // South Sudan
-  760: 'severe',   // Syria
-  364: 'high',     // Iran
-  643: 'high',     // Russia
-  112: 'high',     // Belarus
+  408: 'severe', // North Korea
+  728: 'severe', // South Sudan
+  760: 'severe', // Syria
+  364: 'high', // Iran
+  643: 'high', // Russia
+  112: 'high', // Belarus
   862: 'moderate', // Venezuela
   104: 'moderate', // Myanmar
   178: 'moderate', // Congo

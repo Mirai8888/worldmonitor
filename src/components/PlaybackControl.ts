@@ -13,7 +13,7 @@ export class PlaybackControl {
     this.element.className = 'playback-control';
     this.element.innerHTML = `
       <button class="playback-toggle" title="${t('components.playback.toggleMode')}" aria-label="${t('components.playback.toggleMode')}">
-        <span class="playback-icon">⏪</span>
+        <span class="playback-icon"></span>
       </button>
       <div class="playback-panel hidden">
         <div class="playback-header">
@@ -25,11 +25,11 @@ export class PlaybackControl {
           <div class="playback-time">${t('components.playback.live')}</div>
         </div>
         <div class="playback-controls">
-          <button class="playback-btn" data-action="start" aria-label="${t('components.playback.skipToStart')}">⏮</button>
-          <button class="playback-btn" data-action="prev" aria-label="${t('components.playback.previous')}">◀</button>
+          <button class="playback-btn" data-action="start" aria-label="${t('components.playback.skipToStart')}"></button>
+          <button class="playback-btn" data-action="prev" aria-label="${t('components.playback.previous')}"></button>
           <button class="playback-btn playback-live" data-action="live">${t('components.playback.live')}</button>
-          <button class="playback-btn" data-action="next" aria-label="${t('components.playback.next')}">▶</button>
-          <button class="playback-btn" data-action="end" aria-label="${t('components.playback.skipToEnd')}">⏭</button>
+          <button class="playback-btn" data-action="next" aria-label="${t('components.playback.next')}"></button>
+          <button class="playback-btn" data-action="end" aria-label="${t('components.playback.skipToEnd')}"></button>
         </div>
       </div>
     `;

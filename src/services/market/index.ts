@@ -1,6 +1,6 @@
 /**
  * Unified market service module -- replaces legacy service:
- *   - src/services/markets.ts (Finnhub + Yahoo + CoinGecko)
+ * - src/services/markets.ts (Finnhub + Yahoo + CoinGecko)
  *
  * All data now flows through the MarketServiceClient RPCs.
  */

@@ -146,7 +146,7 @@ export class PanelLayoutManager implements AppModule {
                data-variant="full"
                ${vTarget('full')}
                title="${t('header.world')}${SITE_VARIANT === 'full' ? ` ${t('common.currentVariant')}` : ''}">
-              <span class="variant-icon">🌍</span>
+              <span class="variant-icon"></span>
               <span class="variant-label">${t('header.world')}</span>
             </a>
             <span class="variant-divider"></span>
@@ -155,7 +155,7 @@ export class PanelLayoutManager implements AppModule {
                data-variant="tech"
                ${vTarget('tech')}
                title="${t('header.tech')}${SITE_VARIANT === 'tech' ? ` ${t('common.currentVariant')}` : ''}">
-              <span class="variant-icon">💻</span>
+              <span class="variant-icon"></span>
               <span class="variant-label">${t('header.tech')}</span>
             </a>
             <span class="variant-divider"></span>
@@ -164,7 +164,7 @@ export class PanelLayoutManager implements AppModule {
                data-variant="finance"
                ${vTarget('finance')}
                title="${t('header.finance')}${SITE_VARIANT === 'finance' ? ` ${t('common.currentVariant')}` : ''}">
-              <span class="variant-icon">📈</span>
+              <span class="variant-icon"></span>
               <span class="variant-label">${t('header.finance')}</span>
             </a>
             <span class="variant-divider"></span>
@@ -173,7 +173,7 @@ export class PanelLayoutManager implements AppModule {
                data-variant="commodity"
                ${vTarget('commodity')}
                title="${t('header.commodity')}${SITE_VARIANT === 'commodity' ? ` ${t('common.currentVariant')}` : ''}">
-              <span class="variant-icon">⛏️</span>
+              <span class="variant-icon"></span>
               <span class="variant-label">${t('header.commodity')}</span>
             </a>
             <span class="variant-divider"></span>
@@ -182,7 +182,7 @@ export class PanelLayoutManager implements AppModule {
                data-variant="happy"
                ${vTarget('happy')}
                title="Good News${SITE_VARIANT === 'happy' ? ` ${t('common.currentVariant')}` : ''}">
-              <span class="variant-icon">☀️</span>
+              <span class="variant-icon"></span>
               <span class="variant-label">Good News</span>
             </a>`;
       })()}</div>
@@ -227,7 +227,7 @@ export class PanelLayoutManager implements AppModule {
           </div>`}
           <button class="search-btn" id="searchBtn"><kbd>⌘K</kbd> ${t('header.search')}</button>
           ${this.ctx.isDesktopApp ? '' : `<button class="copy-link-btn" id="copyLinkBtn">${t('header.copyLink')}</button>`}
-          ${this.ctx.isDesktopApp ? '' : `<button class="fullscreen-btn" id="fullscreenBtn" title="${t('header.fullscreen')}">⛶</button>`}
+          ${this.ctx.isDesktopApp ? '' : `<button class="fullscreen-btn" id="fullscreenBtn" title="${t('header.fullscreen')}"></button>`}
           ${SITE_VARIANT === 'happy' ? `<button class="tv-mode-btn" id="tvModeBtn" title="TV Mode (Shift+T)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></button>` : ''}
           <span id="unifiedSettingsMount"></span>
         </div>
@@ -243,33 +243,33 @@ export class PanelLayoutManager implements AppModule {
         <div class="mobile-menu-divider"></div>
         ${(() => {
         const variants = [
-          { key: 'full', icon: '🌍', label: t('header.world') },
-          { key: 'tech', icon: '💻', label: t('header.tech') },
-          { key: 'finance', icon: '📈', label: t('header.finance') },
-          { key: 'commodity', icon: '⛏️', label: t('header.commodity') },
-          { key: 'happy', icon: '☀️', label: 'Good News' },
+          { key: 'full', icon: '', label: t('header.world') },
+          { key: 'tech', icon: '', label: t('header.tech') },
+          { key: 'finance', icon: '', label: t('header.finance') },
+          { key: 'commodity', icon: '', label: t('header.commodity') },
+          { key: 'happy', icon: '', label: 'Good News' },
         ];
         return variants.map(v =>
           `<button class="mobile-menu-item mobile-menu-variant ${v.key === SITE_VARIANT ? 'active' : ''}" data-variant="${v.key}">
             <span class="mobile-menu-item-icon">${v.icon}</span>
             <span class="mobile-menu-item-label">${v.label}</span>
-            ${v.key === SITE_VARIANT ? '<span class="mobile-menu-check">✓</span>' : ''}
+            ${v.key === SITE_VARIANT ? '<span class="mobile-menu-check"></span>' : ''}
           </button>`
         ).join('');
       })()}
         <div class="mobile-menu-divider"></div>
         <button class="mobile-menu-item" id="mobileMenuRegion">
-          <span class="mobile-menu-item-icon">🌐</span>
+          <span class="mobile-menu-item-icon"></span>
           <span class="mobile-menu-item-label">${t('components.deckgl.views.global')}</span>
           <span class="mobile-menu-chevron">▸</span>
         </button>
         <div class="mobile-menu-divider"></div>
         <button class="mobile-menu-item" id="mobileMenuSettings">
-          <span class="mobile-menu-item-icon">⚙️</span>
+          <span class="mobile-menu-item-icon"></span>
           <span class="mobile-menu-item-label">${t('header.settings')}</span>
         </button>
         <button class="mobile-menu-item" id="mobileMenuTheme">
-          <span class="mobile-menu-item-icon">${getCurrentTheme() === 'dark' ? '☀️' : '🌙'}</span>
+          <span class="mobile-menu-item-icon">${getCurrentTheme() === 'dark' ? '' : ''}</span>
           <span class="mobile-menu-item-label">${getCurrentTheme() === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
         </button>
         <a class="mobile-menu-item" href="https://x.com/eliehabib" target="_blank" rel="noopener">
@@ -301,7 +301,7 @@ export class PanelLayoutManager implements AppModule {
       ].map(r =>
         `<button class="region-sheet-option ${r.value === 'global' ? 'active' : ''}" data-region="${r.value}">
           <span>${r.label}</span>
-          <span class="region-sheet-check">${r.value === 'global' ? '✓' : ''}</span>
+          <span class="region-sheet-check">${r.value === 'global' ? '' : ''}</span>
         </button>`
       ).join('')}
       </div>
@@ -373,7 +373,7 @@ export class PanelLayoutManager implements AppModule {
     if (collapsed) mapSection.classList.add('collapsed');
 
     const updateBtn = (btn: HTMLButtonElement, isCollapsed: boolean) => {
-      btn.textContent = isCollapsed ? `▶ ${t('components.map.showMap')}` : `▼ ${t('components.map.hideMap')}`;
+      btn.textContent = isCollapsed ? ` ${t('components.map.showMap')}` : `▼ ${t('components.map.hideMap')}`;
     };
 
     const btn = document.createElement('button');
@@ -431,7 +431,7 @@ export class PanelLayoutManager implements AppModule {
     this.criticalBannerEl.className = `critical-posture-banner ${isCritical ? 'severity-critical' : 'severity-elevated'}`;
     this.criticalBannerEl.innerHTML = `
       <div class="banner-content">
-        <span class="banner-icon">${isCritical ? '🚨' : '⚠️'}</span>
+        <span class="banner-icon">${isCritical ? '' : ''}</span>
         <span class="banner-headline">${escapeHtml(top.headline)}</span>
         <span class="banner-stats">${top.totalAircraft} aircraft • ${escapeHtml(top.summary)}</span>
         ${top.strikeCapable ? '<span class="banner-strike">STRIKE CAPABLE</span>' : ''}

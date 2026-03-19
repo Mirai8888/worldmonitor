@@ -7,7 +7,7 @@ import type { GulfInvestment } from '@/types';
  *
  * Key entities tracked:
  * UAE: DP World, AD Ports, Mubadala, ADIA, ADNOC, Masdar, Emirates Global Aluminium
- * SA:  PIF, Saudi Aramco, ACWA Power, STC, Mawani, NEOM
+ * SA: PIF, Saudi Aramco, ACWA Power, STC, Mawani, NEOM
  */
 export const GULF_INVESTMENTS: GulfInvestment[] = [
 

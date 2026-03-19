@@ -773,11 +773,11 @@
       "empty": "Brak najnowszych artykułów na ten temat"
     },
     "geoHubs": {
-      "tooltip": "<strong>Centra aktywności geopolitycznej</strong><br>Pokazuje regiony o największej aktywności informacyjnej.<br><br><em>Typy ośrodków:</em><br>• 🏛️Stolice — stolice świata i centra rządowe<br>• ⚔️ Strefy konfliktu — obszary aktywnego konfliktu<br>• ⚓ Strategiczne — wąskie gardła i kluczowe regiony<br>• 🏢 Organizacje — ONZ, NATO, MAEA itp.<br><br><em>Poziomy aktywności:</em><br>• <span style=\"color: #ff4444\">Wysoki </span> — Najświeższe informacje lub wynik 70+<br>• <span style=\"color: #ff8844\">Podwyższony</span> — Wynik 40-69<br>• <span style=\"color: #888\">Niski</span> — Wynik poniżej 40<br><br>Kliknij koncentrator, aby powiększyć jego lokalizację.",
+      "tooltip": "<strong>Centra aktywności geopolitycznej</strong><br>Pokazuje regiony o największej aktywności informacyjnej.<br><br><em>Typy ośrodków:</em><br>• Stolice — stolice świata i centra rządowe<br>• Strefy konfliktu — obszary aktywnego konfliktu<br>• Strategiczne — wąskie gardła i kluczowe regiony<br>• Organizacje — ONZ, NATO, MAEA itp.<br><br><em>Poziomy aktywności:</em><br>• <span style=\"color: #ff4444\">Wysoki </span> — Najświeższe informacje lub wynik 70+<br>• <span style=\"color: #ff8844\">Podwyższony</span> — Wynik 40-69<br>• <span style=\"color: #888\">Niski</span> — Wynik poniżej 40<br><br>Kliknij koncentrator, aby powiększyć jego lokalizację.",
       "noActive": "Brak aktywnych węzłów geopolitycznych",
       "story": "historia",
       "stories": "historie",
-      "infoTooltip": "<strong>Centra aktywności geopolitycznej</strong><br>Pokazuje regiony o największej aktywności informacyjnej.<br><br><em>Typy ośrodków:</em><br>• 🏛️Stolice — stolice świata i centra rządowe<br>• ⚔️ Strefy konfliktu — obszary aktywnego konfliktu<br>• ⚓ Strategiczne — wąskie gardła i kluczowe regiony<br>• 🏢 Organizacje — ONZ, NATO, MAEA itp.<br><br><em>Poziomy aktywności:</em><br>• <span style=\"color: {{highColor}}\">Wysoki</span> — Najświeższe wiadomości lub wynik 70+<br>• <span style=\"color: {{elevatedColor}}\">Podwyższony</span> — Wynik 40-69<br> • <span style=\"color: {{lowColor}}\">Niski</span> — wynik poniżej 40<br><br>Kliknij centrum, aby powiększyć jego lokalizację."
+      "infoTooltip": "<strong>Centra aktywności geopolitycznej</strong><br>Pokazuje regiony o największej aktywności informacyjnej.<br><br><em>Typy ośrodków:</em><br>• Stolice — stolice świata i centra rządowe<br>• Strefy konfliktu — obszary aktywnego konfliktu<br>• Strategiczne — wąskie gardła i kluczowe regiony<br>• Organizacje — ONZ, NATO, MAEA itp.<br><br><em>Poziomy aktywności:</em><br>• <span style=\"color: {{highColor}}\">Wysoki</span> — Najświeższe wiadomości lub wynik 70+<br>• <span style=\"color: {{elevatedColor}}\">Podwyższony</span> — Wynik 40-69<br> • <span style=\"color: {{lowColor}}\">Niski</span> — wynik poniżej 40<br><br>Kliknij centrum, aby powiększyć jego lokalizację."
     },
     "techHubs": {
       "tooltip": "<strong>Działalność w centrum technicznym</strong><br>Pokazuje centra technologiczne z największą aktywnością w zakresie wiadomości.<br><br><em>Poziomy aktywności:</em><br>• <span style=\"color: #00ff88\">Wysoki</span> — Najświeższe wiadomości lub wynik 50+<br>• <span style=\"color: #ffc800\">Podwyższony</span> — Wynik 20–49<br>• <span style=\"color: #888\">Niski</span> — Wynik poniżej 20<br><br>Kliknij koncentrator, aby powiększyć jego lokalizację.",
@@ -1182,7 +1182,7 @@
       "internetUsers": "Użytkownicy Internetu",
       "mobileSubscriptions": "Subskrypcje mobilne",
       "rdSpending": "Wydatki na badania i rozwój",
-      "infoTooltip": "<strong>Globalna gotowość technologiczna</strong><br>Wynik złożony (0-100) na podstawie danych Banku Światowego:<br><br><strong>Pokazane dane:</strong><br>🌐 Użytkownicy Internetu (% populacji)<br>📱 Subskrypcje mobilne (na 100 osób)<br>🔬 Badania i rozwój Wydatki (% PKB)<br><br><strong>Wagi:</strong> Badania i rozwój (35%), Internet (30%), Internet szerokopasmowy (20%), Telefonia komórkowa (15%)<br><br><em>— = Brak dostępnych najnowszych danych</em><br><em>Źródło: Otwarte dane Banku Światowego (2019-2024)</em>",
+      "infoTooltip": "<strong>Globalna gotowość technologiczna</strong><br>Wynik złożony (0-100) na podstawie danych Banku Światowego:<br><br><strong>Pokazane dane:</strong><br> Użytkownicy Internetu (% populacji)<br> Subskrypcje mobilne (na 100 osób)<br> Badania i rozwój Wydatki (% PKB)<br><br><strong>Wagi:</strong> Badania i rozwój (35%), Internet (30%), Internet szerokopasmowy (20%), Telefonia komórkowa (15%)<br><br><em>— = Brak dostępnych najnowszych danych</em><br><em>Źródło: Otwarte dane Banku Światowego (2019-2024)</em>",
       "fetchingData": "Fetching World Bank Data",
       "internetUsersIndicator": "Internet Users",
       "mobileSubscriptionsIndicator": "Mobile Subscriptions",
@@ -2079,7 +2079,7 @@
       "usniIntel": "USNI Intel",
       "usniSource": "Source: USNI News Fleet Tracker",
       "approximatePosition": "Position approximate — based on USNI weekly report, not real-time AIS.",
-      "darkDescription": "⚠ Na statku zgasło światło – utracono sygnał AIS. Może wskazywać wrażliwe operacje.",
+      "darkDescription": " Na statku zgasło światło – utracono sygnał AIS. Może wskazywać wrażliwe operacje.",
       "recentTracking": "Recent Tracking",
       "lastReport": "LATEST",
       "nearChokepoint": "NEAR CHOKEPOINT",

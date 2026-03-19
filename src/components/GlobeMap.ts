@@ -5,13 +5,13 @@
  * replacement within MapContainer when the user enables globe mode.
  *
  * Architecture mirrors Sentinel (sentinel.axonia.us):
- *  - globe.gl v2 (new Globe(element, config))
- *  - Earth texture: /textures/earth-topo-bathy.jpg
- *  - Night sky background: /textures/night-sky.png
- *  - Specular/water map: /textures/earth-water.png
- *  - Atmosphere: #4466cc glow via built-in Fresnel shader
- *  - All markers via htmlElementsData (single merged array with _kind discriminator)
- *  - Auto-rotate after 60 s of inactivity
+ * - globe.gl v2 (new Globe(element, config))
+ * - Earth texture: /textures/earth-topo-bathy.jpg
+ * - Night sky background: /textures/night-sky.png
+ * - Specular/water map: /textures/earth-water.png
+ * - Atmosphere: #4466cc glow via built-in Fresnel shader
+ * - All markers via htmlElementsData (single merged array with _kind discriminator)
+ * - Auto-rotate after 60 s of inactivity
  */
 
 import Globe from 'globe.gl';
@@ -85,8 +85,8 @@ interface VesselMarker extends BaseMarker {
   _kind: 'vessel';
   id: string;
   name: string;
-  type: string;       // raw enum key: 'carrier'|'destroyer' etc — color/icon lookup
-  typeLabel: string;  // human-readable: 'Aircraft Carrier' etc — display only
+  type: string; // raw enum key: 'carrier'|'destroyer' etc — color/icon lookup
+  typeLabel: string; // human-readable: 'Aircraft Carrier' etc — display only
   hullNumber?: string;
   operator?: string;
   operatorCountry?: string;
@@ -728,7 +728,7 @@ export class GlobeMap {
       .arcColor((d: TradeRouteSegment) => {
         if (d.status === 'disrupted') return ['rgba(197,48,48,0.1)', 'rgba(197,48,48,0.7)', 'rgba(197,48,48,0.1)'];
         if (d.status === 'high_risk') return ['rgba(180,83,9,0.1)', 'rgba(180,83,9,0.6)', 'rgba(180,83,9,0.1)'];
-        if (d.category === 'energy')    return ['rgba(180,83,9,0.05)', 'rgba(180,83,9,0.5)', 'rgba(180,83,9,0.05)'];
+        if (d.category === 'energy') return ['rgba(180,83,9,0.05)', 'rgba(180,83,9,0.5)', 'rgba(180,83,9,0.05)'];
         if (d.category === 'container') return ['rgba(26,26,26,0.05)', 'rgba(26,26,26,0.5)', 'rgba(26,26,26,0.05)'];
         return ['rgba(102,102,102,0.05)', 'rgba(102,102,102,0.5)', 'rgba(102,102,102,0.05)'];
       })
@@ -754,12 +754,12 @@ export class GlobeMap {
           return colors[d.country || ''] || 'rgba(200,200,255,0.3)';
         }
         if (d.pathType === 'cable') {
-          if (this.cableFaultIds.has(d.id))    return '#ff3030';
+          if (this.cableFaultIds.has(d.id)) return '#ff3030';
           if (this.cableDegradedIds.has(d.id)) return '#ff8800';
           return 'rgba(0,200,255,0.65)';
         }
-        if (d.pathType === 'oil')   return 'rgba(255,140,0,0.6)';
-        if (d.pathType === 'gas')   return 'rgba(80,220,120,0.6)';
+        if (d.pathType === 'oil') return 'rgba(255,140,0,0.6)';
+        if (d.pathType === 'gas') return 'rgba(80,220,120,0.6)';
         if (d.pathType === 'stormTrack') return 'rgba(255,100,100,0.8)';
         if (d.pathType === 'stormHistory') {
           const w = d.windKt || 0;
@@ -955,7 +955,7 @@ export class GlobeMap {
       const color = GlobeMap.FLIGHT_TYPE_COLORS[d.type] ?? '#cccccc';
       el.innerHTML = GlobeMap.wrapHit(`
         <div style="transform:rotate(${heading}deg);font-size:11px;color:${color};text-shadow:0 0 4px ${color}88;line-height:1;">
-          ✈
+          
         </div>`);
       el.title = `${d.callsign} (${d.type})`;
     } else if (d._kind === 'vessel') {
@@ -993,7 +993,7 @@ export class GlobeMap {
         Extreme: '#ff0044', Severe: '#ff6600', Moderate: '#ffaa00', Minor: '#88aaff',
       };
       const c = severityColors[d.severity] ?? '#88aaff';
-      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:9px;color:${c};text-shadow:0 0 4px ${c}88;font-weight:bold;">⚡</div>`);
+      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:9px;color:${c};text-shadow:0 0 4px ${c}88;font-weight:bold;"></div>`);
       el.title = d.headline;
     } else if (d._kind === 'radiation') {
       const c = d.severity === 'spike' ? '#ff3030' : '#ffaa00';
@@ -1004,15 +1004,15 @@ export class GlobeMap {
         ? '<div style="position:absolute;inset:-9px;border-radius:50%;border:1px dashed #7dd3fc88;"></div>'
         : '';
       el.innerHTML = GlobeMap.wrapHit(
-        `<div style="position:relative;display:inline-flex;align-items:center;justify-content:center;">${ring}${confirmRing}<div style="font-size:11px;color:${c};text-shadow:0 0 5px ${c}88;opacity:${d.confidence === 'low' ? 0.75 : 1};">☢</div></div>`
+        `<div style="position:relative;display:inline-flex;align-items:center;justify-content:center;">${ring}${confirmRing}<div style="font-size:11px;color:${c};text-shadow:0 0 5px ${c}88;opacity:${d.confidence === 'low' ? 0.75 : 1};"></div></div>`
       );
       el.title = `${d.location} · ${d.severity} · ${d.confidence}`;
     } else if (d._kind === 'natural') {
       const typeIcons: Record<string, string> = {
-        earthquakes: '〽', volcanoes: '🌋', severeStorms: '🌀',
-        floods: '💧', wildfires: '🔥', drought: '☀',
+        earthquakes: '', volcanoes: '', severeStorms: '',
+        floods: '', wildfires: '', drought: '',
       };
-      const icon = typeIcons[d.category] ?? '⚠';
+      const icon = typeIcons[d.category] ?? '';
       el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:11px;">${icon}</div>`);
       el.title = d.title;
     } else if (d._kind === 'iran') {
@@ -1025,15 +1025,15 @@ export class GlobeMap {
       el.title = d.title;
     } else if (d._kind === 'outage') {
       const sc = d.severity === 'total' ? '#ff2020' : d.severity === 'major' ? '#ff8800' : '#ffcc00';
-      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:12px;color:${sc};text-shadow:0 0 4px ${sc}88;">📡</div>`);
+      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:12px;color:${sc};text-shadow:0 0 4px ${sc}88;"></div>`);
       el.title = `${d.country}: ${d.title}`;
     } else if (d._kind === 'cyber') {
       const sc = d.severity === 'critical' ? '#ff0044' : d.severity === 'high' ? '#ff4400' : d.severity === 'medium' ? '#ffaa00' : '#44aaff';
-      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:10px;color:${sc};text-shadow:0 0 4px ${sc}88;font-weight:bold;">🛡</div>`);
+      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:10px;color:${sc};text-shadow:0 0 4px ${sc}88;font-weight:bold;"></div>`);
       el.title = `${d.type}: ${d.indicator}`;
     } else if (d._kind === 'fire') {
       const intensity = d.brightness > 400 ? '#ff2020' : d.brightness > 330 ? '#ff6600' : '#ffaa00';
-      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:10px;color:${intensity};text-shadow:0 0 4px ${intensity}88;">🔥</div>`);
+      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:10px;color:${intensity};text-shadow:0 0 4px ${intensity}88;"></div>`);
       el.title = `Fire — ${d.region}`;
     } else if (d._kind === 'protest') {
       const typeColors: Record<string, string> = {
@@ -1041,7 +1041,7 @@ export class GlobeMap {
         demonstration: '#88ff44', civil_unrest: '#ff6600',
       };
       const c = typeColors[d.eventType] ?? '#ffaa00';
-      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:11px;color:${c};text-shadow:0 0 4px ${c}88;">📢</div>`);
+      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:11px;color:${c};text-shadow:0 0 4px ${c}88;"></div>`);
       el.title = d.title;
     } else if (d._kind === 'ucdp') {
       const size = Math.min(10, 5 + (d.deaths || 0) * 0.3);
@@ -1051,19 +1051,19 @@ export class GlobeMap {
         </div>`);
       el.title = `${d.sideA} vs ${d.sideB}`;
     } else if (d._kind === 'displacement') {
-      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:11px;color:#88bbff;text-shadow:0 0 4px #88bbff88;">👥</div>`);
+      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:11px;color:#88bbff;text-shadow:0 0 4px #88bbff88;"></div>`);
       el.title = `${d.origin} → ${d.asylum}`;
     } else if (d._kind === 'climate') {
       const typeColors: Record<string, string> = { warm: '#ff4400', cold: '#44aaff', wet: '#00ccff', dry: '#ff8800', mixed: '#88ff88' };
       const c = typeColors[d.type] ?? '#88ff88';
-      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:10px;color:${c};text-shadow:0 0 4px ${c}88;">🌡</div>`);
+      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:10px;color:${c};text-shadow:0 0 4px ${c}88;"></div>`);
       el.title = `${d.zone} (${d.type})`;
     } else if (d._kind === 'gpsjam') {
       const c = d.level === 'high' ? '#ff2020' : '#ff8800';
-      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:10px;color:${c};text-shadow:0 0 4px ${c}88;">📡</div>`);
+      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:10px;color:${c};text-shadow:0 0 4px ${c}88;"></div>`);
       el.title = `GPS Jamming (${d.level})`;
     } else if (d._kind === 'tech') {
-      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:10px;color:#44aaff;text-shadow:0 0 4px #44aaff88;">💻</div>`);
+      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:10px;color:#44aaff;text-shadow:0 0 4px #44aaff88;"></div>`);
       el.title = d.title;
     } else if (d._kind === 'conflictZone') {
       const intColor = d.intensity === 'high' ? '#ff2020' : d.intensity === 'medium' ? '#ff8800' : '#ffcc00';
@@ -1078,7 +1078,7 @@ export class GlobeMap {
           <div style="
             position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
             font-size:9px;line-height:1;color:${intColor};
-          ">⚔</div>
+          "></div>
         </div>`;
       el.title = d.name;
     } else if (d._kind === 'milbase') {
@@ -1098,13 +1098,13 @@ export class GlobeMap {
         "></div>`);
       el.title = `${d.name}${d.country ? ' · ' + d.country : ''}`;
     } else if (d._kind === 'nuclearSite') {
-      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:11px;color:#ffd700;text-shadow:0 0 4px #ffd70088;">☢</div>`);
+      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:11px;color:#ffd700;text-shadow:0 0 4px #ffd70088;"></div>`);
       el.title = `${d.name} (${d.type})`;
     } else if (d._kind === 'irradiator') {
-      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:10px;color:#ff8800;text-shadow:0 0 3px #ff880088;">⚠</div>`);
+      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:10px;color:#ff8800;text-shadow:0 0 3px #ff880088;"></div>`);
       el.title = `${d.city}, ${d.country}`;
     } else if (d._kind === 'spaceport') {
-      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:11px;color:#88ddff;text-shadow:0 0 4px #88ddff88;">🚀</div>`);
+      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:11px;color:#88ddff;text-shadow:0 0 4px #88ddff88;"></div>`);
       el.title = `${d.name} (${d.operator})`;
     } else if (d._kind === 'earthquake') {
       const mc = d.magnitude >= 6 ? '#ff2020' : d.magnitude >= 4 ? '#ff8800' : '#ffcc00';
@@ -1113,35 +1113,35 @@ export class GlobeMap {
       el.title = `M${d.magnitude.toFixed(1)} — ${d.place}`;
     } else if (d._kind === 'economic') {
       const ec = d.type === 'exchange' ? '#ffd700' : d.type === 'central-bank' ? '#4488ff' : '#44cc88';
-      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:11px;color:${ec};text-shadow:0 0 4px ${ec}88;">💰</div>`);
+      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:11px;color:${ec};text-shadow:0 0 4px ${ec}88;"></div>`);
       el.title = `${d.name} · ${d.country}`;
     } else if (d._kind === 'datacenter') {
-      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:10px;color:#88aaff;text-shadow:0 0 3px #88aaff88;">🖥</div>`);
+      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:10px;color:#88aaff;text-shadow:0 0 3px #88aaff88;"></div>`);
       el.title = `${d.name} (${d.owner})`;
     } else if (d._kind === 'waterway') {
-      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:10px;color:#44aadd;text-shadow:0 0 3px #44aadd88;">⚓</div>`);
+      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:10px;color:#44aadd;text-shadow:0 0 3px #44aadd88;"></div>`);
       el.title = d.name;
     } else if (d._kind === 'mineral') {
-      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:10px;color:#cc88ff;text-shadow:0 0 3px #cc88ff88;">💎</div>`);
+      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:10px;color:#cc88ff;text-shadow:0 0 3px #cc88ff88;"></div>`);
       el.title = `${d.mineral} — ${d.name}`;
     } else if (d._kind === 'flightDelay') {
       const sc = d.severity === 'severe' ? '#ff2020' : d.severity === 'major' ? '#ff6600' : d.severity === 'moderate' ? '#ffaa00' : '#ffee44';
-      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:11px;color:${sc};text-shadow:0 0 4px ${sc}88;">✈</div>`);
+      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:11px;color:${sc};text-shadow:0 0 4px ${sc}88;"></div>`);
       el.title = `${d.iata} — ${d.severity}`;
     } else if (d._kind === 'notamRing') {
-      el.innerHTML = `<div style="position:relative;width:20px;height:20px;display:flex;align-items:center;justify-content:center;"><div style="position:absolute;inset:-3px;border-radius:50%;border:2px solid #ff282888;${this.pulseStyle('2s')}"></div><div style="font-size:12px;color:#ff2828;text-shadow:0 0 6px #ff282888;">⚠</div></div>`;
+      el.innerHTML = `<div style="position:relative;width:20px;height:20px;display:flex;align-items:center;justify-content:center;"><div style="position:absolute;inset:-3px;border-radius:50%;border:2px solid #ff282888;${this.pulseStyle('2s')}"></div><div style="font-size:12px;color:#ff2828;text-shadow:0 0 6px #ff282888;"></div></div>`;
       el.title = `NOTAM: ${d.name}`;
     } else if (d._kind === 'cableAdvisory') {
       const sc = d.severity === 'fault' ? '#ff2020' : '#ff8800';
-      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:11px;color:${sc};text-shadow:0 0 4px ${sc}88;">🔌</div>`);
+      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:11px;color:${sc};text-shadow:0 0 4px ${sc}88;"></div>`);
       el.title = `${d.title} (${d.severity})`;
     } else if (d._kind === 'repairShip') {
       const sc = d.status === 'on-station' ? '#44ff88' : '#44aaff';
-      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:11px;color:${sc};text-shadow:0 0 4px ${sc}88;">🚢</div>`);
+      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:11px;color:${sc};text-shadow:0 0 4px ${sc}88;"></div>`);
       el.title = d.name;
     } else if (d._kind === 'newsLocation') {
       const tc = d.threatLevel === 'critical' ? '#ff2020'
-               : d.threatLevel === 'high'     ? '#ff6600'
+               : d.threatLevel === 'high' ? '#ff6600'
                : d.threatLevel === 'elevated' ? '#ffaa00'
                : '#44aaff';
       el.innerHTML = `
@@ -1152,7 +1152,7 @@ export class GlobeMap {
       el.title = d.title;
     } else if (d._kind === 'aisDisruption') {
       const sc = d.severity === 'high' ? '#ff2020' : d.severity === 'elevated' ? '#ff8800' : '#44aaff';
-      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:11px;color:${sc};text-shadow:0 0 4px ${sc}88;">⛴</div>`);
+      el.innerHTML = GlobeMap.wrapHit(`<div style="font-size:11px;color:${sc};text-shadow:0 0 4px ${sc}88;"></div>`);
       el.title = d.name;
     } else if (d._kind === 'satellite') {
       const c = SAT_COUNTRY_COLORS[(d as SatelliteMarker).country] || '#ccccff';
@@ -1225,7 +1225,7 @@ export class GlobeMap {
         const aRect = anchor.getBoundingClientRect();
         const cRect = this.container.getBoundingClientRect();
         const x = aRect.left - cRect.left + aRect.width / 2;
-        const y = aRect.top  - cRect.top;
+        const y = aRect.top - cRect.top;
         this.hideTooltip();
         this.popup.show({ type: 'militaryVessel', data: vessel, x, y });
         return;
@@ -1238,7 +1238,7 @@ export class GlobeMap {
         const aRect = anchor.getBoundingClientRect();
         const cRect = this.container.getBoundingClientRect();
         const x = aRect.left - cRect.left + aRect.width / 2;
-        const y = aRect.top  - cRect.top;
+        const y = aRect.top - cRect.top;
         this.hideTooltip();
         this.popup.show({ type: 'militaryVesselCluster', data: cluster, x, y });
         return;
@@ -1312,17 +1312,17 @@ export class GlobeMap {
 
     let html = '';
     if (d._kind === 'conflict') {
-      html = `<span style="color:#ff5050;font-weight:bold;">⚔ ${esc(d.location)}</span>` +
+      html = `<span style="color:#ff5050;font-weight:bold;"> ${esc(d.location)}</span>` +
              (d.eventType ? `<br><span style="opacity:.7;">${esc(d.eventType)}</span>` : '') +
              (d.fatalities ? `<br><span style="opacity:.5;">Casualties: ${d.fatalities}</span>` : '');
     } else if (d._kind === 'hotspot') {
       const sc = ['', '#88ff44', '#ffdd00', '#ffaa00', '#ff6600', '#ff2020'][d.escalationScore] ?? '#ffaa00';
-      html = `<span style="color:${sc};font-weight:bold;">🎯 ${esc(d.name)}</span>` +
+      html = `<span style="color:${sc};font-weight:bold;"> ${esc(d.name)}</span>` +
              `<br><span style="opacity:.7;">Escalation: ${d.escalationScore}/5</span>`;
     } else if (d._kind === 'flight') {
       const dirs = ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];
       const compass = dirs[Math.round(((d.heading ?? 0) % 360 + 360) % 360 / 22.5) % 16];
-      html = `<span style="font-weight:bold;">✈ ${esc(d.callsign)}</span>` +
+      html = `<span style="font-weight:bold;"> ${esc(d.callsign)}</span>` +
              `<br><span style="opacity:.7;">${esc(d.type)}</span>` +
              `<br><span style="opacity:.5;">Heading: ${compass} (${Math.round(d.heading ?? 0)}°)</span>`;
     } else if (d._kind === 'vessel') {
@@ -1330,7 +1330,7 @@ export class GlobeMap {
         ? ` <span style="opacity:.6;font-size:10px;">[${esc(d.usniDeploymentStatus.toUpperCase().replace('-', ' '))}]</span>`
         : '';
       const darkWarning = d.isDark
-        ? `<br><span style="color:#ff4444;font-size:10px;font-weight:bold;">⚠ AIS DARK</span>`
+        ? `<br><span style="color:#ff4444;font-size:10px;font-weight:bold;"> AIS DARK</span>`
         : '';
       const operatorLine = d.operatorCountry || d.operator
         ? `<br><span style="opacity:.6;font-size:10px;">${esc(d.operatorCountry || d.operator || '')}</span>`
@@ -1343,34 +1343,34 @@ export class GlobeMap {
         : '';
       const inPort = d.usniDeploymentStatus === 'in-port';
       const portLine = inPort && d.usniHomePort
-        ? `<br><span style="color:#44aaff;font-size:10px;">🏠 ${esc(d.usniHomePort)}</span>`
+        ? `<br><span style="color:#44aaff;font-size:10px;"> ${esc(d.usniHomePort)}</span>`
         : '';
-      html = `<span style="font-weight:bold;">⛴ ${esc(d.name)}${hullLine}${deployStatus}</span>`
+      html = `<span style="font-weight:bold;"> ${esc(d.name)}${hullLine}${deployStatus}</span>`
         + darkWarning
         + `<br><span style="opacity:.7;">${esc(d.typeLabel)}</span>`
         + operatorLine
         + portLine
-        + (!inPort && d.usniStrikeGroup ? `<br><span style="opacity:.85;">⚓ ${esc(d.usniStrikeGroup)}</span>` : '')
+        + (!inPort && d.usniStrikeGroup ? `<br><span style="opacity:.85;"> ${esc(d.usniStrikeGroup)}</span>` : '')
         + (d.usniRegion ? `<br><span style="opacity:.6;font-size:10px;">${esc(d.usniRegion)}</span>` : '')
         + (d.usniActivityDescription ? `<br><span style="opacity:.6;font-size:10px;white-space:normal;display:block;max-width:200px;">${esc(d.usniActivityDescription.slice(0, 120))}</span>` : '')
         + (d.usniSource
-          ? `<br><span style="color:#ffaa44;font-size:9px;">⚠ EST. POSITION — ${inPort ? 'In-port' : 'Approx.'} via USNI${articleDate}</span>`
+          ? `<br><span style="color:#ffaa44;font-size:9px;"> EST. POSITION — ${inPort ? 'In-port' : 'Approx.'} via USNI${articleDate}</span>`
           : `<br><span style="color:#44ff88;font-size:9px;">● AIS LIVE</span>`);
     } else if (d._kind === 'cluster') {
       const cc = GlobeMap.CLUSTER_ACTIVITY_COLORS[d.activityType ?? 'unknown'] ?? '#6688aa';
       const actLabel = d.activityType && d.activityType !== 'unknown'
         ? d.activityType.charAt(0).toUpperCase() + d.activityType.slice(1) : '';
-      html = `<span style="color:${cc};font-weight:bold;">⚓ ${esc(d.name)}</span>`
+      html = `<span style="color:${cc};font-weight:bold;"> ${esc(d.name)}</span>`
         + `<br><span style="opacity:.7;">${d.vesselCount} vessel${d.vesselCount !== 1 ? 's' : ''}</span>`
         + (actLabel ? `<br><span style="opacity:.6;font-size:10px;">Activity: ${esc(actLabel)}</span>` : '')
         + (d.region ? `<br><span style="opacity:.6;font-size:10px;">${esc(d.region)}</span>` : '');
     } else if (d._kind === 'weather') {
       const wc = d.severity === 'Extreme' ? '#ff0044' : d.severity === 'Severe' ? '#ff6600' : '#88aaff';
-      html = `<span style="color:${wc};font-weight:bold;">⚡ ${esc(d.severity)}</span>` +
+      html = `<span style="color:${wc};font-weight:bold;"> ${esc(d.severity)}</span>` +
              `<br><span style="opacity:.7;white-space:normal;display:block;">${esc(d.headline.slice(0, 90))}</span>`;
     } else if (d._kind === 'radiation') {
       const rc = d.severity === 'spike' ? '#ff3030' : '#ffaa00';
-      html = `<span style="color:${rc};font-weight:bold;">☢ ${esc(d.severity.toUpperCase())}</span>` +
+      html = `<span style="color:${rc};font-weight:bold;"> ${esc(d.severity.toUpperCase())}</span>` +
              `<br><span style="opacity:.7;">${esc(d.location)}, ${esc(d.country)}</span>` +
              `<br><span style="opacity:.5;">${d.value.toFixed(1)} ${esc(d.unit)} · ${d.delta >= 0 ? '+' : ''}${d.delta.toFixed(1)} vs baseline</span>` +
              `<br><span style="opacity:.55;font-size:10px;">${esc(d.confidence.toUpperCase())}${d.corroborated ? ' · CONFIRMED' : ''}${d.conflictingSources ? ' · CONFLICT' : ''}</span>`;
@@ -1379,121 +1379,121 @@ export class GlobeMap {
              `<br><span style="opacity:.7;">${esc(d.category)}</span>`;
     } else if (d._kind === 'iran') {
       const sc = getIranEventHexColor(d);
-      html = `<span style="color:${sc};font-weight:bold;">🎯 ${esc(d.title.slice(0, 60))}</span>` +
+      html = `<span style="color:${sc};font-weight:bold;"> ${esc(d.title.slice(0, 60))}</span>` +
              `<br><span style="opacity:.7;">${esc(d.category)}${d.location ? ' · ' + esc(d.location) : ''}</span>`;
     } else if (d._kind === 'outage') {
       const sc = d.severity === 'total' ? '#ff2020' : d.severity === 'major' ? '#ff8800' : '#ffcc00';
-      html = `<span style="color:${sc};font-weight:bold;">📡 ${d.severity.toUpperCase()} Outage</span>` +
+      html = `<span style="color:${sc};font-weight:bold;"> ${d.severity.toUpperCase()} Outage</span>` +
              `<br><span style="opacity:.7;">${esc(d.country)}</span>` +
              `<br><span style="opacity:.7;white-space:normal;display:block;">${esc(d.title.slice(0, 70))}</span>`;
     } else if (d._kind === 'cyber') {
       const sc = d.severity === 'critical' ? '#ff0044' : d.severity === 'high' ? '#ff4400' : '#ffaa00';
-      html = `<span style="color:${sc};font-weight:bold;">🛡 ${d.severity.toUpperCase()}</span>` +
+      html = `<span style="color:${sc};font-weight:bold;"> ${d.severity.toUpperCase()}</span>` +
              `<br><span style="opacity:.7;">${esc(d.type)}</span>` +
              `<br><span style="opacity:.5;font-size:10px;">${esc(d.indicator.slice(0, 40))}</span>`;
     } else if (d._kind === 'fire') {
-      html = `<span style="color:#ff6600;font-weight:bold;">🔥 Wildfire</span>` +
+      html = `<span style="color:#ff6600;font-weight:bold;"> Wildfire</span>` +
              `<br><span style="opacity:.7;">${esc(d.region)}</span>` +
              `<br><span style="opacity:.5;">Brightness: ${d.brightness.toFixed(0)} K</span>`;
     } else if (d._kind === 'protest') {
       const typeColors: Record<string, string> = { riot: '#ff3030', strike: '#44aaff', protest: '#ffaa00' };
       const c = typeColors[d.eventType] ?? '#ffaa00';
-      html = `<span style="color:${c};font-weight:bold;">📢 ${esc(d.eventType)}</span>` +
+      html = `<span style="color:${c};font-weight:bold;"> ${esc(d.eventType)}</span>` +
              `<br><span style="opacity:.7;">${esc(d.country)}</span>` +
              `<br><span style="opacity:.7;white-space:normal;display:block;">${esc(d.title.slice(0, 70))}</span>`;
     } else if (d._kind === 'ucdp') {
-      html = `<span style="color:#ff6400;font-weight:bold;">⚔ ${esc(d.country)}</span>` +
+      html = `<span style="color:#ff6400;font-weight:bold;"> ${esc(d.country)}</span>` +
              `<br><span style="opacity:.7;">${esc(d.sideA)} vs ${esc(d.sideB)}</span>` +
              (d.deaths ? `<br><span style="opacity:.5;">Deaths: ${d.deaths}</span>` : '');
     } else if (d._kind === 'displacement') {
-      html = `<span style="color:#88bbff;font-weight:bold;">👥 Displacement</span>` +
+      html = `<span style="color:#88bbff;font-weight:bold;"> Displacement</span>` +
              `<br><span style="opacity:.7;">${esc(d.origin)} → ${esc(d.asylum)}</span>` +
              `<br><span style="opacity:.5;">Refugees: ${d.refugees.toLocaleString()}</span>`;
     } else if (d._kind === 'climate') {
       const tc = d.type === 'warm' ? '#ff4400' : d.type === 'cold' ? '#44aaff' : '#88ff88';
-      html = `<span style="color:${tc};font-weight:bold;">🌡 ${esc(d.type.toUpperCase())}</span>` +
+      html = `<span style="color:${tc};font-weight:bold;"> ${esc(d.type.toUpperCase())}</span>` +
              `<br><span style="opacity:.7;">${esc(d.zone)}</span>` +
              `<br><span style="opacity:.5;">ΔT: ${d.tempDelta > 0 ? '+' : ''}${d.tempDelta.toFixed(1)}°C · ${esc(d.severity)}</span>`;
     } else if (d._kind === 'gpsjam') {
       const gc = d.level === 'high' ? '#ff2020' : '#ff8800';
-      html = `<span style="color:${gc};font-weight:bold;">📡 GPS Jamming</span>` +
+      html = `<span style="color:${gc};font-weight:bold;"> GPS Jamming</span>` +
              `<br><span style="opacity:.7;">Level: ${esc(d.level)}</span>` +
              `<br><span style="opacity:.5;">Avg satellites visible: ${d.npAvg.toFixed(1)}</span>`;
     } else if (d._kind === 'tech') {
-      html = `<span style="color:#44aaff;font-weight:bold;">💻 ${esc(d.title.slice(0, 50))}</span>` +
+      html = `<span style="color:#44aaff;font-weight:bold;"> ${esc(d.title.slice(0, 50))}</span>` +
              `<br><span style="opacity:.7;">${esc(d.country)}</span>` +
              (d.daysUntil >= 0 ? `<br><span style="opacity:.5;">In ${d.daysUntil} days</span>` : '');
     } else if (d._kind === 'conflictZone') {
       const ic = d.intensity === 'high' ? '#ff3030' : d.intensity === 'medium' ? '#ff8800' : '#ffcc00';
-      html = `<span style="color:${ic};font-weight:bold;">⚔ ${esc(d.name)}</span>` +
+      html = `<span style="color:${ic};font-weight:bold;"> ${esc(d.name)}</span>` +
              (d.parties.length ? `<br><span style="opacity:.7;">${d.parties.map(esc).join(', ')}</span>` : '') +
              (d.casualties ? `<br><span style="opacity:.5;">Casualties: ${esc(d.casualties)}</span>` : '');
     } else if (d._kind === 'milbase') {
-      html = `<span style="color:#4488ff;font-weight:bold;">🏛 ${esc(d.name)}</span>` +
+      html = `<span style="color:#4488ff;font-weight:bold;"> ${esc(d.name)}</span>` +
              `<br><span style="opacity:.7;">${esc(d.type)}${d.country ? ' · ' + esc(d.country) : ''}</span>`;
     } else if (d._kind === 'nuclearSite') {
       const nc = d.status === 'active' ? '#ffd700' : d.status === 'construction' ? '#ff8800' : '#888888';
-      html = `<span style="color:${nc};font-weight:bold;">☢ ${esc(d.name)}</span>` +
+      html = `<span style="color:${nc};font-weight:bold;"> ${esc(d.name)}</span>` +
              `<br><span style="opacity:.7;">${esc(d.type)} · ${esc(d.status)}</span>`;
     } else if (d._kind === 'irradiator') {
-      html = `<span style="color:#ff8800;font-weight:bold;">⚠ Gamma Irradiator</span>` +
+      html = `<span style="color:#ff8800;font-weight:bold;"> Gamma Irradiator</span>` +
              `<br><span style="opacity:.7;">${esc(d.city)}, ${esc(d.country)}</span>`;
     } else if (d._kind === 'spaceport') {
       const lc = d.launches === 'High' ? '#88ddff' : d.launches === 'Medium' ? '#44aaff' : '#aaaaaa';
-      html = `<span style="color:${lc};font-weight:bold;">🚀 ${esc(d.name)}</span>` +
+      html = `<span style="color:${lc};font-weight:bold;"> ${esc(d.name)}</span>` +
              `<br><span style="opacity:.7;">${esc(d.operator)} · ${esc(d.country)}</span>` +
              `<br><span style="opacity:.5;">Launch frequency: ${esc(d.launches)}</span>`;
     } else if (d._kind === 'earthquake') {
       const mc = d.magnitude >= 6 ? '#ff3030' : d.magnitude >= 4 ? '#ff8800' : '#ffcc00';
-      html = `<span style="color:${mc};font-weight:bold;">🌍 M${d.magnitude.toFixed(1)}</span>` +
+      html = `<span style="color:${mc};font-weight:bold;"> M${d.magnitude.toFixed(1)}</span>` +
              `<br><span style="opacity:.7;white-space:normal;display:block;">${esc(d.place.slice(0, 70))}</span>`;
     } else if (d._kind === 'economic') {
       const ec = d.type === 'exchange' ? '#ffd700' : d.type === 'central-bank' ? '#4488ff' : '#44cc88';
-      html = `<span style="color:${ec};font-weight:bold;">💰 ${esc(d.name)}</span>` +
+      html = `<span style="color:${ec};font-weight:bold;"> ${esc(d.name)}</span>` +
              `<br><span style="opacity:.7;">${esc(d.type)} · ${esc(d.country)}</span>` +
              (d.description ? `<br><span style="opacity:.5;white-space:normal;display:block;">${esc(d.description.slice(0, 70))}</span>` : '');
     } else if (d._kind === 'datacenter') {
-      html = `<span style="color:#88aaff;font-weight:bold;">🖥 ${esc(d.name)}</span>` +
+      html = `<span style="color:#88aaff;font-weight:bold;"> ${esc(d.name)}</span>` +
              `<br><span style="opacity:.7;">${esc(d.owner)} · ${esc(d.country)}</span>` +
              `<br><span style="opacity:.5;">${esc(d.chipType)}</span>`;
     } else if (d._kind === 'waterway') {
-      html = `<span style="color:#44aadd;font-weight:bold;">⚓ ${esc(d.name)}</span>` +
+      html = `<span style="color:#44aadd;font-weight:bold;"> ${esc(d.name)}</span>` +
              (d.description ? `<br><span style="opacity:.7;white-space:normal;display:block;">${esc(d.description.slice(0, 80))}</span>` : '');
     } else if (d._kind === 'mineral') {
       const mc2 = d.status === 'producing' ? '#cc88ff' : '#8866bb';
-      html = `<span style="color:${mc2};font-weight:bold;">💎 ${esc(d.mineral)}</span>` +
+      html = `<span style="color:${mc2};font-weight:bold;"> ${esc(d.mineral)}</span>` +
              `<br><span style="opacity:.7;">${esc(d.name)} · ${esc(d.country)}</span>` +
              `<br><span style="opacity:.5;">${esc(d.status)}</span>`;
     } else if (d._kind === 'flightDelay') {
       const sc = d.severity === 'severe' ? '#ff3030' : d.severity === 'major' ? '#ff6600' : d.severity === 'moderate' ? '#ffaa00' : '#ffee44';
-      html = `<span style="color:${sc};font-weight:bold;">✈ ${esc(d.iata)} — ${esc(d.severity.toUpperCase())}</span>` +
+      html = `<span style="color:${sc};font-weight:bold;"> ${esc(d.iata)} — ${esc(d.severity.toUpperCase())}</span>` +
              `<br><span style="opacity:.7;">${esc(d.name)}, ${esc(d.country)}</span>` +
              `<br><span style="opacity:.7;">${esc(d.delayType.replace(/_/g, ' '))}` +
              (d.avgDelayMinutes > 0 ? ` · avg ${d.avgDelayMinutes}min` : '') + `</span>` +
              (d.reason ? `<br><span style="opacity:.5;white-space:normal;display:block;">${esc(d.reason.slice(0, 70))}</span>` : '');
     } else if (d._kind === 'notamRing') {
-      html = `<span style="color:#ff2828;font-weight:bold;">⚠ NOTAM CLOSURE</span>` +
+      html = `<span style="color:#ff2828;font-weight:bold;"> NOTAM CLOSURE</span>` +
              `<br><span style="opacity:.7;">${esc(d.name)}</span>` +
              (d.reason ? `<br><span style="opacity:.5;white-space:normal;display:block;">${esc(d.reason.slice(0, 100))}</span>` : '');
     } else if (d._kind === 'cableAdvisory') {
       const sc = d.severity === 'fault' ? '#ff2020' : '#ff8800';
-      html = `<span style="color:${sc};font-weight:bold;">🔌 ${esc(d.severity.toUpperCase())} — ${esc(d.title.slice(0, 50))}</span>` +
+      html = `<span style="color:${sc};font-weight:bold;"> ${esc(d.severity.toUpperCase())} — ${esc(d.title.slice(0, 50))}</span>` +
              (d.impact ? `<br><span style="opacity:.7;white-space:normal;display:block;">${esc(d.impact.slice(0, 70))}</span>` : '') +
              (d.repairEta ? `<br><span style="opacity:.5;">ETA: ${esc(d.repairEta)}</span>` : '');
     } else if (d._kind === 'repairShip') {
       const sc = d.status === 'on-station' ? '#44ff88' : '#44aaff';
-      html = `<span style="color:${sc};font-weight:bold;">🚢 ${esc(d.name)}</span>` +
+      html = `<span style="color:${sc};font-weight:bold;"> ${esc(d.name)}</span>` +
              `<br><span style="opacity:.7;">${esc(d.status.replace(/-/g, ' '))}${d.operator ? ' · ' + esc(d.operator) : ''}</span>` +
              (d.eta ? `<br><span style="opacity:.5;">ETA: ${esc(d.eta)}</span>` : '');
     } else if (d._kind === 'aisDisruption') {
       const sc = d.severity === 'high' ? '#ff2020' : d.severity === 'elevated' ? '#ff8800' : '#44aaff';
       const typeLabel = d.type === 'gap_spike' ? 'Gap Spike' : 'Chokepoint Congestion';
-      html = `<span style="color:${sc};font-weight:bold;">⛴ ${esc(typeLabel)}</span>` +
+      html = `<span style="color:${sc};font-weight:bold;"> ${esc(typeLabel)}</span>` +
              `<br><span style="opacity:.7;">${esc(d.name)}</span>` +
              `<br><span style="opacity:.5;">${esc(d.severity)} · ${esc(d.description.slice(0, 60))}</span>`;
     } else if (d._kind === 'newsLocation') {
       const tc = d.threatLevel === 'critical' ? '#ff2020' : d.threatLevel === 'high' ? '#ff6600' : d.threatLevel === 'elevated' ? '#ffaa00' : '#44aaff';
-      html = `<span style="color:${tc};font-weight:bold;">📰 ${esc(d.title.slice(0, 60))}</span>` +
+      html = `<span style="color:${tc};font-weight:bold;"> ${esc(d.title.slice(0, 60))}</span>` +
              `<br><span style="opacity:.5;">${esc(d.threatLevel)}</span>`;
     } else if (d._kind === 'satellite') {
       const sc = SAT_COUNTRY_COLORS[d.country] || '#ccccff';
@@ -1644,7 +1644,7 @@ export class GlobeMap {
       cr.height - el.offsetHeight - 4
     ));
     el.style.left = left + 'px';
-    el.style.top  = top  + 'px';
+    el.style.top = top + 'px';
 
     this.tooltipEl = el;
     if (this.tooltipHideTimer) clearTimeout(this.tooltipHideTimer);
@@ -1739,15 +1739,15 @@ export class GlobeMap {
     el.innerHTML = `
       <span class="globe-beta-badge">BETA</span>
       <div class="zoom-controls">
-        <button class="map-btn zoom-in"    title="Zoom in">+</button>
-        <button class="map-btn zoom-out"   title="Zoom out">-</button>
+        <button class="map-btn zoom-in" title="Zoom in">+</button>
+        <button class="map-btn zoom-out" title="Zoom out">-</button>
         <button class="map-btn zoom-reset" title="Reset view">&#8962;</button>
       </div>`;
     this.container.appendChild(el);
     el.addEventListener('click', (e) => {
       const target = e.target as HTMLElement;
-      if      (target.classList.contains('zoom-in'))    this.zoomInGlobe();
-      else if (target.classList.contains('zoom-out'))   this.zoomOutGlobe();
+      if (target.classList.contains('zoom-in')) this.zoomInGlobe();
+      else if (target.classList.contains('zoom-out')) this.zoomOutGlobe();
       else if (target.classList.contains('zoom-reset')) this.setView(this.currentView);
     });
   }
@@ -1979,10 +1979,10 @@ export class GlobeMap {
   }
 
   private static readonly CII_GLOBE_COLORS: Record<string, string> = {
-    low:      'rgba(40, 180, 60, 0.35)',
-    normal:   'rgba(220, 200, 50, 0.35)',
+    low: 'rgba(40, 180, 60, 0.35)',
+    normal: 'rgba(220, 200, 50, 0.35)',
     elevated: 'rgba(240, 140, 30, 0.40)',
-    high:     'rgba(220, 50, 20, 0.45)',
+    high: 'rgba(220, 50, 20, 0.45)',
     critical: 'rgba(140, 10, 0, 0.50)',
   };
   private static readonly CONFLICT_CAP: Record<string, string> = { high: 'rgba(255,40,40,0.25)', medium: 'rgba(255,120,0,0.20)', low: 'rgba(255,200,0,0.15)' };
@@ -2216,29 +2216,29 @@ export class GlobeMap {
   };
 
   private static readonly VESSEL_TYPE_COLORS: Record<string, string> = {
-    carrier:    '#ff4444',
-    destroyer:  '#ff8800',
-    frigate:    '#ffcc00',
-    submarine:  '#8844ff',
+    carrier: '#ff4444',
+    destroyer: '#ff8800',
+    frigate: '#ffcc00',
+    submarine: '#8844ff',
     amphibious: '#44cc88',
-    patrol:     '#44aaff',
-    auxiliary:  '#aaaaaa',
-    research:   '#44ffff',
+    patrol: '#44aaff',
+    auxiliary: '#aaaaaa',
+    research: '#44ffff',
     icebreaker: '#88ccff',
-    special:    '#ff44ff',
+    special: '#ff44ff',
   };
 
   private static readonly VESSEL_TYPE_ICONS: Record<string, string> = {
-    carrier:    '\u26f4',
-    destroyer:  '\u25b2',
-    frigate:    '\u25b2',
-    submarine:  '\u25c6',
+    carrier: '\u26f4',
+    destroyer: '\u25b2',
+    frigate: '\u25b2',
+    submarine: '\u25c6',
     amphibious: '\u2b21',
-    patrol:     '\u25b6',
-    auxiliary:  '\u25cf',
-    research:   '\u25ce',
+    patrol: '\u25b6',
+    auxiliary: '\u25cf',
+    research: '\u25ce',
     icebreaker: '\u2745',
-    special:    '\u2605',
+    special: '\u2605',
   };
 
   private static readonly CLUSTER_ACTIVITY_COLORS: Record<string, string> = {
@@ -2271,8 +2271,8 @@ export class GlobeMap {
       _lng: v.lon,
       id: v.id,
       name: v.name ?? 'vessel',
-      type: v.vesselType,                                                    // raw enum — color/icon key
-      typeLabel: GlobeMap.VESSEL_TYPE_LABELS[v.vesselType] ?? v.vesselType,  // display string
+      type: v.vesselType, // raw enum — color/icon key
+      typeLabel: GlobeMap.VESSEL_TYPE_LABELS[v.vesselType] ?? v.vesselType, // display string
       hullNumber: v.hullNumber,
       operator: v.operator !== 'other' ? v.operator : undefined,
       operatorCountry: v.operatorCountry,
@@ -2303,7 +2303,7 @@ export class GlobeMap {
       .filter(a => a.centroid != null)
       .map(a => ({
         _kind: 'weather' as const,
-        _lat: a.centroid![1],   // centroid is [lon, lat]
+        _lat: a.centroid![1], // centroid is [lon, lat]
         _lng: a.centroid![0],
         id: a.id,
         severity: a.severity ?? 'Minor',
@@ -2375,22 +2375,22 @@ export class GlobeMap {
 
   private static readonly LAYER_CHANNELS: Map<string, { markers: boolean; arcs: boolean; paths: boolean; polygons: boolean }> = new Map([
     ['ciiChoropleth', { markers: false, arcs: false, paths: false, polygons: true }],
-    ['tradeRoutes',   { markers: false, arcs: true,  paths: false, polygons: false }],
-    ['pipelines',     { markers: false, arcs: false, paths: true,  polygons: false }],
-    ['conflicts',     { markers: true,  arcs: false, paths: false, polygons: true }],
-    ['cables',        { markers: true,  arcs: false, paths: true,  polygons: false }],
-    ['satellites',        { markers: true,  arcs: false, paths: true,  polygons: true }],
+    ['tradeRoutes', { markers: false, arcs: true, paths: false, polygons: false }],
+    ['pipelines', { markers: false, arcs: false, paths: true, polygons: false }],
+    ['conflicts', { markers: true, arcs: false, paths: false, polygons: true }],
+    ['cables', { markers: true, arcs: false, paths: true, polygons: false }],
+    ['satellites', { markers: true, arcs: false, paths: true, polygons: true }],
 
-    ['natural',           { markers: true,  arcs: false, paths: true,  polygons: true }],
-    ['webcams',           { markers: true,  arcs: false, paths: false, polygons: false }],
+    ['natural', { markers: true, arcs: false, paths: true, polygons: true }],
+    ['webcams', { markers: true, arcs: false, paths: false, polygons: false }],
   ]);
 
   private flushLayerChannels(layer: keyof MapLayers): void {
     const ch = GlobeMap.LAYER_CHANNELS.get(layer);
     if (!ch) { this.flushMarkers(); return; }
-    if (ch.markers)  this.flushMarkers();
-    if (ch.arcs)     this.flushArcs();
-    if (ch.paths)    this.flushPaths();
+    if (ch.markers) this.flushMarkers();
+    if (ch.arcs) this.flushArcs();
+    if (ch.paths) this.flushPaths();
     if (ch.polygons) this.flushPolygons();
     if (layer === 'satellites' && this.satBeamGroup) {
       this.satBeamGroup.visible = !!this.layers.satellites;
@@ -2405,14 +2405,14 @@ export class GlobeMap {
       if (prev[k] === layers[k]) continue;
       const ch = GlobeMap.LAYER_CHANNELS.get(k);
       if (!ch) { needMarkers = true; continue; }
-      if (ch.markers)  needMarkers = true;
-      if (ch.arcs)     needArcs = true;
-      if (ch.paths)    needPaths = true;
+      if (ch.markers) needMarkers = true;
+      if (ch.arcs) needArcs = true;
+      if (ch.paths) needPaths = true;
       if (ch.polygons) needPolygons = true;
     }
-    if (needMarkers)  this.flushMarkers();
-    if (needArcs)     this.flushArcs();
-    if (needPaths)    this.flushPaths();
+    if (needMarkers) this.flushMarkers();
+    if (needArcs) this.flushArcs();
+    if (needPaths) this.flushPaths();
     if (needPolygons) this.flushPolygons();
     if (prev.satellites !== layers.satellites) {
       if (this.satBeamGroup) this.satBeamGroup.visible = !!layers.satellites;
@@ -2459,14 +2459,14 @@ export class GlobeMap {
   // ─── Camera / navigation ──────────────────────────────────────────────────
 
   private static readonly VIEW_POVS: Record<MapView, { lat: number; lng: number; altitude: number }> = {
-    global:   { lat: 20,  lng:  0,   altitude: 1.8 },
-    america:  { lat: 20,  lng: -90,  altitude: 1.5 },
-    mena:     { lat: 25,  lng:  40,  altitude: 1.2 },
-    eu:       { lat: 50,  lng:  10,  altitude: 1.2 },
-    asia:     { lat: 35,  lng: 105,  altitude: 1.5 },
-    latam:    { lat: -15, lng: -60,  altitude: 1.5 },
-    africa:   { lat:  5,  lng:  20,  altitude: 1.5 },
-    oceania:  { lat: -25, lng: 140,  altitude: 1.5 },
+    global: { lat: 20, lng: 0, altitude: 1.8 },
+    america: { lat: 20, lng: -90, altitude: 1.5 },
+    mena: { lat: 25, lng: 40, altitude: 1.2 },
+    eu: { lat: 50, lng: 10, altitude: 1.2 },
+    asia: { lat: 35, lng: 105, altitude: 1.5 },
+    latam: { lat: -15, lng: -60, altitude: 1.5 },
+    africa: { lat: 5, lng: 20, altitude: 1.5 },
+    oceania: { lat: -25, lng: 140, altitude: 1.5 },
   };
 
   public setView(view: MapView): void {
@@ -2485,12 +2485,12 @@ export class GlobeMap {
     // globe.gl altitude: 1.8=full globe, 0.6=country, 0.15=city
     let altitude = 1.2;
     if (zoom !== undefined) {
-      if      (zoom >= 7) altitude = 0.08;
+      if (zoom >= 7) altitude = 0.08;
       else if (zoom >= 6) altitude = 0.15;
       else if (zoom >= 5) altitude = 0.3;
       else if (zoom >= 4) altitude = 0.5;
       else if (zoom >= 3) altitude = 0.8;
-      else                altitude = 1.5;
+      else altitude = 1.5;
     }
     this.globe.pointOfView({ lat, lng: lon, altitude }, 1200);
   }
@@ -2817,7 +2817,7 @@ export class GlobeMap {
         eta: r.eta ?? '',
         operator: r.operator ?? '',
       }));
-    this.cableFaultIds    = new Set((advisories ?? []).filter(a => a.severity === 'fault').map(a => a.cableId));
+    this.cableFaultIds = new Set((advisories ?? []).filter(a => a.severity === 'fault').map(a => a.cableId));
     this.cableDegradedIds = new Set((advisories ?? []).filter(a => a.severity === 'degraded').map(a => a.cableId));
     this.flushMarkers();
     this.flushPaths();

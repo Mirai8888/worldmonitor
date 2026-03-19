@@ -74,7 +74,7 @@ export class CountryIntelModal {
   }
 
   private countryFlag(code: string): string {
-    return toFlagEmoji(code, '🌍');
+    return toFlagEmoji(code, '');
   }
 
   private levelBadge(level: string): string {
@@ -104,7 +104,7 @@ export class CountryIntelModal {
     this.currentCode = '__loading__';
     document.addEventListener('keydown', this.keydownHandler);
     this.headerEl.innerHTML = `
-      <span class="country-flag">🌍</span>
+      <span class="country-flag"></span>
       <span class="country-name">${t('modals.countryIntel.identifying')}</span>
     `;
     this.contentEl.innerHTML = `
@@ -139,10 +139,10 @@ export class CountryIntelModal {
         <div class="cii-section">
           <div class="cii-label">${t('modals.countryIntel.instabilityIndex')} ${this.scoreBar(score.score)}</div>
           <div class="cii-components">
-            <span title="${t('common.unrest')}">📢 ${score.components.unrest.toFixed(0)}</span>
-            <span title="${t('common.conflict')}">⚔ ${score.components.conflict.toFixed(0)}</span>
-            <span title="${t('common.security')}">🛡️ ${score.components.security.toFixed(0)}</span>
-            <span title="${t('common.information')}">📡 ${score.components.information.toFixed(0)}</span>
+            <span title="${t('common.unrest')}"> ${score.components.unrest.toFixed(0)}</span>
+            <span title="${t('common.conflict')}"> ${score.components.conflict.toFixed(0)}</span>
+            <span title="${t('common.security')}"> ${score.components.security.toFixed(0)}</span>
+            <span title="${t('common.information')}"> ${score.components.information.toFixed(0)}</span>
             <span class="cii-trend ${score.trend}">${score.trend === 'rising' ? '↗' : score.trend === 'falling' ? '↘' : '→'} ${score.trend}</span>
           </div>
         </div>
@@ -151,13 +151,13 @@ export class CountryIntelModal {
 
     const chips: string[] = [];
     if (signals) {
-      if (signals.protests > 0) chips.push(`<span class="signal-chip protest">📢 ${signals.protests} ${t('modals.countryIntel.protests')}</span>`);
-      if (signals.militaryFlights > 0) chips.push(`<span class="signal-chip military">✈️ ${signals.militaryFlights} ${t('modals.countryIntel.militaryAircraft')}</span>`);
-      if (signals.militaryVessels > 0) chips.push(`<span class="signal-chip military">⚓ ${signals.militaryVessels} ${t('modals.countryIntel.militaryVessels')}</span>`);
-      if (signals.outages > 0) chips.push(`<span class="signal-chip outage">🌐 ${signals.outages} ${t('modals.countryIntel.outages')}</span>`);
-      if (signals.earthquakes > 0) chips.push(`<span class="signal-chip quake">🌍 ${signals.earthquakes} ${t('modals.countryIntel.earthquakes')}</span>`);
+      if (signals.protests > 0) chips.push(`<span class="signal-chip protest"> ${signals.protests} ${t('modals.countryIntel.protests')}</span>`);
+      if (signals.militaryFlights > 0) chips.push(`<span class="signal-chip military"> ${signals.militaryFlights} ${t('modals.countryIntel.militaryAircraft')}</span>`);
+      if (signals.militaryVessels > 0) chips.push(`<span class="signal-chip military"> ${signals.militaryVessels} ${t('modals.countryIntel.militaryVessels')}</span>`);
+      if (signals.outages > 0) chips.push(`<span class="signal-chip outage"> ${signals.outages} ${t('modals.countryIntel.outages')}</span>`);
+      if (signals.earthquakes > 0) chips.push(`<span class="signal-chip quake"> ${signals.earthquakes} ${t('modals.countryIntel.earthquakes')}</span>`);
     }
-    chips.push(`<span class="signal-chip stock-loading">📈 ${t('modals.countryIntel.loadingIndex')}</span>`);
+    chips.push(`<span class="signal-chip stock-loading"> ${t('modals.countryIntel.loadingIndex')}</span>`);
     html += `<div class="active-signals">${chips.join('')}</div>`;
 
     html += `<div class="country-markets-section"><span class="intel-loading-text">${t('modals.countryIntel.loadingMarkets')}</span></div>`;
@@ -207,7 +207,7 @@ export class CountryIntelModal {
     briefSection.innerHTML = `
       <div class="intel-brief">${formatted}</div>
       <div class="intel-footer">
-        ${data.cached ? `<span class="intel-cached">📋 ${t('modals.countryIntel.cached')}</span>` : `<span class="intel-fresh">✨ ${t('modals.countryIntel.fresh')}</span>`}
+        ${data.cached ? `<span class="intel-cached"> ${t('modals.countryIntel.cached')}</span>` : `<span class="intel-fresh"> ${t('modals.countryIntel.fresh')}</span>`}
         <span class="intel-timestamp">${data.generatedAt ? new Date(data.generatedAt).toLocaleTimeString() : ''}</span>
       </div>
     `;
@@ -234,7 +234,7 @@ export class CountryIntelModal {
     `;
     }).join('');
 
-    section.innerHTML = `<div class="markets-label">📊 ${t('modals.countryIntel.predictionMarkets')}</div>${items}`;
+    section.innerHTML = `<div class="markets-label"> ${t('modals.countryIntel.predictionMarkets')}</div>${items}`;
   }
 
   public updateStock(data: StockIndexData): void {
@@ -249,7 +249,7 @@ export class CountryIntelModal {
     const pct = parseFloat(data.weekChangePercent);
     const sign = pct >= 0 ? '+' : '';
     const cls = pct >= 0 ? 'stock-up' : 'stock-down';
-    const arrow = pct >= 0 ? '📈' : '📉';
+    const arrow = pct >= 0 ? '' : '';
     el.className = `signal-chip stock ${cls}`;
     el.innerHTML = `${arrow} ${escapeHtml(data.indexName)}: ${sign}${data.weekChangePercent}% (1W)`;
   }

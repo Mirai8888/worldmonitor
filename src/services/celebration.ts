@@ -40,7 +40,7 @@ const celebrated = new Set<string>();
  * Fire a confetti celebration with warm, nature-inspired colors.
  *
  * @param type - 'milestone' for species recovery (40 particles, single burst),
- *               'record' for renewable energy records (80 particles, double burst).
+ * 'record' for renewable energy records (80 particles, double burst).
  */
 export function celebrate(type: 'milestone' | 'record' = 'milestone'): void {
   if (REDUCED_MOTION) return;

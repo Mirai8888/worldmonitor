@@ -797,11 +797,11 @@
       "empty": "Keine aktuellen Artikel zu diesem Thema"
     },
     "geoHubs": {
-      "tooltip": "<strong>Geopolitische Aktivitätszentren</strong><br>Zeigt Regionen mit der höchsten Nachrichtenaktivität.<br><br><em>Hub-Typen:</em><br>• 🏛️ Hauptstädte – Welthauptstädte und Regierungszentren<br>• ⚔️ Konfliktzonen – Aktive Konfliktgebiete<br>• ⚓ Strategisch – Engpässe und Schlüsselregionen<br>• 🏢 Organisationen – UN, NATO, IAEA usw.<br><br><em>Aktivitätsstufen:</em><br>• <span style=\"color: #ff4444\">Hoch</span> – Aktuelle Nachrichten oder 70+ Punktestand<br>• <span style=\"color: #ff8844\">Erhöht</span> – Punktestand 40-69<br>• <span style=\"color: #888\">Niedrig</span> – Wert unter 40<br><br>Klicken Sie auf einen Hub, um zu dessen Position zu zoomen.",
+      "tooltip": "<strong>Geopolitische Aktivitätszentren</strong><br>Zeigt Regionen mit der höchsten Nachrichtenaktivität.<br><br><em>Hub-Typen:</em><br>• Hauptstädte – Welthauptstädte und Regierungszentren<br>• Konfliktzonen – Aktive Konfliktgebiete<br>• Strategisch – Engpässe und Schlüsselregionen<br>• Organisationen – UN, NATO, IAEA usw.<br><br><em>Aktivitätsstufen:</em><br>• <span style=\"color: #ff4444\">Hoch</span> – Aktuelle Nachrichten oder 70+ Punktestand<br>• <span style=\"color: #ff8844\">Erhöht</span> – Punktestand 40-69<br>• <span style=\"color: #888\">Niedrig</span> – Wert unter 40<br><br>Klicken Sie auf einen Hub, um zu dessen Position zu zoomen.",
       "noActive": "Keine aktiven geopolitischen Zentren",
       "story": "Geschichte",
       "stories": "Geschichten",
-      "infoTooltip": "<strong>Geopolitische Aktivitätszentren</strong><br>Zeigt Regionen mit der höchsten Nachrichtenaktivität.<br><br><em>Hub-Typen:</em><br>• 🏛️ Hauptstädte – Welthauptstädte und Regierungszentren<br>• ⚔️ Konfliktzonen – Aktive Konfliktgebiete<br>• ⚓ Strategisch – Engpässe und Schlüsselregionen<br>• 🏢 Organisationen – UN, NATO, IAEA usw.<br><br><em>Aktivitätsstufen:</em><br>• <span style=\"color: {{highColor}}\">Hoch</span> – Aktuelle Nachrichten oder 70+ Punktestand<br>• <span style=\"color: {{elevatedColor}}\">Erhöht</span> – Punktestand 40-69<br>• <span style=\"color: {{lowColor}}\">Niedrig</span> – Wert unter 40<br><br>Klicken Sie auf einen Hub, um zu dessen Position zu zoomen."
+      "infoTooltip": "<strong>Geopolitische Aktivitätszentren</strong><br>Zeigt Regionen mit der höchsten Nachrichtenaktivität.<br><br><em>Hub-Typen:</em><br>• Hauptstädte – Welthauptstädte und Regierungszentren<br>• Konfliktzonen – Aktive Konfliktgebiete<br>• Strategisch – Engpässe und Schlüsselregionen<br>• Organisationen – UN, NATO, IAEA usw.<br><br><em>Aktivitätsstufen:</em><br>• <span style=\"color: {{highColor}}\">Hoch</span> – Aktuelle Nachrichten oder 70+ Punktestand<br>• <span style=\"color: {{elevatedColor}}\">Erhöht</span> – Punktestand 40-69<br>• <span style=\"color: {{lowColor}}\">Niedrig</span> – Wert unter 40<br><br>Klicken Sie auf einen Hub, um zu dessen Position zu zoomen."
     },
     "techHubs": {
       "tooltip": "<strong>Tech-Hub-Aktivität</strong><br>Zeigt Tech-Hubs mit der meisten Nachrichtenaktivität.<br><br><em>Aktivitätsstufen:</em><br>• <span style=\"color: #00ff88\">Hoch</span> – Aktuelle Nachrichten oder 50+ Punktzahl<br>• <span style=\"color: #ffc800\">Erhöht</span> – Punktzahl 20–49<br>• <span style=\"color: #888\">Niedrig</span> – Wert unter 20<br><br>Klicken Sie auf einen Hub, um zu dessen Position zu zoomen.",
@@ -1206,7 +1206,7 @@
       "internetUsers": "Internetnutzer",
       "mobileSubscriptions": "Mobile Abonnements",
       "rdSpending": "F&E-Ausgaben",
-      "infoTooltip": "<strong>Globale Technologiebereitschaft</strong><br>Zusammengesetzter Wert (0-100) basierend auf Daten der Weltbank:<br><br><strong>Angezeigte Metriken:</strong><br>🌐 Internetnutzer (% der Bevölkerung)<br>📱 Mobilfunkabonnements (pro 100 Personen)<br>🔬 F&E-Ausgaben (% von BIP)<br><br><strong>Gewichte:</strong> F&E (35 %), Internet (30 %), Breitband (20 %), Mobilfunk (15 %)<br><br><em> – = Keine aktuellen Daten verfügbar</em><br><em>Quelle: World Bank Open Data (2019–2024)</em>",
+      "infoTooltip": "<strong>Globale Technologiebereitschaft</strong><br>Zusammengesetzter Wert (0-100) basierend auf Daten der Weltbank:<br><br><strong>Angezeigte Metriken:</strong><br> Internetnutzer (% der Bevölkerung)<br> Mobilfunkabonnements (pro 100 Personen)<br> F&E-Ausgaben (% von BIP)<br><br><strong>Gewichte:</strong> F&E (35 %), Internet (30 %), Breitband (20 %), Mobilfunk (15 %)<br><br><em> – = Keine aktuellen Daten verfügbar</em><br><em>Quelle: World Bank Open Data (2019–2024)</em>",
       "fetchingData": "Fetching World Bank Data",
       "internetUsersIndicator": "Internet Users",
       "mobileSubscriptionsIndicator": "Mobile Subscriptions",
@@ -2079,7 +2079,7 @@
       "usniIntel": "USNI Intel",
       "usniSource": "Source: USNI News Fleet Tracker",
       "approximatePosition": "Position approximate — based on USNI weekly report, not real-time AIS.",
-      "darkDescription": "⚠ Das Schiff ist dunkel geworden – AIS-Signal verloren. Kann auf sensible Vorgänge hinweisen.",
+      "darkDescription": " Das Schiff ist dunkel geworden – AIS-Signal verloren. Kann auf sensible Vorgänge hinweisen.",
       "recentTracking": "Recent Tracking",
       "lastReport": "LATEST",
       "nearChokepoint": "NEAR CHOKEPOINT",

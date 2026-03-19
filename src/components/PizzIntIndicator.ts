@@ -48,7 +48,7 @@ export class PizzIntIndicator {
         title: t('components.pizzint.title'),
         onClick: () => { this.isExpanded = !this.isExpanded; panel.classList.toggle('hidden', !this.isExpanded); },
       },
-        h('span', { className: 'pizzint-icon' }, '🍕'),
+        h('span', { className: 'pizzint-icon' }, ''),
         h('span', { className: 'pizzint-defcon' }, '--'),
         h('span', { className: 'pizzint-score' }, '--%'),
       ),
