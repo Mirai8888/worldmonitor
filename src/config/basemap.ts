@@ -85,10 +85,10 @@ export const MAP_THEME_OPTIONS: Record<MapProvider, { value: string; label: stri
 };
 
 const DEFAULT_THEME: Record<MapProvider, string> = {
-  pmtiles: 'black',
-  auto: 'black',
-  openfreemap: 'dark',
-  carto: 'dark-matter',
+  pmtiles: 'white',
+  auto: 'white',
+  openfreemap: 'positron',
+  carto: 'positron',
 };
 
 export function getMapProvider(): MapProvider {
@@ -135,7 +135,7 @@ const CARTO_STYLES: Record<string, string> = {
 
 function asPMTilesTheme(mapTheme: string): PMTilesTheme {
   const valid = PMTILES_THEMES.some(o => o.value === mapTheme);
-  return (valid ? mapTheme : 'black') as PMTilesTheme;
+  return (valid ? mapTheme : 'white') as PMTilesTheme;
 }
 
 export function getStyleForProvider(provider: MapProvider, mapTheme: string): StyleSpecification | string {
@@ -149,7 +149,7 @@ export function getStyleForProvider(provider: MapProvider, mapTheme: string): St
     case 'openfreemap':
       return mapTheme === 'positron' ? FALLBACK_LIGHT_STYLE : FALLBACK_DARK_STYLE;
     case 'carto':
-      return CARTO_STYLES[mapTheme] ?? CARTO_DARK;
+      return CARTO_STYLES[mapTheme] ?? CARTO_POSITRON;
     default: {
       const pmtiles = buildPMTilesStyle(asPMTilesTheme(mapTheme));
       return pmtiles ?? (lightFallback ? FALLBACK_LIGHT_STYLE : FALLBACK_DARK_STYLE);

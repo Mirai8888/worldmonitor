@@ -35,7 +35,7 @@
   margin: 32px auto;
   background: var(--panel-bg);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 0px;
   box-shadow: 0 16px 48px color-mix(in srgb, var(--overlay-heavy) 65%, transparent);
 }
 
@@ -59,7 +59,7 @@
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text-dim);
-  border-radius: 6px;
+  border-radius: 0px;
   font-size: 14px;
   width: 32px;
   height: 32px;
@@ -127,7 +127,7 @@
   top: 12px;
   right: 12px;
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 0px;
   width: 32px;
   height: 32px;
   background: var(--surface);
@@ -195,7 +195,7 @@
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text-dim);
-  border-radius: 6px;
+  border-radius: 0px;
   font-size: 11px;
   padding: 0 8px;
   height: 32px;
@@ -217,7 +217,7 @@
 .cdp-card {
   background: color-mix(in srgb, var(--surface) 70%, transparent);
   border: 1px solid var(--border-subtle);
-  border-radius: 8px;
+  border-radius: 0px;
   padding: 10px;
 }
 
@@ -463,7 +463,7 @@
 .cdp-market-item,
 .cdp-economic-item {
   border: 1px solid var(--border-subtle);
-  border-radius: 6px;
+  border-radius: 0px;
   padding: 8px;
   background: color-mix(in srgb, var(--surface) 82%, transparent);
 }
@@ -573,7 +573,7 @@
 
 .cdp-infra-card {
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 0px;
   background: var(--overlay-subtle);
   color: var(--text);
   display: grid;
@@ -728,7 +728,7 @@
 .cdp-geo-error-close {
   padding: 6px 16px;
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 0px;
   background: transparent;
   color: var(--text-primary);
   font-size: 12px;
@@ -776,7 +776,7 @@
   }
 }
 
-.cdp-facts-thumbnail { float: right; max-width: 100px; border-radius: 6px; margin: 0 0 8px 12px; }
+.cdp-facts-thumbnail { float: right; max-width: 100px; border-radius: 0px; margin: 0 0 8px 12px; }
 .cdp-facts-summary { font-size: 0.82rem; color: var(--cdp-muted); line-height: 1.5; margin-bottom: 8px; }
 .cdp-facts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
 .cdp-facts-grid .cdp-fact-item { font-size: 0.78rem; }
