@@ -550,7 +550,7 @@ export class GlobeMap {
     this.currentView = initialState.view;
 
     this.container.classList.add('globe-mode');
-    this.container.style.cssText = 'width:100%;height:100%;background:#000;position:relative;';
+    this.container.style.cssText = 'width:100%;height:100%;background:#f0f4f8;position:relative;';
 
     this.initGlobe().catch(err => {
       console.error('[GlobeMap] Init failed:', err);
@@ -602,7 +602,7 @@ export class GlobeMap {
     globe
       .globeImageUrl(GLOBE_TEXTURE_URLS[initialTexture])
       .backgroundImageUrl('')
-      .atmosphereColor('#4466cc')
+      .atmosphereColor('#c0c0c0')
       .atmosphereAltitude(0.18)
       .width(initW)
       .height(initH)
@@ -726,11 +726,11 @@ export class GlobeMap {
       .arcEndLat((d: TradeRouteSegment) => d.targetPosition[1])
       .arcEndLng((d: TradeRouteSegment) => d.targetPosition[0])
       .arcColor((d: TradeRouteSegment) => {
-        if (d.status === 'disrupted') return ['rgba(255,32,32,0.1)', 'rgba(255,32,32,0.8)', 'rgba(255,32,32,0.1)'];
-        if (d.status === 'high_risk') return ['rgba(255,180,0,0.1)', 'rgba(255,180,0,0.7)', 'rgba(255,180,0,0.1)'];
-        if (d.category === 'energy')    return ['rgba(255,140,0,0.05)', 'rgba(255,140,0,0.6)', 'rgba(255,140,0,0.05)'];
-        if (d.category === 'container') return ['rgba(68,136,255,0.05)', 'rgba(68,136,255,0.6)', 'rgba(68,136,255,0.05)'];
-        return ['rgba(68,204,136,0.05)', 'rgba(68,204,136,0.6)', 'rgba(68,204,136,0.05)'];
+        if (d.status === 'disrupted') return ['rgba(197,48,48,0.1)', 'rgba(197,48,48,0.7)', 'rgba(197,48,48,0.1)'];
+        if (d.status === 'high_risk') return ['rgba(180,83,9,0.1)', 'rgba(180,83,9,0.6)', 'rgba(180,83,9,0.1)'];
+        if (d.category === 'energy')    return ['rgba(180,83,9,0.05)', 'rgba(180,83,9,0.5)', 'rgba(180,83,9,0.05)'];
+        if (d.category === 'container') return ['rgba(26,26,26,0.05)', 'rgba(26,26,26,0.5)', 'rgba(26,26,26,0.05)'];
+        return ['rgba(102,102,102,0.05)', 'rgba(102,102,102,0.5)', 'rgba(102,102,102,0.05)'];
       })
       .arcAltitudeAutoScale(0.3)
       .arcStroke(0.5)
