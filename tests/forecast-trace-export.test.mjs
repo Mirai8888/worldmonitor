@@ -162,6 +162,8 @@ describe('forecast trace artifact builder', () => {
     assert.equal(artifacts.summary.worldStateSummary.regionCount, 2);
     assert.ok(typeof artifacts.summary.worldStateSummary.situationCount === 'number');
     assert.ok(artifacts.summary.worldStateSummary.situationCount >= 1);
+    assert.ok(typeof artifacts.summary.worldStateSummary.familyCount === 'number');
+    assert.ok(artifacts.summary.worldStateSummary.familyCount >= 1);
     assert.ok(typeof artifacts.summary.worldStateSummary.simulationSituationCount === 'number');
     assert.equal(artifacts.summary.worldStateSummary.simulationRoundCount, 3);
     assert.ok(typeof artifacts.summary.worldStateSummary.simulationSummary === 'string');
@@ -868,6 +870,8 @@ describe('forecast run world state', () => {
     assert.ok(worldState.report.simulationOutcomeSummaries.every((item) => ['escalatory', 'contested', 'constrained'].includes(item.posture)));
     assert.ok(worldState.report.crossSituationEffects.length >= 1);
     assert.ok(worldState.report.crossSituationEffects.some((item) => item.summary.includes('Japan')));
+    assert.ok(worldState.report.crossSituationEffects.every((item) => item.channel));
+    assert.ok(worldState.simulationState.situationSimulations.every((item) => item.familyId));
   });
 
   it('does not synthesize cross-situation effects for unrelated theaters with no overlap', () => {
@@ -917,6 +921,36 @@ describe('forecast run world state', () => {
     const dominantSimulation = worldState.simulationState.situationSimulations.find((item) => item.label.includes('Middle East'));
     assert.equal(dominantSimulation?.dominantDomain, 'supply_chain');
     assert.ok(dominantInput);
+  });
+
+  it('builds broader situation families above individual situations', () => {
+    const conflict = makePrediction('conflict', 'Israel', 'Active armed conflict: Israel', 0.76, 0.66, '7d', [
+      { type: 'ucdp', value: 'Israeli theater remains active', weight: 0.4 },
+    ]);
+    conflict.newsContext = ['Regional actors prepare responses'];
+    buildForecastCase(conflict);
+
+    const market = makePrediction('market', 'Middle East', 'Oil price impact: Middle East', 0.59, 0.56, '30d', [
+      { type: 'prediction_market', value: 'Energy traders reprice risk', weight: 0.35 },
+    ]);
+    market.newsContext = ['Regional actors prepare responses'];
+    buildForecastCase(market);
+
+    const supply = makePrediction('supply_chain', 'Eastern Mediterranean', 'Shipping disruption: Eastern Mediterranean', 0.57, 0.54, '14d', [
+      { type: 'chokepoint', value: 'Shipping reroutes continue', weight: 0.35 },
+    ]);
+    supply.newsContext = ['Regional actors prepare responses'];
+    buildForecastCase(supply);
+
+    const worldState = buildForecastRunWorldState({
+      generatedAt: Date.parse('2026-03-19T12:30:00Z'),
+      predictions: [conflict, market, supply],
+    });
+
+    assert.ok(worldState.situationClusters.length >= 2);
+    assert.ok(worldState.situationFamilies.length >= 1);
+    assert.ok(worldState.situationFamilies.length <= worldState.situationClusters.length);
+    assert.ok(worldState.report.familyWatchlist.length >= 1);
   });
 
   it('ignores incompatible prior simulation momentum when the simulation version changes', () => {
